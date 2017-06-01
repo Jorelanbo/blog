@@ -59,6 +59,7 @@ require_once 'header.php';
 
 <div class="footer">footer</div>
 
+<div class="blank"></div>
 
 <script>
     var fix_nav = document.getElementById("fix_nav");

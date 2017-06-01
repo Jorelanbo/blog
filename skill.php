@@ -21,7 +21,40 @@ require_once 'header.php';
 ?>
 
 <div class="content">
-    content
+
+    <div class="left_area">
+        <div class="main_article">
+            文章列表
+        </div>
+    </div>
+
+    <div class="menu">
+        <div class="search_box">
+            搜索
+        </div>
+
+        <div class="announcement">
+            公告
+        </div>
+
+        <div class="newest">
+            最新文章
+        </div>
+
+        <div class="scan_times_list">
+            浏览次数排行
+        </div>
+
+        <div class="Jorelanbo">
+            Jorelanbo
+        </div>
+    </div>
+</div>
+
+<div class="links_box">
+    <div class="links">
+        友情链接
+    </div>
 </div>
 
 <div class="footer">footer</div>

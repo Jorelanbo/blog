@@ -18,7 +18,7 @@ a {
 
 /*顶部区域*/
 .header {
-    width: 1000px;
+    width: 1140px;
     height: 100px;
     background: white;
     margin: 0 auto;
@@ -82,7 +82,7 @@ a {
 
 /*固定导航栏*/
 .nav {
-    width: 1000px;
+    width: 1140px;
     height: 60px;
     margin: 0 auto;
 }
@@ -100,7 +100,7 @@ a {
 
 .nav ul,.fix_nav ul {
     float: left;
-    width: 1000px;
+    width: 1140px;
     height: 60px;
     margin: 0;
     padding: 5px;
@@ -200,20 +200,95 @@ a {
 
     /*内容区域=============================*/
 .content {
-    width: 1000px;
+    width: 1170px;
     height: 1760px;
     background: #afd9ee;
     padding-top: 160px;
     margin: 0 auto;
-    border-left: 0.5px solid #9d9d9d;
-    border-right: 0.5px solid #9d9d9d;
-    border-bottom: 0.5px solid #9d9d9d;
+}
+
+.content .left_area {
+    float: left;
+    width: 780px;
+    height: 1760px;
+    background: white;
+}
+
+.content .left_area .main_article {
+    width: 750px;
+    height: 1730px;
+    margin: 15px;
+    background: yellow;
+    border-radius: 5px;
+}
+
+.content .menu {
+    float: right;
+    width: 390px;
+    height: 1760px;
+    background: white;
+}
+
+.content .menu .search_box {
+    width: 360px;
+    height: 40px;
+    margin: 15px;
+    background: hotpink;
+    border-radius: 5px;
+}
+
+.content .menu .announcement {
+    width: 360px;
+    height: 300px;
+    margin: 15px;
+    background: fuchsia;
+    border-radius: 5px;
+}
+
+.content .menu .newest {
+    width: 360px;
+    height: 450px;
+    margin: 15px;
+    background: lightcoral;
+    border-radius: 5px;
+}
+
+.content .menu .scan_times_list {
+    width: 360px;
+    height: 400px;
+    margin: 15px;
+    background: lightpink;
+    border-radius: 5px;
+}
+
+.content .menu .Jorelanbo {
+    width: 360px;
+    height: 300px;
+    margin: 15px;
+    background: #666666;
+    border-radius: 5px;
+}
+
+.links_box {
+    width: 1140px;
+    height: 80px;
+    background: white;
+    margin: 0 auto;
+}
+
+.links {
+    width: 1140px;
+    height: 50px;
+    margin-top: 15px;
+    background: #9d9d9d;
+    border-radius: 5px;
 }
 
 /*底部区域=============================*/
 .footer {
-    width: 1000px;
+    width: 1140px;
     height: 60px;
     background: #cccccc;
     margin: 0 auto;
+    border-radius: 5px;
 }

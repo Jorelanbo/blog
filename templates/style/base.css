@@ -1,0 +1,219 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+/*头部区域=========================*/
+.box {
+    position: absolute;
+    width: 100%;
+    height: 161px;
+    z-index: 2;
+    background: #fcfcfc;
+}
+
+/*顶部区域*/
+.header {
+    width: 1000px;
+    height: 100px;
+    background: white;
+    margin: 0 auto;
+}
+
+.avatar_area {
+    float: left;
+}
+
+/*头像*/
+.avatar {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    float: left;
+    margin: 5px;
+    border-radius: 50%;
+}
+
+.name_signature {
+    display: inline-block;
+    width: 100px;
+    height: 80px;
+    margin-left: 5px;
+    margin-top: 5px;
+    padding-top: 5px;
+}
+
+#name {
+    color: #333333;
+}
+
+#signature {
+    color: #666666;
+}
+
+/*时间样式*/
+.date {
+    width: 300px;
+    float: right;
+    margin-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 12px;
+    font-size: 14px;
+    font-family: 黑体, serif;
+    color: #8c8c8c;
+    border-bottom: 1px solid #8c8c8c;
+}
+
+/*分割线*/
+.divider {
+    height: 0.5px;
+    background: #9d9d9d;
+}
+
+.nav_bg {
+    height: 60px;
+    background: #cccccc;
+    /*background: white;*/
+}
+
+/*固定导航栏*/
+.nav {
+    width: 1000px;
+    height: 60px;
+    margin: 0 auto;
+}
+
+/*悬浮导航栏*/
+.fix_nav {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    height: 60px;
+    background: #cccccc;
+    /*background: white;*/
+}
+
+.nav ul,.fix_nav ul {
+    float: left;
+    width: 1000px;
+    height: 60px;
+    margin: 0;
+    padding: 5px;
+    list-style: none;
+}
+
+.nav ul li,.fix_nav ul li {
+    width: 70px;
+    height: 60px;
+    line-height: 60px;
+    display: block;
+    float: left;
+}
+
+.nav ul li.about,.fix_nav ul li.about {
+    float: right;
+    margin-right: 5px;
+}
+
+.nav ul li a,.fix_nav ul li a {
+    display: block;
+    width: 52px;
+    height: 60px;
+    line-height: 60px;
+    cursor: pointer;
+    color: #666666;
+    font-size: 14px;
+    font-family: 微软雅黑, serif;
+    text-decoration: none;
+}
+
+.nav ul li.home a,.fix_nav ul li.home a {
+    padding-left: 18px;
+}
+
+.nav ul li.home a:hover,.fix_nav ul li.home a:hover {
+    color: #000;
+}
+
+.nav ul li.life a,.fix_nav ul li.life a {
+    padding-left: 18px;
+    background: url("../images/love.png") left center no-repeat;
+}
+
+.nav ul li.life a:hover,.fix_nav ul li.life a:hover {
+    color: #000;
+    background: url("../images/love_hover.png") left center no-repeat;
+ }
+
+.nav ul li.skill a,.fix_nav ul li.skill a {
+    padding-left: 18px;
+    background: url("../images/skill.png") left center no-repeat;
+}
+
+.nav ul li.skill a:hover,.fix_nav ul li.skill a:hover {
+    color: #000;
+    background: url("../images/skill_hover.png") left center no-repeat;
+}
+
+.nav ul li.album a,.fix_nav ul li.album a {
+    padding-left: 18px;
+    background: url("../images/album.png") left center no-repeat;
+}
+
+.nav ul li.album a:hover,.fix_nav ul li.album a:hover {
+    color: #000;
+    background: url("../images/album_hover.png") left center no-repeat;
+}
+
+.nav ul li.video a,.fix_nav ul li.video a {
+    padding-left: 18px;
+    background: url("../images/video.png") left center no-repeat;
+}
+
+.nav ul li.video a:hover,.fix_nav ul li.video a:hover {
+    color: #000;
+    background: url("../images/video_hover.png") left center no-repeat;
+}
+
+.nav ul li.experience a,.fix_nav ul li.experience a {
+    padding-left: 18px;
+    background: url("../images/experience.png") left center no-repeat;
+}
+
+.nav ul li.experience a:hover,.fix_nav ul li.experience a:hover {
+    color: #000;
+    background: url("../images/experience_hover.png") left center no-repeat;
+}
+
+.nav ul li.about a,.fix_nav ul li.about a {
+    width: 70px;
+}
+
+.nav ul li.about a:hover,.fix_nav ul li.about a:hover {
+    color: #000;
+}
+
+    /*内容区域=============================*/
+.content {
+    width: 1000px;
+    height: 1760px;
+    background: #afd9ee;
+    padding-top: 160px;
+    margin: 0 auto;
+    border-left: 0.5px solid #9d9d9d;
+    border-right: 0.5px solid #9d9d9d;
+    border-bottom: 0.5px solid #9d9d9d;
+}
+
+/*底部区域=============================*/
+.footer {
+    width: 1000px;
+    height: 60px;
+    background: #cccccc;
+    margin: 0 auto;
+}

@@ -25,15 +25,15 @@ $avatar_path = $row['avatar_path'];
 
         <div class="avatar_area">
 
-            <a href=""><img class="avatar" src="<?php echo $avatar_path;?>"></a>
+            <a href=""><img class="avatar" src="<?=$avatar_path?>"></a>
 
             <div class="name_signature">
-                <a href=""><h2 id="name"><?php echo $name ?></h2></a>
-                <h5 id="signature"><?php echo $signature?></h5>
+                <a href=""><h2 id="name"><?=$name?></h2></a>
+                <h5 id="signature"><?=$signature?></h5>
             </div>
         </div>
 
-        <h6 class="date"><?php echo $date; ?></h6>
+        <h6 class="date"><?=$date?></h6>
     </div>
 
     <!--固定导航栏-->
@@ -44,9 +44,9 @@ $avatar_path = $row['avatar_path'];
                 <li class="home"><a href="index.php">首页</a></li>
                 <li class="life"><a href="life.php">生活</a></li>
                 <li class="skill"><a href="skill.php">技术</a></li>
-                <li class="album"><a href="album.php">相册</a></li>
-                <li class="video"><a href="video.php">视频</a></li>
-                <li class="experience"><a href="experience.php">经验</a></li>
+                <li class="album"><a href="album.php" target="_blank">相册</a></li>
+                <li class="video"><a href="video.php" target="_blank">视频</a></li>
+                <li class="experience"><a href="experience.php" target="_blank">经验</a></li>
                 <li class="about"><a href="about.php">关于本站</a></li>
             </ul>
         </div>
@@ -65,9 +65,9 @@ $avatar_path = $row['avatar_path'];
                 <li class="home"><a href="index.php">首页</a></li>
                 <li class="life"><a href="life.php">生活</a></li>
                 <li class="skill"><a href="skill.php">技术</a></li>
-                <li class="album"><a href="album.php">相册</a></li>
-                <li class="video"><a href="video.php">视频</a></li>
-                <li class="experience"><a href="experience.php">经验</a></li>
+                <li class="album"><a href="album.php" target="_blank">相册</a></li>
+                <li class="video"><a href="video.php" target="_blank">视频</a></li>
+                <li class="experience"><a href="experience.php" target="_blank">经验</a></li>
                 <li class="about"><a href="about.php">关于本站</a></li>
             </ul>
         </div>

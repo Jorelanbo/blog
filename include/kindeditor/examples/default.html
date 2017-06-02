@@ -21,6 +21,7 @@
 					allowFileManager : true
 				});
 				K('input[name=getHtml]').click(function(e) {
+                    K('.box').html(editor.html());
 					alert(editor.html());
 				});
 				K('input[name=isEmpty]').click(function(e) {
@@ -51,6 +52,7 @@
 		</script>
 	</head>
 	<body>
+	<div class="box"></div>
 		<h3>默认模式</h3>
 		<form>
 			<textarea name="content" style="width:800px;height:400px;visibility:hidden;">KindEditor</textarea>

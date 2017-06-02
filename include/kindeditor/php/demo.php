@@ -35,7 +35,10 @@
 						self.sync();
 						K('form[name=example]')[0].submit();
 					});
-				}
+				},
+                afterChange: function() {
+                    K('.word_count1').html("最多20000个字符,已输入" + this.count() + "个字符");
+                }
 			});
 			prettyPrint();
 		});
@@ -46,6 +49,7 @@
 	<form name="example" method="post" action="demo.php">
 		<textarea name="content1" style="width:700px;height:200px;visibility:hidden;"><?php echo htmlspecialchars($htmlData); ?></textarea>
 		<br />
+        <p class="word_count1"></p>
 		<input type="submit" name="button" value="提交内容" /> (提交快捷键: Ctrl + Enter)
 	</form>
 </body>

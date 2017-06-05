@@ -7,4 +7,5 @@
  */
 define('INCLUDE_PATH',__DIR__.'/../include/');
 define('TEMPLATES_PATH',__DIR__.'/../templates/');
-require_once INCLUDE_PATH.'mysqli.php';
+require_once INCLUDE_PATH . 'mysqli.class.php';
+require_once "common.func.php";

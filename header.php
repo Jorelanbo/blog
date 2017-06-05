@@ -6,17 +6,14 @@
  * Time: 14:11
  */
 require_once 'common/common.inc.php';
+
 $dayArray = ['', '一', '二', '三', '四', '五', '六', '日'];
 $day = $dayArray[date('N')];
 $date = "今天是" . date('Y年m月d日') . "，星期" . $day;
-$sql = "SELECT * From user";
-$result = $mysqli->query($sql);
-$result->data_seek(0);
-$row = $result->fetch_assoc();
-$name = $row['name'];
-$sex = $row['sex'] == 1 ? '男': '女';
-$signature = $row['signature'];
-$avatar_path = $row['avatar_path'];
+$master = $db->getMaster();
+$name = $master['name'];
+$signature = $master['signature'];
+$avatar_path = $master['avatar_path'];
 //echo "<script>alert('这是一个{$sex}人！')</script>";
 ?>
 <div class="box">

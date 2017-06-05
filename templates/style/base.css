@@ -218,8 +218,9 @@ a {
     width: 750px;
     height: 1730px;
     margin: 15px;
-    background: yellow;
+    background: white;
     border-radius: 5px;
+    border: 1px solid #e2e2e2;
 }
 
 .content .menu {
@@ -233,40 +234,93 @@ a {
     width: 360px;
     height: 40px;
     margin: 15px;
-    background: hotpink;
+    background: white;
     border-radius: 5px;
+    border: 1px solid #e2e2e2;
+}
+
+.menu_title {
+    height: 45px;
+    line-height: 45px;
+    background: #DFF0D8;
+    font-size: 16px;
+    font-family: 微软雅黑, serif;
+    padding-left: 20px;
 }
 
 .content .menu .announcement {
     width: 360px;
     height: 300px;
     margin: 15px;
-    background: fuchsia;
+    background: white;
     border-radius: 5px;
+    border: 1px solid #e2e2e2;
+}
+
+.content .menu .announcement .menu_title {
+    color: #3C763D;
+}
+
+.content .menu .announcement .announcement_box {
+    width: 300px;
+    height: 240px;
+    line-height: 25px;
+    margin: 20px;
+    font-size: 13px;
+    color: #A94465;
 }
 
 .content .menu .newest {
     width: 360px;
     height: 450px;
     margin: 15px;
-    background: lightcoral;
+    background: white;
     border-radius: 5px;
+    border: 1px solid #e2e2e2;
+}
+
+.content .menu .newest .menu_title {
+    background: #D9EDF7;
+    color: #31708F;
 }
 
 .content .menu .scan_times_list {
     width: 360px;
     height: 400px;
     margin: 15px;
-    background: lightpink;
+    background: white;
     border-radius: 5px;
+    border: 1px solid #e2e2e2;
+}
+
+.content .menu .scan_times_list .menu_title {
+    background: #F2DEDE;
+    color: #A94442;
 }
 
 .content .menu .Jorelanbo {
     width: 360px;
-    height: 300px;
+    height: 260px;
     margin: 15px;
-    background: #666666;
+    background: white;
     border-radius: 5px;
+    border: 1px solid #e2e2e2;
+}
+
+.content .menu .Jorelanbo .Jorelanbo_box {
+    width: 260px;
+    height: 160px;
+    margin: 30px;
+    background: #F5F5F5;
+    padding-left: 40px;
+    padding-top: 40px;
+    font-size: 14px;
+    font-family: 微软雅黑, serif ;
+}
+
+.content .menu .Jorelanbo .Jorelanbo_box h2 {
+    font-size: 28px;
+    color: #31708F;
 }
 
 .links_box {
@@ -280,17 +334,19 @@ a {
     width: 1140px;
     height: 50px;
     margin-top: 15px;
-    background: #9d9d9d;
+    background: white;
     border-radius: 5px;
+    border: 1px solid #e2e2e2;
 }
 
 /*底部区域=============================*/
 .footer {
     width: 1140px;
     height: 60px;
-    background: #cccccc;
+    background: white;
     margin: 0 auto;
     border-radius: 5px;
+    border: 1px solid #e2e2e2;
 }
 
 .blank {

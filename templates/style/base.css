@@ -71,12 +71,12 @@ a {
 /*分割线*/
 .divider {
     height: 0.5px;
-    background: #9d9d9d;
+    background: #e2e2e2;
 }
 
 .nav_bg {
     height: 60px;
-    background: #cccccc;
+    background: #FDFDFD;
     /*background: white;*/
 }
 
@@ -94,7 +94,7 @@ a {
     z-index: 1;
     width: 100%;
     height: 60px;
-    background: #cccccc;
+    background: #FDFDFD;
     /*background: white;*/
 }
 

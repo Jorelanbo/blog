@@ -207,6 +207,7 @@ a {
     margin: 0 auto;
 }
 
+/*左边内容*/
 .content .left_area {
     float: left;
     width: 780px;
@@ -223,6 +224,7 @@ a {
     border: 1px solid #e2e2e2;
 }
 
+/*右边菜单*/
 .content .menu {
     float: right;
     width: 390px;
@@ -330,6 +332,7 @@ a {
     margin: 0 auto;
 }
 
+/*友情链接*/
 .links {
     width: 1140px;
     height: 50px;
@@ -351,4 +354,71 @@ a {
 
 .blank {
     height: 20px;
+}
+
+
+/*后台*/
+
+/*登录页面*/
+.login_body {
+    background: url("../images/timg.jpg") no-repeat fixed;
+    background-size: 100% 100%;
+}
+
+.login_box {
+    width: 100%;
+    height: 300px;
+    margin-top: 200px;
+}
+
+.login_content {
+    width: 300px;
+    height: 240px;
+    margin: 0 auto;
+    background: #5690D2;
+    border: 1px solid #e2e2e2;
+    border-radius: 5px;
+}
+
+.login_content h3 {
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 50px;
+    font-family: 微软雅黑, serif;
+    color: #003366;
+}
+
+.login_content form {
+    margin-top: 15px;
+    margin-left: 45px;
+    background: #5690D2;
+}
+
+.login_content form label {
+    color: #222222;
+    height: 30px;
+    line-height: 30px;
+}
+
+.login_content form input {
+    width: 180px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.login_content form input#ctime {
+    width: 50px;
+}
+
+.login_content form input#submit {
+    width: 120px;
+    background: #ccE871;
+    font-size: 16px;
+    color: dodgerblue;
+}
+
+.login_content form a {
+    margin-left: 20px;
+    color: firebrick;
+    font-size: 14px;
 }

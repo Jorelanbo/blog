@@ -14,7 +14,8 @@ class userAction
             header("location:index.php?m=admin");
             exit;
         }
-        include __DIR__ . '/../login.html';
+        header("location:index.php?a=login_h");
+        exit;
     }
 
     function login_h()
@@ -59,6 +60,14 @@ class userAction
         $ctime = time() + 3600;
         if ($uname == '' || $upwd == '' || $email == '' || $qq == '') {
             echo "<script>alert('存在空的注册信息！请重新填写！');history.go(-1);</script>";
+            exit;
+        }
+        if (strlen($uname) > 20) {
+            echo "<script>alert('yonghun');history.go(-1);</script>";
+            exit;
+        }
+        if (strlen($qq) > 10) {
+            echo "<script>alert('qq的长度错误！');history.go(-1);</script>";
             exit;
         }
         $sql = "SELECT id FROM admin WHERE name='{$uname}'";

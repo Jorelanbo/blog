@@ -35,6 +35,7 @@ a {
     height: 80px;
     float: left;
     margin: 5px;
+    border: 1px solid white;
     border-radius: 50%;
 }
 
@@ -361,7 +362,7 @@ a {
 
 /*登录页面*/
 .login_body {
-    background: url("../images/timg.jpg") no-repeat fixed;
+    background: url("../images/big_bg2.jpg") no-repeat fixed;
     background-size: 100% 100%;
 }
 
@@ -390,7 +391,7 @@ a {
 
 .login_content form {
     margin-top: 15px;
-    margin-left: 45px;
+    margin-left: 40px;
     background: #5690D2;
 }
 
@@ -403,6 +404,7 @@ a {
 .login_content form input {
     width: 180px;
     height: 30px;
+    padding-left: 5px;
     border-radius: 5px;
 }
 
@@ -418,6 +420,71 @@ a {
 }
 
 .login_content form a {
+    margin-left: 20px;
+    color: firebrick;
+    font-size: 14px;
+}
+
+/*注册页面*/
+.reg_body {
+    background: url("../images/big_bg1.jpg") no-repeat fixed;
+    background-size: 100% 100%;
+}
+
+.reg_box {
+    width: 100%;
+    height: 400px;
+    margin-top: 100px;
+}
+
+.reg_content {
+    width: 300px;
+    height: 400px;
+    margin: 0 auto;
+    background: #5690D2;
+    border: 1px solid #e2e2e2;
+    border-radius: 5px;
+}
+
+.reg_content h3 {
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 50px;
+    font-family: 微软雅黑, serif;
+    color: #003366;
+}
+
+.reg_content form {
+    margin-top: 15px;
+    margin-left: 40px;
+    background: #5690D2;
+}
+
+.reg_content form label {
+    color: #222222;
+    height: 30px;
+    line-height: 30px;
+}
+
+.reg_content form input {
+    width: 180px;
+    height: 30px;
+    padding-left: 5px;
+    border-radius: 5px;
+}
+
+.reg_content form input#ctime {
+    width: 50px;
+}
+
+.reg_content form input#submit {
+    width: 120px;
+    background: #ccE871;
+    font-size: 16px;
+    color: dodgerblue;
+}
+
+.reg_content form a {
     margin-left: 20px;
     color: firebrick;
     font-size: 14px;

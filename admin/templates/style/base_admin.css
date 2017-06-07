@@ -1,0 +1,270 @@
+/*后台*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+/*登录页面*/
+.login_body {
+    background: url("../images/big_bg2.jpg") no-repeat fixed;
+    background-size: 100% 100%;
+}
+
+.login_box {
+    width: 100%;
+    height: 300px;
+    margin-top: 200px;
+}
+
+.login_content {
+    width: 300px;
+    height: 240px;
+    margin: 0 auto;
+    background: #5690D2;
+    border: 1px solid #e2e2e2;
+    border-radius: 5px;
+}
+
+.login_content h3 {
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 50px;
+    font-family: 微软雅黑, serif;
+    color: #003366;
+}
+
+.login_content form {
+    margin-top: 15px;
+    margin-left: 40px;
+    background: #5690D2;
+}
+
+.login_content form label {
+    color: #222222;
+    height: 30px;
+    line-height: 30px;
+}
+
+.login_content form input {
+    width: 180px;
+    height: 30px;
+    padding-left: 5px;
+    border-radius: 5px;
+}
+
+.login_content form input#submit {
+    width: 120px;
+    background: #ccE871;
+    font-size: 16px;
+    color: dodgerblue;
+}
+
+.login_content form a {
+    margin-left: 20px;
+    color: firebrick;
+    font-size: 14px;
+}
+
+/*注册页面*/
+.reg_body {
+    background: url("../images/big_bg1.jpg") no-repeat fixed;
+    background-size: 100% 100%;
+}
+
+.reg_box {
+    width: 100%;
+    height: 400px;
+    margin-top: 100px;
+}
+
+.reg_content {
+    width: 300px;
+    height: 400px;
+    margin: 0 auto;
+    background: #5690D2;
+    border: 1px solid #e2e2e2;
+    border-radius: 5px;
+}
+
+.reg_content h3 {
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 50px;
+    font-family: 微软雅黑, serif;
+    color: #003366;
+}
+
+.reg_content form {
+    margin-top: 15px;
+    margin-left: 40px;
+    background: #5690D2;
+}
+
+.reg_content form label {
+    color: #222222;
+    height: 30px;
+    line-height: 30px;
+}
+
+.reg_content form input {
+    width: 180px;
+    height: 30px;
+    padding-left: 5px;
+    border-radius: 5px;
+}
+
+.reg_content form input#ctime {
+    width: 50px;
+}
+
+.reg_content form input#submit {
+    width: 120px;
+    background: #ccE871;
+    font-size: 16px;
+    color: dodgerblue;
+}
+
+.reg_content form a {
+    margin-left: 20px;
+    color: firebrick;
+    font-size: 14px;
+}
+
+/*后台首页*/
+
+/*顶端*/
+.admin_title {
+    width: 100%;
+    height: 50px;
+    background: #5690D2;
+}
+
+.admin_title .icon {
+    float: left;
+    width: 120px;
+    padding-top: 15px;
+    text-align: center;
+    font-size: 18px;
+    font-family: "Times New Roman", serif;
+    color: white;
+}
+
+.admin_title .user_box {
+    float: right;
+    width: 100px;
+    height: 50px;
+    margin-right: 30px;
+}
+
+.admin_title .user_box:hover {
+    background: #003366;
+}
+
+.admin_title .user_box a.user {
+    display: block;
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    background: url("../images/down_triangle.png") no-repeat 70px center;
+    cursor: pointer;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+}
+
+.admin_title .user_box a.user span {
+    display: block;
+    width: 100px;
+    height: 50px;
+    background: url("../images/man.png") no-repeat 10px center;
+    text-align: center;
+}
+
+.admin_title .user_box ul {
+    display: none;
+    width: 150px;
+    margin-left: -50px;
+    border: 1px solid #e2e2e2;
+}
+
+.admin_title .user_box ul li {
+    display: block;
+    text-align: center;
+    width: 150px;
+    height: 40px;
+}
+
+.admin_title .user_box ul li a {
+    display: block;
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    color: #333333;
+    border-bottom: 1px solid #e2e2e2;
+    cursor: pointer;
+}
+
+/*菜单列表*/
+.admin_menu {
+    float: left;
+    width: 14%;
+    min-height: 790px;
+    border-right: 1px solid #d2d2d2;
+}
+
+.admin_menu .upper {
+    width: 100%;
+}
+
+.admin_menu .upper li {
+    display: block;
+    border-bottom: 1px solid #d2d2d2;
+}
+
+.admin_menu .upper li a {
+    display: block;
+    width: 90%;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 10%;
+    background: #F8F8F8;
+    border-bottom: 1px solid #c2c2c2;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333333;
+    cursor: pointer;
+}
+
+.admin_menu .upper li .sub {
+    display: none;
+}
+
+.admin_menu .upper li .sub li {
+    height: 50px;
+    border: none;
+}
+
+.admin_menu .upper li .sub li a {
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 10%;
+    background: #FAFAFA url("../images/right_triangle.png") no-repeat 8px center;
+    font-size: 14px;
+    font-weight: 100;
+    border: none;
+}
+
+.admin_menu .upper li .sub li a:hover {
+    background: #1870a9 url("../images/right_triangle.png") no-repeat 8px center;
+}
+
+    /*内容*/
+.admin_content {
+    float: right;
+    width: 85%;
+    min-height: 790px;
+}

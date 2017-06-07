@@ -18,6 +18,6 @@ class adminAction
 
     function index()
     {
-        require_once __DIR__.'/../home.html';
+        require_once __DIR__.'/../home.php';
     }
 }

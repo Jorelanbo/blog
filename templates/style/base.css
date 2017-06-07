@@ -69,16 +69,11 @@ a {
     border-bottom: 1px solid #8c8c8c;
 }
 
-/*分割线*/
-.divider {
-    height: 0.5px;
-    background: #e2e2e2;
-}
-
 .nav_bg {
     height: 60px;
     background: #FDFDFD;
-    /*background: white;*/
+    border-top: 1px solid #e2e2e2;
+    border-bottom: 1px solid #e2e2e2;
 }
 
 /*固定导航栏*/
@@ -202,7 +197,6 @@ a {
     /*内容区域=============================*/
 .content {
     width: 1170px;
-    height: 1760px;
     background: #afd9ee;
     padding-top: 160px;
     margin: 0 auto;
@@ -218,7 +212,7 @@ a {
 
 .content .left_area .main_article {
     width: 750px;
-    height: 1730px;
+    height: 1760px;
     margin: 15px;
     background: white;
     border-radius: 5px;
@@ -327,8 +321,10 @@ a {
 }
 
 .links_box {
+    clear: both;
     width: 1140px;
     height: 80px;
+    padding-top: 45px;
     background: white;
     margin: 0 auto;
 }
@@ -337,7 +333,6 @@ a {
 .links {
     width: 1140px;
     height: 50px;
-    margin-top: 15px;
     background: white;
     border-radius: 5px;
     border: 1px solid #e2e2e2;
@@ -355,137 +350,4 @@ a {
 
 .blank {
     height: 20px;
-}
-
-
-/*后台*/
-
-/*登录页面*/
-.login_body {
-    background: url("../images/big_bg2.jpg") no-repeat fixed;
-    background-size: 100% 100%;
-}
-
-.login_box {
-    width: 100%;
-    height: 300px;
-    margin-top: 200px;
-}
-
-.login_content {
-    width: 300px;
-    height: 240px;
-    margin: 0 auto;
-    background: #5690D2;
-    border: 1px solid #e2e2e2;
-    border-radius: 5px;
-}
-
-.login_content h3 {
-    width: 100%;
-    margin-top: 20px;
-    margin-left: 50px;
-    font-family: 微软雅黑, serif;
-    color: #003366;
-}
-
-.login_content form {
-    margin-top: 15px;
-    margin-left: 40px;
-    background: #5690D2;
-}
-
-.login_content form label {
-    color: #222222;
-    height: 30px;
-    line-height: 30px;
-}
-
-.login_content form input {
-    width: 180px;
-    height: 30px;
-    padding-left: 5px;
-    border-radius: 5px;
-}
-
-.login_content form input#ctime {
-    width: 50px;
-}
-
-.login_content form input#submit {
-    width: 120px;
-    background: #ccE871;
-    font-size: 16px;
-    color: dodgerblue;
-}
-
-.login_content form a {
-    margin-left: 20px;
-    color: firebrick;
-    font-size: 14px;
-}
-
-/*注册页面*/
-.reg_body {
-    background: url("../images/big_bg1.jpg") no-repeat fixed;
-    background-size: 100% 100%;
-}
-
-.reg_box {
-    width: 100%;
-    height: 400px;
-    margin-top: 100px;
-}
-
-.reg_content {
-    width: 300px;
-    height: 400px;
-    margin: 0 auto;
-    background: #5690D2;
-    border: 1px solid #e2e2e2;
-    border-radius: 5px;
-}
-
-.reg_content h3 {
-    width: 100%;
-    margin-top: 20px;
-    margin-left: 50px;
-    font-family: 微软雅黑, serif;
-    color: #003366;
-}
-
-.reg_content form {
-    margin-top: 15px;
-    margin-left: 40px;
-    background: #5690D2;
-}
-
-.reg_content form label {
-    color: #222222;
-    height: 30px;
-    line-height: 30px;
-}
-
-.reg_content form input {
-    width: 180px;
-    height: 30px;
-    padding-left: 5px;
-    border-radius: 5px;
-}
-
-.reg_content form input#ctime {
-    width: 50px;
-}
-
-.reg_content form input#submit {
-    width: 120px;
-    background: #ccE871;
-    font-size: 16px;
-    color: dodgerblue;
-}
-
-.reg_content form a {
-    margin-left: 20px;
-    color: firebrick;
-    font-size: 14px;
 }

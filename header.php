@@ -34,7 +34,6 @@ $avatar_path = $master['avatar_path'];
     </div>
 
     <!--固定导航栏-->
-    <div class="divider"></div>
     <div class="nav_bg">
         <div class="nav">
             <ul>
@@ -48,14 +47,11 @@ $avatar_path = $master['avatar_path'];
             </ul>
         </div>
     </div>
-
-    <div class="divider"></div>
 
 </div>
 
 <!--悬浮导航栏-->
 <div class="fix_nav" id="fix_nav">
-    <div class="divider"></div>
     <div class="nav_bg">
         <div class="nav">
             <ul>
@@ -69,6 +65,4 @@ $avatar_path = $master['avatar_path'];
             </ul>
         </div>
     </div>
-
-    <div class="divider"></div>
 </div>

@@ -198,6 +198,7 @@ a {
     text-align: center;
     width: 150px;
     height: 40px;
+    border-bottom: 1px solid #d3d3d3;
 }
 
 .admin_title .user_box ul li a {
@@ -205,8 +206,8 @@ a {
     width: 150px;
     height: 40px;
     line-height: 40px;
+    background: white;
     color: #333333;
-    border-bottom: 1px solid #e2e2e2;
     cursor: pointer;
 }
 

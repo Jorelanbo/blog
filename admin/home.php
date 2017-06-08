@@ -64,9 +64,9 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
 <script>
     $(function () {
         $(".user_box").hover(function () {
-            $(this).find("ul").show("normal");
+            $(this).find("ul").show("fast");
         },function () {
-            $(this).find("ul").hide("normal");
+            $(this).find("ul").hide("fast");
         });
 
         $("a.menu_button").click(function () {

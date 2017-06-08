@@ -32,7 +32,7 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
         <li>
             <a class="menu_button">　文章</a>
             <ul class="sub">
-                <li><a>文章列表</a></li>
+                <li><a href="http://www.baidu.com" target="content_iframe">文章列表</a></li>
                 <li><a>写文章</a></li>
             </ul>
         </li>
@@ -57,6 +57,8 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
 </div>
 
 <div class="admin_content">
+    <iframe name="content_iframe">
+    </iframe>
 </div>
 
 <script>

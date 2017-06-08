@@ -148,6 +148,9 @@ a {
     width: 120px;
     padding-top: 15px;
     text-align: center;
+}
+
+.admin_title .icon a {
     font-size: 18px;
     font-family: "Times New Roman", serif;
     color: white;
@@ -234,12 +237,27 @@ a {
     height: 50px;
     line-height: 50px;
     padding-left: 10%;
-    background: #F8F8F8;
     border-bottom: 1px solid #c2c2c2;
     font-size: 16px;
     font-weight: bold;
     color: #333333;
     cursor: pointer;
+}
+
+.admin_menu .upper li a.menu_article_button {
+    background: #F8F8F8 url("../images/article.png") no-repeat 15px center;
+}
+
+.admin_menu .upper li a.menu_album_button {
+    background: #F8F8F8 url("../images/album.png") no-repeat 15px center;
+}
+
+.admin_menu .upper li a.menu_video_button {
+    background: #F8F8F8 url("../images/video.png") no-repeat 15px center;
+}
+
+.admin_menu .upper li a.menu_experience_button {
+    background: #F8F8F8 url("../images/experience.png") no-repeat 15px center;
 }
 
 .admin_menu .upper li .sub {

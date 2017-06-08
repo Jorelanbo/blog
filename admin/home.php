@@ -1,6 +1,6 @@
 <?php
 if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
-    echo "<script>alert('非法登录！');location.href='index.php';</script>";
+    echo "<script>alert('请先登录！');location.href='index.php';</script>";
     exit;
 }
 ?>
@@ -16,7 +16,7 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
 <body>
 
 <div class="admin_title">
-    <div class="icon">Jorelanbo</div>
+    <div class="icon"><a href="index.php?m=admin&a=homeDefault_p" target="content_iframe">Jorelanbo</a></div>
     <div class="user_box">
         <a class="user"> <span><?=$_COOKIE['uname'] ?></span></a>
         <ul>
@@ -30,34 +30,34 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
 <div class="admin_menu">
     <ul class="upper">
         <li>
-            <a class="menu_button">　文章</a>
+            <a class="menu_article_button menu_button">　文章</a>
             <ul class="sub">
-                <li><a href="http://www.baidu.com" target="content_iframe">文章列表</a></li>
-                <li><a>写文章</a></li>
+                <li><a href="index.php?m=admin&a=articleList_p" target="content_iframe">文章列表</a></li>
+                <li><a href="index.php?m=admin&a=writeArticle_p" target="content_iframe">写文章</a></li>
             </ul>
         </li>
         <li>
-            <a class="menu_button">　相册</a>
+            <a class="menu_album_button menu_button">　相册</a>
             <ul class="sub">
-                <li><a>相册列表</a></li>
-                <li><a>添加相片</a></li>
+                <li><a href="index.php?m=admin&a=pictureList_p" target="content_iframe">相册列表</a></li>
+                <li><a href="index.php?m=admin&a=addPicture_p" target="content_iframe">添加相片</a></li>
             </ul>
         </li>
         <li>
-            <a class="menu_button">　视频</a>
+            <a class="menu_video_button menu_button">　视频</a>
             <ul class="sub">
-                <li><a>视频列表</a></li>
-                <li><a>添加视频</a></li>
+                <li><a href="index.php?m=admin&a=videoList_p" target="content_iframe">视频列表</a></li>
+                <li><a href="index.php?m=admin&a=addVideo_p" target="content_iframe">添加视频</a></li>
             </ul>
         </li>
         <li>
-            <a class="menu_button">　经验</a>
+            <a class="menu_experience_button menu_button" href="index.php?m=admin&a=experience_p" target="content_iframe">　经验</a>
         </li>
     </ul>
 </div>
 
 <div class="admin_content">
-    <iframe name="content_iframe">
+    <iframe name="content_iframe" src="index.php?m=admin&a=homeDefault_p">
     </iframe>
 </div>
 

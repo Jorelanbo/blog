@@ -13,7 +13,7 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
     <link rel="stylesheet" type="text/css" href="templates/style/base_admin.css">
     <script type="text/javascript" src="templates/js/jquery-3.2.1.min.js"></script>
 </head>
-<body>
+<body class="home_body">
 
 <div class="admin_title">
     <div class="icon"><a href="index.php?m=admin&a=homeDefault_p" target="content_iframe">Jorelanbo</a></div>

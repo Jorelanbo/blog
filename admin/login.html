@@ -28,6 +28,11 @@
 
 <script>
     window.onload = function () {
+        //解决超过登录状态时间后登录页面出现在iframe中的问题
+        if(top.location!==self.location)
+        {
+            top.location=self.location;
+        }
         var name = document.getElementById("name");
         name.focus();
     }

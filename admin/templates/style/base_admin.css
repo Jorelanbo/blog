@@ -214,11 +214,15 @@ a {
     cursor: pointer;
 }
 
+.home_body {
+    /*min-height: 1000px;*/
+}
+
 /*菜单列表*/
 .admin_menu {
     float: left;
     width: 14%;
-    min-height: 790px;
+    min-height: 800px;
     border-right: 1px solid #d2d2d2;
 }
 
@@ -292,12 +296,60 @@ a {
 .admin_content {
     display: inline-block;
     width: 85%;
-    min-height: 790px;
-    background: #afd9ee;
+    min-height: 800px;
+    border: none;
+    overflow: hidden;
 }
 
 .admin_content iframe {
+    display: block;
     width: 100%;
-    min-height: 790px;
+    min-height: 800px;
     overflow: hidden;
+    border: none;
+}
+
+/*写文章页面*/
+.writeArticle_body {
+    overflow: hidden;
+    background: url("../images/big_bg3.jpg") no-repeat fixed;
+    background-size: 100% 100%;
+    color: white;
+    font-weight: bold;
+    font-family: 华文细黑, serif;
+}
+
+.writeArticle_body input {
+    width: 450px;
+    height: 30px;
+    padding-left: 5px;
+    border: 1px solid white;
+    border-radius: 2px;
+}
+
+.writeArticle_body input#submit {
+    width: 120px;
+    background: #6FA5DB;
+    color: white;
+    cursor: pointer;
+}
+
+.writeArticle_body input#reset {
+    width: 120px;
+    background: gray;
+    color: white;
+    cursor: pointer;
+}
+
+.writeArticle_body select {
+    width: 100px;
+    height: 30px;
+    padding-left: 5px;
+    border: 1px solid white;
+    border-radius: 2px;
+    color: #1870a9;
+}
+
+.writeArticle_body select option {
+    height: 30px;
 }

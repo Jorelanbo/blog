@@ -1,0 +1,8 @@
+步骤：
+1、创建写文章的表单                                         writeArticle.php
+2、在表单中加入kindeditor组件                               include/kindeditor
+3、修改kindeditor组件的文章内容文件（图片）的上传处理：        upload_jason.php
+    a.将文章内容文件先从本地上传到服务器（attached目录）
+    b.再将文件上传到七牛云服务器
+    c.然后将服务器中的文件删除
+4、最后将文章的所有的内容存入数据库（）                        adminAction->writeArticle()

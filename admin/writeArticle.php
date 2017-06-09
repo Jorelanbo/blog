@@ -52,7 +52,7 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
     <form name="article" action="" method="post">
         <table cellspacing="15px">
             <tr>
-                <td>文章标题：<input type="text" placeholder="title"></td>
+                <td>文章标题：<input class="article_item" type="text" placeholder="title"></td>
             </tr>
             <tr>
                 <td >文章类型：<select title="article_type" name="article_type">
@@ -62,7 +62,7 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
                 </td>
             </tr>
             <tr>
-                <td>关键词语：<input type="text" placeholder="keyword"></td>
+                <td>关键词语：<input class="article_item" type="text" placeholder="keyword"></td>
             </tr>
             <tr>
                 <td>文章内容：<textarea title="article_content" name="article_content" style="width:1200px;height:500px;visibility:hidden;resize: none"></textarea></td>

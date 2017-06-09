@@ -319,7 +319,7 @@ a {
     font-family: 华文细黑, serif;
 }
 
-.writeArticle_body input {
+.writeArticle_body input.article_item {
     width: 450px;
     height: 30px;
     padding-left: 5px;
@@ -327,17 +327,25 @@ a {
     border-radius: 2px;
 }
 
-.writeArticle_body input#submit {
+input#submit {
     width: 120px;
+    height: 30px;
     background: #6FA5DB;
     color: white;
+    padding-left: 5px;
+    border: 1px solid white;
+    border-radius: 3px;
     cursor: pointer;
 }
 
-.writeArticle_body input#reset {
+input#reset {
     width: 120px;
+    height: 30px;
     background: gray;
     color: white;
+    padding-left: 5px;
+    border: 1px solid white;
+    border-radius: 3px;
     cursor: pointer;
 }
 

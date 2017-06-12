@@ -36,6 +36,32 @@ class adminAction
         include_once __DIR__ . '/../writeArticle.php';
     }
 
+    function writeArticle()
+    {
+        $articleTitle = $_POST['article_title'];
+        $articleType = $_POST['article_type'];
+        $articleKeywords = $_POST['article_keywords'];
+        $articleContent = $_POST['article_content'];
+        $viewTimes = 0;
+        $createTime = time();
+        $sql = "INSERT INTO article(title, article_type_id, keywords, content, view_times, create_time) VALUES 
+                ('{$articleTitle}', '{$articleType}', '{$articleKeywords}', '{$articleContent}', '{$viewTimes}', '{$createTime}')";
+        $mysqli = $this->getMysqli();
+        $mysqli->query($sql);
+        if ($mysqli->affected_rows > 0) {
+            echo "<script>alert('文章保存成功！')</script>";
+        } else {
+            echo "<script>alert('文章保存失败！')</script>";
+        }
+        $sql = "SELECT content FROM article WHERE title='{$articleTitle}'";
+        $result = $mysqli->query($sql);
+        if ($mysqli->affected_rows > 0) {
+            $result->data_seek(0);
+            $row = $result->fetch_assoc();
+            echo $row['content'];
+        }
+    }
+
     function pictureList_p()
     {
         include_once __DIR__ . '/../pictureList.php';
@@ -63,12 +89,11 @@ class adminAction
 
     /**
      * @param $sql
-     * @return bool sql语句是否执行成功
+     * @return mysqli
      */
-    function query($sql)
+    function getMysqli()
     {
         $mysqli = new mysqli('localhost', 'root', 'root', 'blog');
-        $mysqli->query($sql);
-        return $mysqli->affected_rows > 0;
+        return $mysqli;
     }
 }

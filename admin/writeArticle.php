@@ -46,13 +46,31 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
             });
             prettyPrint();
         });
+
+        function check() {
+            if (document.article.article_title.value === '') {
+                alert("文章标题不能为空！");
+                return false;
+            }
+
+            if (document.article.article_keywords.value === '') {
+                alert("文章关键词不能为空！");
+                return false;
+            }
+
+            if (document.article.article_content.value === '') {
+                alert("文章内容不能为空！");
+                return false;
+            }
+
+        }
     </script>
 </head>
 <body class="writeArticle_body">
-    <form name="article" action="" method="post">
+    <form name="article" action="index.php?m=admin&a=writeArticle" method="post" onsubmit="return check()">
         <table cellspacing="15px">
             <tr>
-                <td>文章标题：<input class="article_item" type="text" placeholder="title"></td>
+                <td>文章标题：<input class="article_item" type="text" name="article_title" placeholder="title"></td>
             </tr>
             <tr>
                 <td >文章类型：<select title="article_type" name="article_type">
@@ -62,7 +80,7 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
                 </td>
             </tr>
             <tr>
-                <td>关键词语：<input class="article_item" type="text" placeholder="keyword"></td>
+                <td>关键词语：<input class="article_item" type="text" name="article_keywords" placeholder="keyword"></td>
             </tr>
             <tr>
                 <td>文章内容：<textarea title="article_content" name="article_content" style="width:1200px;height:500px;visibility:hidden;resize: none"></textarea></td>

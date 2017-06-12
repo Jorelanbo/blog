@@ -26,8 +26,8 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
         KindEditor.ready(function(K) {
             var editor1 = K.create('textarea[name="article_content"]', {
                 cssPath : 'include/kindeditor/plugins/code/prettify.css',
-                uploadJson : 'include/kindeditor/php/upload_json.php',
-                fileManagerJson : 'include/kindeditor/php/file_manager_json.php',
+                uploadJson : 'include/upload/upload_json.php',
+//                fileManagerJson : 'include/upload/file_manager_json.php',     //目前将文件上传到七牛云，所以不用在服务器添加文件管理文件
                 allowFileManager : true,
                 resizeType : 0,
                 afterCreate : function() {

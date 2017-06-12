@@ -13,10 +13,14 @@ use Qiniu\Auth;
 // 引入上传类
 use Qiniu\Storage\UploadManager;
 
+// 需要填写你的 Access Key 和 Secret Key
+$accessKey = 'GGFZj7Nc-75_L9oXb4ucVSRCUvT-a_Kppu-qzrOu';
+$secretKey = 'MKqQUmBnDhwGcXvjPQ0Nm7EczlofD7dCMWuQWLpM';
+
 //文件保存目录路径
-$save_path = $php_path . 'attached';
-//文件保存目录URL
-$save_url = $php_url . '../attached/';
+$save_path = './attached/';
+////文件保存目录URL
+//$save_url = './attached/';
 //定义允许上传的文件扩展名
 $ext_arr = array(
     'image' => array('gif', 'jpg', 'jpeg', 'png', 'bmp'),
@@ -102,12 +106,6 @@ if (empty($_FILES) === false) {
     if (in_array($file_ext, $ext_arr[$dir_name]) === false) {
         alert("上传文件扩展名是不允许的扩展名。\n只允许" . implode(",", $ext_arr[$dir_name]) . "格式。");
     }
-    $ymd = date("Ymd");
-    $save_path .= $ymd . "/";
-    $save_url .= $ymd . "/";
-    if (!file_exists($save_path)) {
-        mkdir($save_path);
-    }
     //新文件名
     $new_file_name = date("YmdHis") . '_' . rand(10000, 99999) . '.' . $file_ext;
     //移动文件
@@ -115,12 +113,29 @@ if (empty($_FILES) === false) {
     if (move_uploaded_file($tmp_name, $file_path) === false) {
         alert("上传文件失败。");
     }
-    @chmod($file_path, 0644);
-    $file_url = $save_url . $new_file_name;
 
+    // 构建鉴权对象
+    $auth = new Auth($accessKey, $secretKey);
+    // 要上传的空间
+    $bucket = 'jorelanbodotcom';
+    // 生成上传 Token
+    $token = $auth->uploadToken($bucket);
+
+    // 初始化 UploadManager 对象并进行文件的上传
+    $uploadMgr = new UploadManager();
+    // 调用 UploadManager 的 putFile 方法进行文件的上传
+    list($ret, $err) = $uploadMgr->putFile($token, $new_file_name, $file_path);
+
+    @chmod($file_path, 0644);
+
+    //文件的七牛云存储地址
+    $file_url = 'http://or9amuuk2.bkt.clouddn.com/' . $new_file_name;
+
+    //将文件地址返回给编辑器
     header('Content-type: text/html; charset=UTF-8');
     $json = new Services_JSON();
     echo $json->encode(array('error' => 0, 'url' => $file_url));
+    unlink($file_path);
     exit;
 }
 

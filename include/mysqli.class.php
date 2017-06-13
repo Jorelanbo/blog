@@ -38,6 +38,11 @@ class Mysql{
         }
     }
 
+    /**
+     * 得到站主信息
+     *
+     * @return array
+     */
     function getMaster(){
         $sql = "SELECT * From user";
         $result = $this->mysqli->query($sql);
@@ -51,6 +56,12 @@ class Mysql{
         return $master;
     }
 
+    /**
+     * 查找指定类型文章
+     *
+     * @param $typeId
+     * @return array
+     */
     function getArticles($typeId)
     {
         $sql = "SELECT * FROM article WHERE article_type_id=$typeId";
@@ -61,11 +72,18 @@ class Mysql{
         for ($i = 0;$i < $result->num_rows;$i ++) {
             $result->data_seek($i);
             $row = $result->fetch_assoc();
-            $articles[] = ['id'=>$row['id'], 'title'=>$row['title'], 'content'=>$row['content'], 'article_type_id'=>$row['article_type_id'], 'create_time'=>$row['create_time'], 'view'=>$row['view']];
+            $articles[] = ['id'=>$row['id'], 'title'=>$row['title'], 'article_type_id'=>$row['article_type_id'],
+                           'keywords'=>$row['keywords'], 'content'=>$row['content'], 'view_times'=>$row['view_times'],
+                           'create_time'=>$row['create_time']];
         }
         return $articles;
     }
 
+    /**
+     * 倒序查找所有文章
+     *
+     * @return array
+     */
     function getArticleList()
     {
         $sql = "SELECT * FROM article ORDER BY create_time DESC";
@@ -76,28 +94,27 @@ class Mysql{
         for ($i = 0;$i < $result->num_rows;$i ++) {
             $result->data_seek($i);
             $row = $result->fetch_assoc();
-            $articles[] = ['id'=>$row['id'], 'title'=>$row['title'], 'content'=>$row['content'], 'article_type_id'=>$row['article_type_id'], 'create_time'=>$row['create_time'], 'view'=>$row['view']];
+            $articles[] = ['id'=>$row['id'], 'title'=>$row['title'], 'article_type_id'=>$row['article_type_id'],
+                'keywords'=>$row['keywords'], 'content'=>$row['content'], 'view_times'=>$row['view_times'],
+                'create_time'=>$row['create_time']];
         }
         return $articles;
     }
 
-    function saveArticle($title, $content, $article_type_id)
-    {
-        $create_time = time();
-        $view = 0;
-        $sql = "INSERT INTO article(title, content, create_time, view, article_type_id) VALUES ($title ,$content, $create_time, $view, $article_type_id)";
-        $this->mysqli->query($sql);
-    }
-
+    /**
+     * 文章阅读次数加一
+     *
+     * @param $id
+     */
     function articleView($id)
     {
-        $sql = "SELECT view FROM article WHERE id=$id";
+        $sql = "SELECT view_times FROM article WHERE id=$id";
         $result = $this->mysqli->query($sql);
         $result->data_seek(0);
         $row = $result->fetch_assoc();
         $view = $row['view'];
         $view++;
-        $sql = "UPDATE article SET view = $view WHERE id=$id";
+        $sql = "UPDATE article SET view_times = $view WHERE id=$id";
         $this->mysqli->query($sql);
     }
 }

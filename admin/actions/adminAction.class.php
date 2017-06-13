@@ -38,21 +38,40 @@ class adminAction
 
     function writeArticle()
     {
+        //检查post提交是否成功
+        header('Cache-control: private, must-revalidate'); //支持页面回跳,防止提交失败时数据丢失
+        if (!isset($_POST['article_title'])||!isset($_POST['article_type'])||!isset($_POST['article_keywords'])||
+            !isset($_POST['article_content'])) {
+            echo "<script>alert('文章提交失败，请重新提交！');history.go(-1);</script>";
+            exit;
+        }
         $articleTitle = $_POST['article_title'];
         $articleType = $_POST['article_type'];
         $articleKeywords = $_POST['article_keywords'];
         $articleContent = $_POST['article_content'];
         $viewTimes = 0;
         $createTime = time();
+        $mysqli = $this->getMysqli();
+
+        //检查文章标题是否重复
+        $sql = "SELECT id FROM article WHERE title='{$articleTitle}'";
+        $mysqli->query($sql);
+        if ($mysqli->affected_rows > 0) {
+            echo "<script>alert('文章标题已存在，请修改文章标题！');history.go(-1);</script>";
+            exit;
+        }
+
+        //将文章插入数据库
         $sql = "INSERT INTO article(title, article_type_id, keywords, content, view_times, create_time) VALUES 
                 ('{$articleTitle}', '{$articleType}', '{$articleKeywords}', '{$articleContent}', '{$viewTimes}', '{$createTime}')";
-        $mysqli = $this->getMysqli();
         $mysqli->query($sql);
         if ($mysqli->affected_rows > 0) {
             echo "<script>alert('文章保存成功！')</script>";
         } else {
             echo "<script>alert('文章保存失败！')</script>";
         }
+
+        //显示新添加的文章
         $sql = "SELECT content FROM article WHERE title='{$articleTitle}'";
         $result = $mysqli->query($sql);
         if ($mysqli->affected_rows > 0) {
@@ -94,6 +113,9 @@ class adminAction
     function getMysqli()
     {
         $mysqli = new mysqli('localhost', 'root', 'root', 'blog');
+        if ($mysqli->connect_errno) {
+            echo "Failed connect to MySql:(" . $mysqli->connect_errno . ")" . $mysqli->connect_error;
+        }
         return $mysqli;
     }
 }

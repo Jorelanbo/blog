@@ -40,8 +40,9 @@ class adminAction
     {
         //检查post提交是否成功
         header('Cache-control: private, must-revalidate'); //支持页面回跳,防止提交失败时数据丢失
-        if (!isset($_POST['article_title'])||!isset($_POST['article_type'])||!isset($_POST['article_keywords'])||
-            !isset($_POST['article_content'])) {
+        if (!isset($_POST['article_title']) || !isset($_POST['article_type']) || !isset($_POST['article_keywords']) ||
+            !isset($_POST['article_content'])
+        ) {
             echo "<script>alert('文章提交失败，请重新提交！');history.go(-1);</script>";
             exit;
         }
@@ -74,16 +75,105 @@ class adminAction
         if ($mysqli->affected_rows > 0) {
             echo "<script>alert('文章保存成功！')</script>";
         } else {
-            echo "<script>alert('文章保存失败！')</script>";
+            echo "<script>alert('文章保存失败！');history.go(-1);</script>";
+            exit;
         }
 
         //显示新添加的文章
-        $sql = "SELECT content FROM article WHERE title='{$articleTitle}'";
+        $sql = "SELECT id FROM article WHERE title='{$articleTitle}'";
         $result = $mysqli->query($sql);
         if ($mysqli->affected_rows > 0) {
             $result->data_seek(0);
             $row = $result->fetch_assoc();
-            echo $row['content'];
+            $this->showArticle($row['id']);
+        }
+    }
+
+    function rewriteArticle_p($article_id)
+    {
+        $sql = "SELECT * FROM article WHERE id='{$article_id}'";
+        $mysqli = $this->getMysqli();
+        $result = $mysqli->query($sql);
+        if ($mysqli->affected_rows > 0) {
+            $result->data_seek(0);
+            $row = $result->fetch_assoc();
+            $id = $article_id;
+            $title = $row['title'];
+            $article_type = $row['article_type_id'];
+            $keywords = $row['keywords'];
+            $content = $row['content'];
+            $view_times = $row['view_times'];
+            $create_time = $row['create_time'];
+            include_once __DIR__ . '/../rewriteArticle.php';
+        } else {
+            echo "There is no article with the articleID:{$article_id}";
+        }
+    }
+
+    function rewriteArticle()
+    {
+        //检查post提交是否成功
+        header('Cache-control: private, must-revalidate'); //支持页面回跳,防止提交失败时数据丢失
+        if (!isset($_POST['article_title']) || !isset($_POST['article_type']) || !isset($_POST['article_keywords']) ||
+            !isset($_POST['article_content']) || !isset($_POST['article_id']) || !isset($_POST['view_times'])
+            || !isset($_POST['create_time'])
+        ) {
+            echo "<script>alert('文章提交失败，请重新提交！');history.go(-1);</script>";
+            exit;
+        }
+
+        //将判断文章是否为空的逻辑写在这里，解决提交文章需要按两次提交的bug
+        if (empty($_POST['article_content'])) {
+            echo "<script>alert('文章内容为空，请填写文章类容！');history.go(-1);</script>";
+            exit;
+        }
+
+        $id = $_POST['article_id'];
+        $articleTitle = $_POST['article_title'];
+        $articleType = $_POST['article_type'];
+        $articleKeywords = $_POST['article_keywords'];
+        $articleContent = $_POST['article_content'];
+        $viewTimes = $_POST['view_times'];
+        $createTime = $_POST['create_time'];
+
+        $mysqli = $this->getMysqli();
+        $sql = "UPDATE article SET title='{$articleTitle}',article_type_id='{$articleType}',keywords=
+                '{$articleKeywords}',content='{$articleContent}',view_times='{$viewTimes}',create_time='{$createTime}' 
+                WHERE id='{$id}'";
+        $mysqli->query($sql);
+        if ($mysqli->affected_rows > 0) {
+            echo "<script>alert('修改文章成功！');</script>";
+        } else {
+            echo "<script>alert('修改文章失败！');history.go(-1);</script>";
+            exit;
+        }
+
+        $this->showArticle($id);
+    }
+
+    function showArticle_h()
+    {
+
+    }
+
+    function showArticle($article_id)
+    {
+        $sql = "SELECT * FROM article WHERE id='{$article_id}'";
+        $mysqli = $this->getMysqli();
+        $result = $mysqli->query($sql);
+        if ($mysqli->affected_rows > 0) {
+            $result->data_seek(0);
+            $row = $result->fetch_assoc();
+            $id = $article_id;
+            $title = $row['title'];
+            $article_type = $row['article_type_id'];
+            $keywords = $row['keywords'];
+            $content = $row['content'];
+            $view_times = $row['view_times'];
+            $create_time = $row['create_time'];
+            include_once __DIR__ . '/../article.php';
+        } else {
+            echo "There is no article with the articleID:{}";
         }
     }
 

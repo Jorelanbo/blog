@@ -361,3 +361,92 @@ input#reset {
 .writeArticle_body select option {
     height: 30px;
 }
+
+/*文章内容页面*/
+.article_body {
+    background: url("../images/big_bg4.jpg") no-repeat fixed;
+    background-size: 100% 100%;
+}
+
+.article_box {
+    background: white;
+    margin: 45px 60px;
+    padding: 45px;
+    border: 1px solid white;
+    border-radius: 20px;
+}
+
+.article_title {
+    text-align: center;
+    color: #555;
+    font-family: 微软雅黑, serif;
+}
+
+.article_info_list {
+    margin-top: 20px;
+    border-bottom: 1px solid #E3E3E3;
+    padding-bottom: 5px;
+    font-size: 14px;
+}
+
+.article_info_list .article_writer {
+    display: inline-block;
+    width: 90px;
+    height: 20px;
+    padding-left: 20px;
+    background: url("../images/writer.png") no-repeat left center;
+    color: #8f8f8f;
+}
+
+.article_info_list .article_create_time {
+    display: inline-block;
+    width: 130px;
+    height: 20px;
+    padding-left: 20px;
+    background: url("../images/calendar.png") no-repeat left center;
+    color: #8f8f8f;
+}
+
+.article_info_list .keywords {
+    display: inline-block;
+    height: 20px;
+    padding-left: 20px;
+    background: url("../images/keywords.png") no-repeat left center;
+    color: #8f8f8f;
+}
+
+.article_info_list .view_times {
+    display: inline-block;
+    height: 20px;
+    padding-left: 20px;
+    margin-left: 10px;
+    background: url("../images/view_times.png") no-repeat left center;
+    color: #8f8f8f;
+}
+
+.article_box .article_content {
+    margin-top: 30px;
+    padding: 15px;
+    border: 1px solid #d3d3d3;
+    border-radius: 5px;
+}
+
+.rewrite {
+    display: block;
+    width: 20px;
+    height: 20px;
+    float: right;
+    background: url("../images/rewrite.png") no-repeat center;
+}
+
+/*文章重写界面（其余样式与写文章相同）*/
+input#quit {
+    width: 120px;
+    height: 30px;
+    background: #6FA;
+    color: white;
+    padding-left: 5px;
+    border: 1px solid white;
+    border-radius: 3px;
+    cursor: pointer;
+}

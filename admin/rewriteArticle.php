@@ -2,13 +2,14 @@
 /**
  * Created by PhpStorm.
  * User: JS
- * Date: 2017/6/8 0008
- * Time: 14:17
+ * Date: 2017/6/13 0013
+ * Time: 15:57
  */
 if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
     echo 'access forbidden!';
     exit;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -23,26 +24,26 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
     <script charset="utf-8" src="include/kindeditor/lang/zh_CN.js"></script>
     <script charset="utf-8" src="include/kindeditor/plugins/code/prettify.js"></script>
     <script>
-        KindEditor.ready(function(K) {
-            var editor1 = K.create('textarea[name="article_content"]', {
+KindEditor.ready(function(K) {
+    var editor1 = K.create('textarea[name="article_content"]', {
                 cssPath : 'include/kindeditor/plugins/code/prettify.css',
                 uploadJson : 'include/upload/upload_json.php',
 //                fileManagerJson : 'include/upload/file_manager_json.php',     //目前将文件上传到七牛云，所以不用在服务器添加文件管理文件
                 allowFileManager : true,
                 resizeType : 0,
                 afterCreate : function() {
-                    var self = this;
-                    K.ctrl(document, 13, function() {
-                        self.sync();
-                        K('form[name=article]')[0].submit();
-                    });
-                    K.ctrl(self.edit.doc, 13, function() {
-                        self.sync();
-                        K('form[name=article]')[0].submit();
-                    });
-                },
+        var self = this;
+        K.ctrl(document, 13, function() {
+            self.sync();
+            K('form[name=article]')[0].submit();
+        });
+        K.ctrl(self.edit.doc, 13, function() {
+            self.sync();
+            K('form[name=article]')[0].submit();
+        });
+    },
                 afterChange: function() {
-                }
+    }
             });
             prettyPrint();
         });
@@ -68,10 +69,15 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
     </script>
 </head>
 <body class="writeArticle_body">
-    <form name="article" action="index.php?m=admin&a=writeArticle" method="post" onsubmit="return check()">
+    <form name="article" action="index.php?m=admin&a=rewriteArticle" method="post" onsubmit="return check()">
         <table cellspacing="15px">
             <tr>
-                <td>文章标题：<input class="article_item" type="text" name="article_title" placeholder="title"></td>
+                <td>
+                    文章标题：<input class="article_item" type="text" name="article_title" placeholder="title" value="<?php echo $title?>">
+                    <input title="article_id" type="text" name="article_id" hidden value="<?php echo $id?>">
+                    <input title="view_times" type="text" name="view_times" hidden value="<?php echo $view_times?>">
+                    <input title="create_time" type="text" name="create_time" hidden value="<?php echo $create_time?>">
+                </td>
             </tr>
             <tr>
                 <td >文章类型：<select title="article_type" name="article_type">
@@ -81,16 +87,24 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
                 </td>
             </tr>
             <tr>
-                <td>关键词语：<input class="article_item" type="text" name="article_keywords" placeholder="keyword"></td>
+                <td>关键词语：<input class="article_item" type="text" name="article_keywords" placeholder="keyword" value="<?php echo $keywords?>"></td>
             </tr>
             <tr>
-                <td>文章内容：<textarea title="article_content" name="article_content" style="width:1300px;height:550px;visibility:hidden;resize: none"></textarea></td>
+                <td>文章内容：<textarea title="article_content" name="article_content" style="width:1300px;height:550px;visibility:hidden;resize: none"><?php echo $content?></textarea></td>
             </tr>
             <tr>
-                <td>　　　　　　　　　　　　　　　　　　<input type="submit" value="提　　交" id="submit">　　　　<input type="reset" value="重　　置" id="reset"></td>
+                <td>　　　　　　　　　　　　　　　　　　<input type="submit" value="提　　交" id="submit">　　　　<input type="button" value="取　　消" id="quit"></td>
             </tr>
         </table>
     </form>
 
+<script>
+    window.onload = function () {
+        var quit_button = document.getElementById('quit');
+        quit_button.onclick = function () {
+            history.go(-1);
+        }
+    }
+</script>
 </body>
 </html>

@@ -45,6 +45,12 @@ class adminAction
             echo "<script>alert('文章提交失败，请重新提交！');history.go(-1);</script>";
             exit;
         }
+
+        //将判断文章是否为空的逻辑写在这里，解决提交文章需要按两次提交的bug
+        if (empty($_POST['article_content'])) {
+            echo "<script>alert('文章内容为空，请填写文章类容！');history.go(-1);</script>";
+            exit;
+        }
         $articleTitle = $_POST['article_title'];
         $articleType = $_POST['article_type'];
         $articleKeywords = $_POST['article_keywords'];

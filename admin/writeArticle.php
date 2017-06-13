@@ -58,10 +58,11 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
                 return false;
             }
 
-            if (document.article.article_content.value === '') {
+            //这里将判断文章内容是否为空放入了服务器端来写，放在这里会有要提交两次的bug
+            /*if (document.article.article_content.value === '') {
                 alert("文章内容不能为空！");
                 return false;
-            }
+            }*/
 
         }
     </script>

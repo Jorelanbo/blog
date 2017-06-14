@@ -391,7 +391,6 @@ input#reset {
 
 .article_info_list .article_writer {
     display: inline-block;
-    width: 90px;
     height: 20px;
     padding-left: 20px;
     background: url("../images/writer.png") no-repeat left center;
@@ -400,7 +399,6 @@ input#reset {
 
 .article_info_list .article_create_time {
     display: inline-block;
-    width: 130px;
     height: 20px;
     padding-left: 20px;
     background: url("../images/calendar.png") no-repeat left center;
@@ -425,6 +423,7 @@ input#reset {
 }
 
 .article_box .article_content {
+    width: 100%;
     margin-top: 30px;
     padding: 15px;
     border: 1px solid #d3d3d3;

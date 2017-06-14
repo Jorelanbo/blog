@@ -3,11 +3,11 @@
 pre.prettyprint {
 	border: 0;
 	border-left: 3px solid rgb(204, 204, 204);
-	margin-left: 2em;
+	border-radius: 5px;
 	padding: 0.5em;
 	font-size: 110%;
 	display: block;
 	font-family: "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
-	margin: 1em 0px;
 	white-space: pre;
+	overflow: auto;
 }

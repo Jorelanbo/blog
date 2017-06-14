@@ -68,6 +68,9 @@ class adminAction
             exit;
         }
 
+        //将单引号转义，防止与sql语句冲突
+        $articleContent = str_replace("'","\'", $articleContent);
+
         //将文章插入数据库
         $sql = "INSERT INTO article(title, article_type_id, keywords, content, view_times, create_time) VALUES 
                 ('{$articleTitle}', '{$articleType}', '{$articleKeywords}', '{$articleContent}', '{$viewTimes}', '{$createTime}')";
@@ -104,6 +107,7 @@ class adminAction
             $content = $row['content'];
             $view_times = $row['view_times'];
             $create_time = $row['create_time'];
+
             include_once __DIR__ . '/../rewriteArticle.php';
         } else {
             echo "There is no article with the articleID:{$article_id}";
@@ -135,6 +139,9 @@ class adminAction
         $articleContent = $_POST['article_content'];
         $viewTimes = $_POST['view_times'];
         $createTime = $_POST['create_time'];
+
+        //将单引号转义，防止与sql语句冲突
+        $articleContent = str_replace("'","\'", $articleContent);
 
         $mysqli = $this->getMysqli();
         $sql = "UPDATE article SET title='{$articleTitle}',article_type_id='{$articleType}',keywords=
@@ -171,6 +178,7 @@ class adminAction
             $content = $row['content'];
             $view_times = $row['view_times'];
             $create_time = $row['create_time'];
+
             include_once __DIR__ . '/../article.php';
         } else {
             echo "There is no article with the articleID:{}";

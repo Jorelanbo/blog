@@ -19,7 +19,10 @@ $create_time = date('Y-m-d h:i:s', $create_time);
     <meta charset="UTF-8">
     <title>Jorelanbo博客后台</title>
     <link rel="stylesheet" type="text/css" href="templates/style/base_admin.css">
+    <link rel="stylesheet" type="text/css" href="include/kindeditor/plugins/code/prettify.css">
     <script type="text/javascript" src="templates/js/jquery-3.2.1.min.js"></script>
+<!--    <script type="text/javascript" src="include/kindeditor/plugins/code/prettify.js"></script>-->
+<!--    <script type="text/javascript" src="include/kindeditor/plugins/code/code.js"></script>-->
 </head>
 <body class="article_body">
 <div class="article_box">

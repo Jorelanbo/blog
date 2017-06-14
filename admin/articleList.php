@@ -23,7 +23,7 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
     <div class="page_number_list">
         <?php
         if ($current_page != 1) {
-            echo "<a class='pre_page'>上一页</a>";
+            echo "<a class='pre_page' href='index.php?m=admin&a=articleList_p&id={$pre_page}'>上一页</a>";
         }
         for ($i = 0; $i < $total_pages; $i ++) {
             $page_number = $i + 1;
@@ -34,7 +34,7 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
             }
         }
         if ($current_page != $total_pages) {
-            echo "<a class='next_page'>下一页</a>";
+            echo "<a class='next_page' href='index.php?m=admin&a=articleList_p&id={$next_page}'>下一页</a>";
         }
         ?>
     </div>

@@ -38,6 +38,8 @@ class adminAction
             $count = $row['count(*)'];
         }*/
         $total_pages = ceil($count / 10);
+        $pre_page = $current_page - 1;
+        $next_page = $current_page + 1;
         include_once __DIR__ . '/../articleList.php';
     }
 

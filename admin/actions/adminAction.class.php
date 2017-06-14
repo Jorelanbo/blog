@@ -26,8 +26,18 @@ class adminAction
         include_once __DIR__ . '/../homeDefault.php';
     }
 
-    function articleList_p()
+    function articleList_p($current_page)
     {
+        $sql = "SELECT count(*) FROM article";
+        $mysqli = $this->getMysqli();
+        $result = $mysqli->query($sql);
+        $count = 81;
+        /*if ($mysqli->affected_rows > 0) {
+            $result->data_seek(0);
+            $row = $result->fetch_assoc();
+            $count = $row['count(*)'];
+        }*/
+        $total_pages = ceil($count / 10);
         include_once __DIR__ . '/../articleList.php';
     }
 
@@ -158,7 +168,7 @@ class adminAction
         $this->showArticle($id);
     }
 
-    function showArticle_h()
+    function showArticle_p()
     {
 
     }

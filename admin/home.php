@@ -32,7 +32,7 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
         <li>
             <a class="menu_article_button menu_button">　文章</a>
             <ul class="sub">
-                <li><a href="index.php?m=admin&a=articleList_p" target="content_iframe">文章列表</a></li>
+                <li><a href="index.php?m=admin&a=articleList_p&id=1" target="content_iframe">文章列表</a></li>
                 <li><a href="index.php?m=admin&a=writeArticle_p" target="content_iframe">写文章</a></li>
             </ul>
         </li>

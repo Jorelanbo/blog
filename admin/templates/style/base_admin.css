@@ -7,6 +7,10 @@
 a {
     text-decoration: none;
 }
+
+body {
+    overflow: hidden;
+}
 /*登录页面*/
 .login_body {
     background: url("../images/big_bg2.jpg") no-repeat fixed;
@@ -311,7 +315,7 @@ a {
 
 /*写文章页面*/
 .writeArticle_body {
-    overflow: hidden;
+    overflow: auto;
     background: url("../images/big_bg3.jpg") no-repeat fixed;
     background-size: 100% 100%;
     color: white;
@@ -366,6 +370,7 @@ input#reset {
 .article_body {
     background: url("../images/big_bg4.jpg") no-repeat fixed;
     background-size: 100% 100%;
+    overflow: auto;
 }
 
 .article_box {
@@ -428,6 +433,7 @@ input#reset {
     padding: 15px;
     border: 1px solid #d3d3d3;
     border-radius: 5px;
+    overflow: auto;
 }
 
 .rewrite {
@@ -448,4 +454,54 @@ input#quit {
     border: 1px solid white;
     border-radius: 3px;
     cursor: pointer;
+}
+
+/*文章列表界面*/
+.article_list_body {
+    background: url("../images/big_bg5.jpg") no-repeat fixed;
+    background-size: 100% 100%;
+    overflow: auto;
+}
+
+.article_list_body .article_list_box {
+    margin: 45px 60px;
+    padding: 45px;
+    height: 1200px;
+    border-radius: 10px;
+    background: white;
+}
+
+.article_list_box .page_number_list {
+    width:auto;
+    display:inline-block !important;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.article_list_box .page_number_list a {
+    display: block;
+    float: left;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-right: 1px solid #CCC;
+    color: #5690D2;
+}
+
+.article_list_box .page_number_list a.page_current_number {
+    background: #EEEEEE;
+    color: #23527C;
+}
+
+.article_list_box .page_number_list a.pre_page {
+    width: 50px;
+    border-left: none;
+    border-right: 1px solid #CCC;
+}
+
+.article_list_box .page_number_list a.next_page {
+    width: 50px;
+    border-right: none;
 }

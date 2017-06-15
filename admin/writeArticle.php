@@ -84,6 +84,9 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
                 <td>关键词语：<input class="article_item" type="text" name="article_keywords" placeholder="keyword"></td>
             </tr>
             <tr>
+                <td>文章介绍：<input class="article_item" type="text" name="article_introduction" placeholder="introduction"></td>
+            </tr>
+            <tr>
                 <td>文章内容：<textarea title="article_content" name="article_content" style="width:1300px;height:550px;visibility:hidden;resize: none"></textarea></td>
             </tr>
             <tr>

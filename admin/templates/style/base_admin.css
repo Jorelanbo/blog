@@ -219,14 +219,16 @@ body {
 }
 
 .home_body {
-    /*min-height: 1000px;*/
+
 }
 
 /*菜单列表*/
 .admin_menu {
-    float: left;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    bottom: 0;
     width: 14%;
-    min-height: 800px;
     border-right: 1px solid #d2d2d2;
 }
 
@@ -298,9 +300,11 @@ body {
 
     /*内容*/
 .admin_content {
-    display: inline-block;
-    width: 85%;
-    min-height: 800px;
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    left: 14%;
+    width: 86%;
     border: none;
     overflow: hidden;
 }
@@ -308,7 +312,7 @@ body {
 .admin_content iframe {
     display: block;
     width: 100%;
-    min-height: 800px;
+    height: 100%;
     overflow: hidden;
     border: none;
 }
@@ -316,6 +320,7 @@ body {
 /*写文章页面*/
 .writeArticle_body {
     overflow: auto;
+    height: 900px;
     background: url("../images/big_bg3.jpg") no-repeat fixed;
     background-size: 100% 100%;
     color: white;

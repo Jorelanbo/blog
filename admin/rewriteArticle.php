@@ -81,13 +81,16 @@ KindEditor.ready(function(K) {
             </tr>
             <tr>
                 <td >文章类型：<select title="article_type" name="article_type">
-                        <option value="1">技术</option>
-                        <option value="2">生活</option>
+                        <option value="1" <?php if($article_type == 1) echo 'selected';?>>技术</option>
+                        <option value="2" <?php if($article_type == 2) echo 'selected';?>>生活</option>
                     </select>
                 </td>
             </tr>
             <tr>
                 <td>关键词语：<input class="article_item" type="text" name="article_keywords" placeholder="keyword" value="<?php echo $keywords?>"></td>
+            </tr>
+            <tr>
+                <td>文章介绍：<input class="article_item" type="text" name="article_introduction" placeholder="introduction" value="<?php echo $introduction?>"></td>
             </tr>
             <tr>
                 <td>文章内容：<textarea title="article_content" name="article_content" style="width:1300px;height:550px;visibility:hidden;resize: none"><?php echo $content?></textarea></td>

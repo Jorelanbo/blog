@@ -67,6 +67,7 @@ class adminAction
         $articleTitle = $_POST['article_title'];
         $articleType = $_POST['article_type'];
         $articleKeywords = $_POST['article_keywords'];
+        $articleIntroduction = $_POST['article_introduction'];
         $articleContent = $_POST['article_content'];
         $viewTimes = 0;
         $createTime = time();
@@ -84,8 +85,9 @@ class adminAction
         $articleContent = str_replace("'","\'", $articleContent);
 
         //将文章插入数据库
-        $sql = "INSERT INTO article(title, article_type_id, keywords, content, view_times, create_time) VALUES 
-                ('{$articleTitle}', '{$articleType}', '{$articleKeywords}', '{$articleContent}', '{$viewTimes}', '{$createTime}')";
+        $sql = "INSERT INTO article(title, article_type_id, keywords, introduction, content, view_times, create_time) VALUES 
+                ('{$articleTitle}', '{$articleType}', '{$articleKeywords}', '{$articleIntroduction}', '{$articleContent}', 
+                '{$viewTimes}', '{$createTime}')";
         $mysqli->query($sql);
         if ($mysqli->affected_rows > 0) {
             echo "<script>alert('文章保存成功！')</script>";
@@ -116,6 +118,7 @@ class adminAction
             $title = $row['title'];
             $article_type = $row['article_type_id'];
             $keywords = $row['keywords'];
+            $introduction = $row['introduction'];
             $content = $row['content'];
             $view_times = $row['view_times'];
             $create_time = $row['create_time'];
@@ -128,7 +131,7 @@ class adminAction
 
     function rewriteArticle()
     {
-        //检查post提交是否成功
+        //检查post提交是否成功k
         header('Cache-control: private, must-revalidate'); //支持页面回跳,防止提交失败时数据丢失
         if (!isset($_POST['article_title']) || !isset($_POST['article_type']) || !isset($_POST['article_keywords']) ||
             !isset($_POST['article_content']) || !isset($_POST['article_id']) || !isset($_POST['view_times'])
@@ -148,6 +151,7 @@ class adminAction
         $articleTitle = $_POST['article_title'];
         $articleType = $_POST['article_type'];
         $articleKeywords = $_POST['article_keywords'];
+        $articleIntroduction = $_POST['article_introduction'];
         $articleContent = $_POST['article_content'];
         $viewTimes = $_POST['view_times'];
         $createTime = $_POST['create_time'];
@@ -156,9 +160,9 @@ class adminAction
         $articleContent = str_replace("'","\'", $articleContent);
 
         $mysqli = $this->getMysqli();
-        $sql = "UPDATE article SET title='{$articleTitle}',article_type_id='{$articleType}',keywords=
-                '{$articleKeywords}',content='{$articleContent}',view_times='{$viewTimes}',create_time='{$createTime}' 
-                WHERE id='{$id}'";
+        $sql = "UPDATE article SET title='{$articleTitle}',article_type_id='{$articleType}',keywords='{$articleKeywords}', 
+                introduction='{$articleIntroduction}',content='{$articleContent}',view_times='{$viewTimes}',
+                create_time='{$createTime}' WHERE id='{$id}'";
         $mysqli->query($sql);
         if ($mysqli->affected_rows > 0) {
             echo "<script>alert('修改文章成功！');</script>";
@@ -187,6 +191,7 @@ class adminAction
             $title = $row['title'];
             $article_type = $row['article_type_id'];
             $keywords = $row['keywords'];
+            $introduction = $row['introduction'];
             $content = $row['content'];
             $view_times = $row['view_times'];
             $create_time = $row['create_time'];

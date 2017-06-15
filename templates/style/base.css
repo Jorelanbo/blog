@@ -237,10 +237,10 @@ a {
 }
 
 .menu_title {
-    height: 45px;
-    line-height: 45px;
+    height: 36px;
+    line-height: 36px;
     background: #DFF0D8;
-    font-size: 16px;
+    font-size: 14px;
     font-family: 微软雅黑, serif;
     padding-left: 20px;
 }

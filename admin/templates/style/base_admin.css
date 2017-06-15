@@ -11,6 +11,17 @@ a {
 body {
     overflow: hidden;
 }
+
+img#back {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #c2c2c2;
+}
+
+img#back:hover {
+    background: #DDDDDD;
+}
+
 /*登录页面*/
 .login_body {
     background: url("../images/big_bg2.jpg") no-repeat fixed;
@@ -402,33 +413,39 @@ input#reset {
 .article_info_list .article_writer {
     display: inline-block;
     height: 20px;
-    padding-left: 20px;
+    padding-left: 18px;
     background: url("../images/writer.png") no-repeat left center;
+    background-size: 14px 14px;
     color: #8f8f8f;
 }
 
 .article_info_list .article_create_time {
     display: inline-block;
     height: 20px;
-    padding-left: 20px;
+    padding-left: 18px;
+    margin-left: 15px;
     background: url("../images/calendar.png") no-repeat left center;
+    background-size: 14px 14px;
     color: #8f8f8f;
 }
 
 .article_info_list .keywords {
     display: inline-block;
     height: 20px;
-    padding-left: 20px;
+    padding-left: 18px;
+    margin-left: 15px;
     background: url("../images/keywords.png") no-repeat left center;
+    background-size: 14px 14px;
     color: #8f8f8f;
 }
 
 .article_info_list .view_times {
     display: inline-block;
     height: 20px;
-    padding-left: 20px;
-    margin-left: 10px;
+    padding-left: 18px;
+    margin-left: 15px;
     background: url("../images/view_times.png") no-repeat left center;
+    background-size: 14px 14px;
     color: #8f8f8f;
 }
 
@@ -470,16 +487,41 @@ input#quit {
 
 .article_list_body .article_list_box {
     margin: 45px 60px;
+    margin-top: 80px;
     padding: 45px;
-    height: 1200px;
+    /*height: 1200px;*/
     border-radius: 10px;
     background: white;
 }
 
+/*文章列表界面--搜索框*/
+.article_list_body .article_list_search {
+    position: absolute;
+    right: 60px;
+    top: 36px;
+    width: 200px;
+    height: 25px;
+    margin: 0;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+}
+
+.article_list_body .article_list_search input.search_key {
+    width: 150px;
+    height: 25px;
+}
+
+.article_list_body .article_list_search input.submit_search_key {
+    width: 48px;
+    height: 25px;
+}
+
+/*文章列表界面--分页栏*/
 .article_list_box .page_number_list {
     width:auto;
     display:inline-block !important;
     height: 30px;
+    margin-top: 30px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
@@ -509,4 +551,80 @@ input#quit {
 .article_list_box .page_number_list a.next_page {
     width: 50px;
     border-right: none;
+}
+
+/*文章列表界面--文章条目*/
+.article_list_box .article_item {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.article_list_box .article_item .article_item_title {
+    height: 60px;
+    line-height: 60px;
+}
+
+.article_list_box .article_item .article_item_title a {
+    font-size: 18px;
+    color: #5690D2;
+}
+
+.article_list_box .article_item .article_item_title a:hover {
+    text-decoration-line: underline;
+    color: #23527C;
+}
+
+.article_list_box .article_item .article_item_info_list {
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #c2c2c2;
+}
+
+.article_list_box .article_item .article_item_info_list .article_writer {
+    display: inline-block;
+    height: 20px;
+    padding-left: 18px;
+    background: url("../images/writer.png") no-repeat left center;
+    background-size: 14px 14px;
+    color: #8f8f8f;
+}
+
+.article_list_box .article_item .article_item_info_list .article_create_time {
+    display: inline-block;
+    height: 20px;
+    padding-left: 18px;
+    margin-left: 15px;
+    background: url("../images/calendar.png") no-repeat left center;
+    background-size: 14px 14px;
+    color: #8f8f8f;
+}
+
+.article_list_box .article_item .article_item_info_list .keywords {
+    display: inline-block;
+    height: 20px;
+    padding-left: 18px;
+    margin-left: 15px;
+    background: url("../images/keywords.png") no-repeat left center;
+    background-size: 14px 14px;
+    color: #8f8f8f;
+}
+
+.article_list_box .article_item .article_item_info_list .view_times {
+    display: inline-block;
+    height: 20px;
+    padding-left: 18px;
+    margin-left: 15px;
+    background: url("../images/view_times.png") no-repeat left center;
+    background-size: 14px 14px;
+    color: #8f8f8f;
+}
+
+.article_list_box .article_item .article_item_introduction {
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+.article_list_box .article_item .article_item_divide_line {
+    height: 0;
+    margin-top: 20px;
+    border-bottom: 1px solid #c2c2c2;
 }

@@ -11,7 +11,7 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
     exit;
 }
 
-$create_time = date('Y-m-d h:i:s', $create_time);
+$create_time = date('Y-m-d H:i:s', $create_time);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +26,7 @@ $create_time = date('Y-m-d h:i:s', $create_time);
 </head>
 <body class="article_body">
 <div class="article_box">
+    <img id="back" src="templates/images/back.png" style="cursor: pointer">
     <h3 class="article_title"><?php echo $title?></h3>
     <div class="article_info_list">
         <span class="article_writer">john rainbow</span><span class="article_create_time"><?php echo $create_time?></span>
@@ -36,5 +37,12 @@ $create_time = date('Y-m-d h:i:s', $create_time);
         <?php echo $content ?>
     </div>
 </div>
+
+<script>
+    var back = document.getElementById("back");
+    back.onclick = function () {
+        history.go(-1);
+    }
+</script>
 </body>
 </html>

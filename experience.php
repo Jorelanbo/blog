@@ -14,6 +14,6 @@
     <title>John Rainbow</title>
 </head>
 <body>
-页面开发中，页面将由bootstrap技术完成。
+To be finished...
 </body>
 </html>

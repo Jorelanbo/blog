@@ -21,33 +21,91 @@ class adminAction
         include_once __DIR__ . '/../home.php';
     }
 
+    /**
+     *
+     *
+     */
     function homeDefault_p()
     {
         include_once __DIR__ . '/../homeDefault.php';
     }
 
-    function articleList_p($current_page)
+    /**
+     *
+     * @param $current_page
+     */
+    function articleList_p($current_page,$get_search_key)
     {
-        $sql = "SELECT count(*) FROM article";
+        $search_key = '';
+        $post_search_key = isset($_POST['post_search_key']) ? $_POST['post_search_key'] : '';
+        if ($post_search_key != '') {
+            $search_key = $post_search_key;
+        }
+        if ($get_search_key != null) {
+            $search_key = $get_search_key;
+        }
+        if ($search_key == '') {
+            $sql = "SELECT count(*) FROM article";
+        } else {
+            $sql = "SELECT count(*) FROM article WHERE keywords LIKE '%{$search_key}%'";
+        }
+
         $mysqli = $this->getMysqli();
         $result = $mysqli->query($sql);
-        $count = 81;
-        /*if ($mysqli->affected_rows > 0) {
+        $count = 0;
+        if ($mysqli->affected_rows > 0) {
             $result->data_seek(0);
             $row = $result->fetch_assoc();
             $count = $row['count(*)'];
-        }*/
+        }
         $total_pages = ceil($count / 10);
         $pre_page = $current_page - 1;
         $next_page = $current_page + 1;
+
+        $list_start = ($current_page - 1) * 10;
+        $articles = [];
+        if ($search_key == '') {
+            $sql = "SELECT * FROM article ORDER BY create_time DESC LIMIT {$list_start},10";
+        } else {
+            $sql = "SELECT * FROM article WHERE keywords LIKE '%{$search_key}%' ORDER BY create_time DESC LIMIT {$list_start},10";
+        }
+
+        $result = $mysqli->query($sql);
+        if ($mysqli->affected_rows > 0) {
+            for ($i = 0; $i < $result->num_rows; $i ++) {
+                $result->data_seek($i);
+                $row = $result->fetch_assoc();
+                $articles[] = [
+                    'id' => $row['id'],
+                    'title' => $row['title'],
+                    'article_type' => $row['article_type_id'],
+                    'keywords' => $row['keywords'],
+                    'introduction' => $row['introduction'],
+                    'content' => $row['content'],
+                    'view_times' => $row['view_times'],
+                    'create_time' => $row['create_time']
+                ];
+            }
+        } else {
+            echo $mysqli->errno.':'.$mysqli->error;
+        }
+
         include_once __DIR__ . '/../articleList.php';
     }
 
+    /**
+     *
+     *
+     */
     function writeArticle_p()
     {
         include_once __DIR__ . '/../writeArticle.php';
     }
 
+    /**
+     *
+     *
+     */
     function writeArticle()
     {
         //检查post提交是否成功
@@ -106,6 +164,10 @@ class adminAction
         }
     }
 
+    /**
+     *
+     * @param $article_id
+     */
     function rewriteArticle_p($article_id)
     {
         $sql = "SELECT * FROM article WHERE id='{$article_id}'";
@@ -129,6 +191,10 @@ class adminAction
         }
     }
 
+    /**
+     *
+     *
+     */
     function rewriteArticle()
     {
         //检查post提交是否成功k
@@ -174,11 +240,19 @@ class adminAction
         $this->showArticle($id);
     }
 
+    /**
+     *
+     *
+     */
     function showArticle_p()
     {
 
     }
 
+    /**
+     *
+     * @param $article_id
+     */
     function showArticle($article_id)
     {
         $sql = "SELECT * FROM article WHERE id='{$article_id}'";

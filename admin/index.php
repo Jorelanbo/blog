@@ -14,7 +14,8 @@ function __autoload($classname)
 $model = isset($_GET['m']) ? $_GET['m'] : 'user';
 $action = isset($_GET['a']) ? $_GET['a'] : 'index';
 $id = isset($_GET['id']) ? $_GET['id'] :  null;
+$key = isset($_GET['key']) ? $_GET['key'] : null;
 
 $class = $model.'Action';
 $m = new $class();
-$m->$action($id);
+$m->$action($id, $key);

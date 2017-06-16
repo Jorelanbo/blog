@@ -495,25 +495,52 @@ input#quit {
 }
 
 /*文章列表界面--搜索框*/
-.article_list_body .article_list_search {
+/*.article_list_body .article_list_search {
     position: absolute;
     right: 60px;
     top: 36px;
-    width: 200px;
+    !*width: 200px;*!
+    width: auto;
     height: 25px;
     margin: 0;
     border: 1px solid #CCC;
     border-radius: 5px;
+}*/
+
+form[name='search_form'] {
+    position: absolute;
+    right: 60px;
+    top: 36px;
+    height: 25px;
+    margin: 0;
+    border: 1px solid #5690D2;
+    border-radius: 6px;
 }
 
 .article_list_body .article_list_search input.search_key {
     width: 150px;
     height: 25px;
+    padding-left: 10px;
+    border: none;
+    border-right: 1px solid #5690D2;
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
 }
 
 .article_list_body .article_list_search input.submit_search_key {
-    width: 48px;
+    display: inline;
+    width: 50px;
     height: 25px;
+    background: white;
+    color: #5690D2;
+    border: none;
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.article_list_body .article_list_search input.submit_search_key:hover {
+    background: #5690D2;
+    color: white;
 }
 
 /*文章列表界面--分页栏*/

@@ -57,6 +57,7 @@ class adminAction
             $result->data_seek(0);
             $row = $result->fetch_assoc();
             $count = $row['count(*)'];
+        } else {
         }
         $total_pages = ceil($count / 10);
         $pre_page = $current_page - 1;
@@ -87,7 +88,8 @@ class adminAction
                 ];
             }
         } else {
-            echo $mysqli->errno.':'.$mysqli->error;
+//            echo "<script>alert('没查到您想要的结果');history.go(-1);</script>";
+//            exit;
         }
 
         include_once __DIR__ . '/../articleList.php';

@@ -28,7 +28,7 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
 <body class="article_list_body">
 <div class="article_list_search">
     <form name="search_form" action="index.php?m=admin&a=articleList_p&id=1" method="post" onsubmit="">
-        <input title="search_key" name="post_search_key" class="search_key" type="text"><input type="submit" class="submit_search_key" value="搜索">
+        <input title="search_key" name="post_search_key" class="search_key" placeholder="search key" type="text"><input type="submit" class="submit_search_key" value="搜索">
     </form>
 </div>
 <div class="article_list_box">

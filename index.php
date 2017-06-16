@@ -5,6 +5,9 @@
  * Date: 2017/5/26 0026
  * Time: 11:46
  */
+require_once 'include/mysqli.class.php';
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +27,7 @@ require_once 'header.php';
 
     <div class="left_area">
         <div class="main_article">
-            文章列表
+            <?php include_once 'articleList.php'?>
         </div>
     </div>
 
@@ -51,6 +54,9 @@ require_once 'header.php';
 
         <div class="newest">
             <div class="menu_title">最新文章</div>
+            <div class="newest_list">
+                <?php include_once 'newest.php';?>
+            </div>
         </div>
 
         <div class="scan_times_list">

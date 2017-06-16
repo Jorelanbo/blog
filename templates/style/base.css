@@ -206,24 +206,15 @@ a {
 .content .left_area {
     float: left;
     width: 780px;
-    height: 1760px;
+    /*height: 1760px;*/
     background: white;
-}
-
-.content .left_area .main_article {
-    width: 750px;
-    height: 1760px;
-    margin: 15px;
-    background: white;
-    border-radius: 5px;
-    border: 1px solid #e2e2e2;
 }
 
 /*右边菜单*/
 .content .menu {
     float: right;
     width: 390px;
-    height: 1760px;
+    /*height: 1760px;*/
     background: white;
 }
 
@@ -267,9 +258,9 @@ a {
     color: #A94465;
 }
 
+/*最新文章*/
 .content .menu .newest {
     width: 360px;
-    height: 450px;
     margin: 15px;
     background: white;
     border-radius: 5px;
@@ -350,4 +341,148 @@ a {
 
 .blank {
     height: 20px;
+}
+
+/*首页文章列表*/
+
+/*首页文章列表 -- 文章条目*/
+.main_article {
+    width: 720px;
+    /*height: 1760px;*/
+    margin: 15px;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    border: 1px solid #e2e2e2;
+}
+
+.main_article .article_item {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.main_article .article_item .article_item_title {
+    height: 60px;
+    line-height: 60px;
+}
+
+.main_article .article_item .article_item_title a {
+    font-size: 18px;
+    color: #5690D2;
+}
+
+.main_article .article_item .article_item_title a:hover {
+    text-decoration-line: underline;
+    color: #23527C;
+}
+
+.main_article .article_item .article_item_info_list {
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #c2c2c2;
+}
+
+.main_article .article_item .article_item_info_list .article_writer {
+    display: inline-block;
+    height: 20px;
+    padding-left: 18px;
+    background: url("../images/writer.png") no-repeat left center;
+    background-size: 14px 14px;
+    color: #8f8f8f;
+}
+
+.main_article .article_item .article_item_info_list .article_create_time {
+    display: inline-block;
+    height: 20px;
+    padding-left: 18px;
+    margin-left: 15px;
+    background: url("../images/calendar.png") no-repeat left center;
+    background-size: 14px 14px;
+    color: #8f8f8f;
+}
+
+.main_article .article_item .article_item_info_list .keywords {
+    display: inline-block;
+    height: 20px;
+    padding-left: 18px;
+    margin-left: 15px;
+    background: url("../images/keywords.png") no-repeat left center;
+    background-size: 14px 14px;
+    color: #8f8f8f;
+}
+
+.main_article .article_item .article_item_info_list .view_times {
+    display: inline-block;
+    height: 20px;
+    padding-left: 18px;
+    margin-left: 15px;
+    background: url("../images/view_times.png") no-repeat left center;
+    background-size: 14px 14px;
+    color: #8f8f8f;
+}
+
+.main_article .article_item .article_item_introduction {
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+.main_article .article_item .article_item_divide_line {
+    height: 0;
+    margin-top: 20px;
+    border-bottom: 1px solid #c2c2c2;
+}
+
+/*首页文章列表 -- 分页栏*/
+.main_article .page_number_list {
+    width:auto;
+    display:inline-block !important;
+    height: 30px;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.main_article .page_number_list a {
+    display: block;
+    float: left;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #CCC;
+    border-left: none;
+    color: #5690D2;
+}
+
+.main_article .page_number_list a.page_current_number {
+    background: #EEEEEE;
+    color: #23527C;
+}
+
+.main_article .page_number_list a.pre_page {
+    width: 50px;
+    border-left: 1px solid #CCC;
+    border-right: 1px solid #CCC;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.main_article .page_number_list a.next_page {
+    width: 50px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.main_article .page_number_list a.start_page {
+    border-left: 1px solid #CCC;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background: #EEEEEE;
+    color: #23527C;
+}
+
+.main_article .page_number_list a.end_page {
+    border-right: 1px solid #CCC;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background: #EEEEEE;
+    color: #23527C;
 }

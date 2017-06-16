@@ -38,6 +38,23 @@ class Mysql{
         }
     }
 
+    function getArticleCount($article_type = null) {
+        if ($article_type == null) {
+            $sql = "SELECT count(*) FROM article";
+        } else {
+            $sql = "SELECT count(*) FROM article WHERE article_type_id=$article_type";
+        }
+        $result = $this->mysqli->query($sql);
+        if ($this->mysqli->affected_rows > 0) {
+            $result->data_seek(0);
+            $row = $result->fetch_assoc();
+            $article_count = $row['count(*)'];
+        } else {
+            $article_count = 0;
+        }
+        return $article_count;
+    }
+
     /**
      * 得到站主信息
      *
@@ -57,47 +74,35 @@ class Mysql{
     }
 
     /**
-     * 查找指定类型文章
+     * 查找文章列表
      *
+     * @param int $current_page
      * @param $typeId
      * @return array
      */
-    function getArticles($typeId)
+    function getArticles($current_page = 1, $typeId = null)
     {
-        $sql = "SELECT * FROM article WHERE article_type_id=$typeId";
+        $page_start = ($current_page - 1) * 10;
+        if ($typeId == null) {
+            $sql = "SELECT * FROM article ORDER BY create_time DESC LIMIT {$page_start},10";
+        } else {
+            $sql = "SELECT * FROM article WHERE article_type_id=$typeId ORDER BY create_time DESC LIMIT {$page_start},10";
+        }
         $result = $this->mysqli->query($sql);
 
         $articles = [];
+        if ($this->mysqli->affected_rows > 0) {
+            for ($i = 0;$i < $result->num_rows;$i ++) {
+                $result->data_seek($i);
+                $row = $result->fetch_assoc();
+                $articles[] = ['id'=>$row['id'], 'title'=>$row['title'], 'article_type_id'=>$row['article_type_id'],
+                    'keywords'=>$row['keywords'], 'introduction'=>$row['introduction'], 'content'=>$row['content'], 'view_times'=>$row['view_times'],
+                    'create_time'=>$row['create_time']];
+            }
+        } else {
 
-        for ($i = 0;$i < $result->num_rows;$i ++) {
-            $result->data_seek($i);
-            $row = $result->fetch_assoc();
-            $articles[] = ['id'=>$row['id'], 'title'=>$row['title'], 'article_type_id'=>$row['article_type_id'],
-                           'keywords'=>$row['keywords'], 'content'=>$row['content'], 'view_times'=>$row['view_times'],
-                           'create_time'=>$row['create_time']];
         }
-        return $articles;
-    }
 
-    /**
-     * 倒序查找所有文章
-     *
-     * @return array
-     */
-    function getArticleList()
-    {
-        $sql = "SELECT * FROM article ORDER BY create_time DESC";
-        $result = $this->mysqli->query($sql);
-
-        $articles = [];
-
-        for ($i = 0;$i < $result->num_rows;$i ++) {
-            $result->data_seek($i);
-            $row = $result->fetch_assoc();
-            $articles[] = ['id'=>$row['id'], 'title'=>$row['title'], 'article_type_id'=>$row['article_type_id'],
-                'keywords'=>$row['keywords'], 'content'=>$row['content'], 'view_times'=>$row['view_times'],
-                'create_time'=>$row['create_time']];
-        }
         return $articles;
     }
 

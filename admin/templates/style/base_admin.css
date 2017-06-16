@@ -549,8 +549,6 @@ form[name='search_form'] {
     display:inline-block !important;
     height: 30px;
     margin-top: 30px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
 }
 
 .article_list_box .page_number_list a {
@@ -560,7 +558,8 @@ form[name='search_form'] {
     height: 30px;
     line-height: 30px;
     text-align: center;
-    border-right: 1px solid #CCC;
+    border: 1px solid #CCC;
+    border-left: none;
     color: #5690D2;
 }
 
@@ -571,16 +570,35 @@ form[name='search_form'] {
 
 .article_list_box .page_number_list a.pre_page {
     width: 50px;
-    border-left: none;
+    border-left: 1px solid #CCC;
     border-right: 1px solid #CCC;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 .article_list_box .page_number_list a.next_page {
     width: 50px;
-    border-right: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
-/*文章列表界面--文章条目*/
+.article_list_box .page_number_list a.start_page {
+    border-left: 1px solid #CCC;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background: #EEEEEE;
+    color: #23527C;
+}
+
+.article_list_box .page_number_list a.end_page {
+    border-right: 1px solid #CCC;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background: #EEEEEE;
+    color: #23527C;
+}
+
+    /*文章列表界面--文章条目*/
 .article_list_box .article_item {
     margin-top: 10px;
     margin-bottom: 10px;

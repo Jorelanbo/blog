@@ -60,9 +60,12 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
         <?php
         //分页栏
         if ($current_page != 1) {
-            echo "<a class='pre_page' href='index.php?m=admin&a=articleList_p&id={$pre_page}&key={$search_key}'>上一页</a>";
+            echo "<a class='pre_page' href='index.php?m=admin&a=articleList_p&id={$pre_page}&key={$search_key}'>上一页</a>
+                  <a class='page_number' href='index.php?m=admin&a=articleList_p&id=1&key={$search_key}'>1</a>";
+        } else {
+            echo "<a class='start_page' href='index.php?m=admin&a=articleList_p&id=1&key={$search_key}'>1</a>";
         }
-        for ($i = 0; $i < $total_pages; $i ++) {
+        for ($i = 1; $i < $total_pages - 1; $i ++) {
             $page_number = $i + 1;
             if ($page_number == $current_page) {
                 echo "<a class='page_current_number' href='index.php?m=admin&a=articleList_p&id={$page_number}&key={$search_key}'>$page_number</a>";
@@ -71,7 +74,10 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
             }
         }
         if ($current_page != $total_pages) {
-            echo "<a class='next_page' href='index.php?m=admin&a=articleList_p&id={$next_page}&key={$search_key}'>下一页</a>";
+            echo "<a class='page_number' href='index.php?m=admin&a=articleList_p&id={$total_pages}&key={$search_key}'>$total_pages</a>
+                  <a class='next_page' href='index.php?m=admin&a=articleList_p&id={$next_page}&key={$search_key}'>下一页</a>";
+        } else {
+            echo "<a class='end_page' href='index.php?m=admin&a=articleList_p&id={$total_pages}&key={$search_key}'>$total_pages</a>";
         }
         ?>
     </div>

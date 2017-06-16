@@ -568,6 +568,13 @@ form[name='search_form'] {
     color: #23527C;
 }
 
+.article_list_box .page_number_list a.page_number_1 {
+    border-left: 1px solid #CCC;
+    border-radius: 5px;
+    background: #EEEEEE;
+    color: #23527C;
+}
+
 .article_list_box .page_number_list a.pre_page {
     width: 50px;
     border-left: 1px solid #CCC;
@@ -605,12 +612,12 @@ form[name='search_form'] {
 }
 
 .article_list_box .article_item .article_item_title {
-    height: 60px;
-    line-height: 60px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .article_list_box .article_item .article_item_title a {
-    font-size: 18px;
+    font-size: 17px;
     color: #5690D2;
 }
 

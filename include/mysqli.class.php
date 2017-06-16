@@ -99,8 +99,27 @@ class Mysql{
                     'keywords'=>$row['keywords'], 'introduction'=>$row['introduction'], 'content'=>$row['content'], 'view_times'=>$row['view_times'],
                     'create_time'=>$row['create_time']];
             }
-        } else {
+        }
 
+        return $articles;
+    }
+
+    /**
+     * 得到最新文章（important）
+     * @return array
+     */
+    function getNewest()
+    {
+        $sql = "SELECT id,title FROM article WHERE keywords LIKE '%important%' ORDER BY create_time DESC LIMIT 10";
+        $result = $this->mysqli->query($sql);
+
+        $articles = [];
+        if ($this->mysqli->affected_rows > 0) {
+            for ($i = 0;$i < $result->num_rows;$i ++) {
+                $result->data_seek($i);
+                $row = $result->fetch_assoc();
+                $articles[] = ['id'=>$row['id'], 'title'=>$row['title']];
+            }
         }
 
         return $articles;

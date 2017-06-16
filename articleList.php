@@ -38,23 +38,27 @@ for ($i = 0; $i < count($articles); $i++) {
 <div class="page_number_list">
     <?php
     //分页栏
-    if ($page != 1) {
-        echo "<a class='pre_page' href='index.php?page={$pre_page}'>上一页</a><a  class='page_number' href='index.php?page=1'>1</a>";
+    if ($total_pages == 1 || $total_pages == 0) {
+        echo "<a  class='page_number_1' href='index.php?page=1'>1</a>";
     } else {
-        echo "<a  class='start_page' href='index.php?page=1'>1</a>";
-    }
-    for ($i = 1; $i < $total_pages - 1; $i++) {
-        $page_number = $i + 1;
-        if ($page_number == $page) {
-            echo "<a class='page_current_number' href='index.php?page={$page_number}'>$page_number</a>";
+        if ($page != 1) {
+            echo "<a class='pre_page' href='index.php?page={$pre_page}'>上一页</a><a  class='page_number' href='index.php?page=1'>1</a>";
         } else {
-            echo "<a class='page_number' href='index.php?page={$page_number}'>$page_number</a>";
+            echo "<a  class='start_page' href='index.php?page=1'>1</a>";
         }
-    }
-    if ($page != $total_pages) {
-        echo "<a class='page_number' href='index.php?page={$total_pages}'>$total_pages</a><a class='next_page' href='index.php?page={$next_page}'>下一页</a>";
-    } else {
-        echo "<a class='end_page' href='index.php?page={$total_pages}'>$total_pages</a>";
+        for ($i = 1; $i < $total_pages - 1; $i++) {
+            $page_number = $i + 1;
+            if ($page_number == $page) {
+                echo "<a class='page_current_number' href='index.php?page={$page_number}'>$page_number</a>";
+            } else {
+                echo "<a class='page_number' href='index.php?page={$page_number}'>$page_number</a>";
+            }
+        }
+        if ($page != $total_pages) {
+            echo "<a class='page_number' href='index.php?page={$total_pages}'>$total_pages</a><a class='next_page' href='index.php?page={$next_page}'>下一页</a>";
+        } else {
+            echo "<a class='end_page' href='index.php?page={$total_pages}'>$total_pages</a>";
+        }
     }
     ?>
 </div>

@@ -33,7 +33,10 @@ require_once 'header.php';
 
     <div class="menu">
         <div class="search_box">
-            搜索
+            <form name="search_form" action="" method="post" onsubmit="">
+                <div class="search_title">搜索</div>
+                <input title="search_key" name="post_search_key" class="search_key" placeholder="search key" type="text"><input type="submit" class="submit_search_key" value="　　">
+            </form>
         </div>
 
         <div class="announcement">

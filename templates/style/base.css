@@ -220,11 +220,54 @@ a {
 
 .content .menu .search_box {
     width: 360px;
-    height: 40px;
+    height: 32px;
     margin: 15px;
-    background: white;
-    border-radius: 5px;
-    border: 1px solid #e2e2e2;
+    /*background: #f2f2f2;
+    border-radius: 3px;
+    border: 1px solid #CCC;*/
+}
+
+form[name='search_form'] {
+    height: 31px;
+    margin: 0;
+    border: 1px solid #CCC;
+    border-radius: 6px;
+    background: #F2F2F2;
+}
+
+.content .menu .search_box .search_title {
+    width: 42px;
+    height: 31px;
+    line-height: 28px;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.content .menu .search_box input.search_key {
+    width: 258px;
+    height: 30px;
+    padding-left: 10px;
+    border: none;
+    border-left: 1px solid #CCC;
+}
+
+.content .menu .search_box input.submit_search_key {
+    display: inline;
+    width: 42px;
+    height: 30px;
+    color: #5690D2;
+    border: none;
+    border-left: 1px solid #CCC;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+    background:#fff url("../images/search.png") center no-repeat;
+    background-size: 16px 16px;
+}
+
+.content .menu .search_box input.submit_search_key:hover {
+    background: #DFDFDF url("../images/search.png") center no-repeat;
+    background-size: 16px 16px;
 }
 
 .menu_title {
@@ -268,10 +311,36 @@ a {
 }
 
 .content .menu .newest .menu_title {
+    margin-bottom: 20px;
     background: #D9EDF7;
     color: #31708F;
 }
 
+.content .menu .newest .newest_item {
+    width: 330px;
+    margin: 0 auto;
+}
+
+.content .menu .newest .newest_item_divide_line {
+    width: 100%;
+    height: 0;
+    border-bottom: 1px solid #CCC;
+}
+
+.content .menu .newest a {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #5690D2;
+}
+
+.content .menu .newest a:hover {
+    text-decoration-line: underline;
+    color: #23527C;
+}
+
+/*浏览次数排行*/
 .content .menu .scan_times_list {
     width: 360px;
     height: 400px;
@@ -362,12 +431,13 @@ a {
 }
 
 .main_article .article_item .article_item_title {
-    height: 60px;
-    line-height: 60px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 17px;
 }
 
 .main_article .article_item .article_item_title a {
-    font-size: 18px;
+    font-size: 17px;
     color: #5690D2;
 }
 
@@ -453,6 +523,13 @@ a {
 }
 
 .main_article .page_number_list a.page_current_number {
+    background: #EEEEEE;
+    color: #23527C;
+}
+
+.main_article .page_number_list a.page_number_1 {
+    border-left: 1px solid #CCC;
+    border-radius: 5px;
     background: #EEEEEE;
     color: #23527C;
 }

@@ -125,6 +125,23 @@ class Mysql{
         return $articles;
     }
 
+    function getArticle($id)
+    {
+        $sql = "SELECT * FROM article WHERE id='$id'";
+        $result = $this->mysqli->query($sql);
+
+        $article = [];
+        if ($this->mysqli->affected_rows > 0) {
+            $result->data_seek(0);
+            $row = $result->fetch_assoc();
+            $article = ['id'=>$row['id'], 'title'=>$row['title'], 'article_type_id'=>$row['article_type_id'],
+                'keywords'=>$row['keywords'], 'introduction'=>$row['introduction'], 'content'=>$row['content'], 'view_times'=>$row['view_times'],
+                'create_time'=>$row['create_time']];
+        }
+
+        return $article;
+    }
+
     /**
      * 文章阅读次数加一
      *
@@ -136,7 +153,7 @@ class Mysql{
         $result = $this->mysqli->query($sql);
         $result->data_seek(0);
         $row = $result->fetch_assoc();
-        $view = $row['view'];
+        $view = $row['view_times'];
         $view++;
         $sql = "UPDATE article SET view_times = $view WHERE id=$id";
         $this->mysqli->query($sql);

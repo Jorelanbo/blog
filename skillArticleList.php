@@ -2,11 +2,11 @@
 /**
  * Created by PhpStorm.
  * User: JS
- * Date: 2017/6/16 0016
- * Time: 12:01
+ * Date: 2017/6/19 0019
+ * Time: 11:08
  */
-$articles = $db->getArticles($page);
-$article_count = $db->getArticleCount();
+$articles = $db->getArticles($page, SKILL_ARTICLE_TYPE);
+$article_count = $db->getArticleCount(SKILL_ARTICLE_TYPE);
 $total_pages = ceil($article_count / 10);
 $pre_page = $page - 1;
 $next_page = $page + 1;
@@ -22,12 +22,12 @@ for ($i = 0; $i < count($articles); $i++) {
     ?>
     <div class="article_item">
         <div class="article_item_title"><a
-                    href="viewArticle.php?id=<?php echo $id; ?>"><?php echo $title ?></a></div>
+                href="viewArticle.php?id=<?php echo $id; ?>"><?php echo $title ?></a></div>
         <div class="article_item_info_list">
             <span class="article_writer">john rainbow</span><span
-                    class="article_create_time"><?php echo $create_time ?></span>
+                class="article_create_time"><?php echo $create_time ?></span>
             <span class="keywords"><?php echo $keywords ?></span><span
-                    class="view_times"><?php echo $view_times ?></span>
+                class="view_times"><?php echo $view_times ?></span>
         </div>
         <div class="article_item_introduction"><?php echo $introduction ?></div>
         <div class="article_item_divide_line"></div>
@@ -39,25 +39,25 @@ for ($i = 0; $i < count($articles); $i++) {
     <?php
     //分页栏
     if ($total_pages == 1 || $total_pages == 0) {
-        echo "<a  class='page_number_1' href='index.php?page=1'>1</a>";
+        echo "<a  class='page_number_1' href='skill.php?page=1'>1</a>";
     } else {
         if ($page != 1) {
-            echo "<a class='pre_page' href='index.php?page={$pre_page}'>上一页</a><a  class='page_number' href='index.php?page=1'>1</a>";
+            echo "<a class='pre_page' href='skill.php?page={$pre_page}'>上一页</a><a  class='page_number' href='skill.php?page=1'>1</a>";
         } else {
-            echo "<a  class='start_page' href='index.php?page=1'>1</a>";
+            echo "<a  class='start_page' href='skill.php?page=1'>1</a>";
         }
         for ($i = 1; $i < $total_pages - 1; $i++) {
             $page_number = $i + 1;
             if ($page_number == $page) {
-                echo "<a class='page_current_number' href='index.php?page={$page_number}'>$page_number</a>";
+                echo "<a class='page_current_number' href='skill.php?page={$page_number}'>$page_number</a>";
             } else {
-                echo "<a class='page_number' href='index.php?page={$page_number}'>$page_number</a>";
+                echo "<a class='page_number' href='skill.php?page={$page_number}'>$page_number</a>";
             }
         }
         if ($page != $total_pages) {
-            echo "<a class='page_number' href='index.php?page={$total_pages}'>$total_pages</a><a class='next_page' href='index.php?page={$next_page}'>下一页</a>";
+            echo "<a class='page_number' href='skill.php?page={$total_pages}'>$total_pages</a><a class='next_page' href='skill.php?page={$next_page}'>下一页</a>";
         } else {
-            echo "<a class='end_page' href='index.php?page={$total_pages}'>$total_pages</a>";
+            echo "<a class='end_page' href='skill.php?page={$total_pages}'>$total_pages</a>";
         }
     }
     ?>

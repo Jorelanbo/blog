@@ -139,51 +139,61 @@ a {
 .nav ul li.life a,.fix_nav ul li.life a {
     padding-left: 18px;
     background: url("../images/love.png") left center no-repeat;
+    background-size: 12px 12px;
 }
 
 .nav ul li.life a:hover,.fix_nav ul li.life a:hover {
     color: #000;
     background: url("../images/love_hover.png") left center no-repeat;
+    background-size: 12px 12px;
  }
 
 .nav ul li.skill a,.fix_nav ul li.skill a {
     padding-left: 18px;
     background: url("../images/skill.png") left center no-repeat;
+    background-size: 16px 16px;
 }
 
 .nav ul li.skill a:hover,.fix_nav ul li.skill a:hover {
     color: #000;
     background: url("../images/skill_hover.png") left center no-repeat;
+    background-size: 16px 16px;
 }
 
 .nav ul li.album a,.fix_nav ul li.album a {
     padding-left: 18px;
     background: url("../images/album.png") left center no-repeat;
+    background-size: 15px 15px;
 }
 
 .nav ul li.album a:hover,.fix_nav ul li.album a:hover {
     color: #000;
     background: url("../images/album_hover.png") left center no-repeat;
+    background-size: 15px 15px;
 }
 
 .nav ul li.video a,.fix_nav ul li.video a {
     padding-left: 18px;
     background: url("../images/video.png") left center no-repeat;
+    background-size: 15px 15px;
 }
 
 .nav ul li.video a:hover,.fix_nav ul li.video a:hover {
     color: #000;
     background: url("../images/video_hover.png") left center no-repeat;
+    background-size: 15px 15px;
 }
 
 .nav ul li.experience a,.fix_nav ul li.experience a {
     padding-left: 18px;
     background: url("../images/experience.png") left center no-repeat;
+    background-size: 15px 15px;
 }
 
 .nav ul li.experience a:hover,.fix_nav ul li.experience a:hover {
     color: #000;
     background: url("../images/experience_hover.png") left center no-repeat;
+    background-size: 15px 15px;
 }
 
 .nav ul li.about a,.fix_nav ul li.about a {
@@ -319,6 +329,10 @@ form[name='search_form'] {
 .content .menu .newest .newest_item {
     width: 330px;
     margin: 0 auto;
+}
+
+.content .menu .newest .newest_item:hover {
+    background: #F5F5F5;
 }
 
 .content .menu .newest .newest_item_divide_line {
@@ -562,4 +576,67 @@ form[name='search_form'] {
     border-bottom-right-radius: 5px;
     background: #EEEEEE;
     color: #23527C;
+}
+
+/*文章详情页面*/
+.main_article .article_detail .article_detail_title {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: #222;
+    font-size: 18px;
+    letter-spacing: 2px;
+    font-family: Consolas, 微软雅黑, serif;
+}
+
+.main_article .article_detail .article_detail_info_list {
+    margin-top: 20px;
+    border-bottom: 1px solid #E3E3E3;
+    padding-bottom: 5px;
+    font-size: 14px;
+}
+
+.article_detail_info_list .article_detail_writer {
+    display: inline-block;
+    height: 20px;
+    padding-left: 18px;
+    background: url("../images/writer.png") no-repeat left center;
+    background-size: 14px 14px;
+    color: #8f8f8f;
+}
+
+.article_detail_info_list .article_detail_create_time {
+    display: inline-block;
+    height: 20px;
+    padding-left: 18px;
+    margin-left: 15px;
+    background: url("../images/calendar.png") no-repeat left center;
+    background-size: 14px 14px;
+    color: #8f8f8f;
+}
+
+.article_detail_info_list .article_detail_keywords {
+    display: inline-block;
+    height: 20px;
+    padding-left: 18px;
+    margin-left: 15px;
+    background: url("../images/keywords.png") no-repeat left center;
+    background-size: 14px 14px;
+    color: #8f8f8f;
+}
+
+.article_detail_info_list .article_detail_view_times {
+    display: inline-block;
+    height: 20px;
+    padding-left: 18px;
+    margin-left: 15px;
+    background: url("../images/view_times.png") no-repeat left center;
+    background-size: 14px 14px;
+    color: #8f8f8f;
+}
+
+.main_article .article_detail .article_detail_content {
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 60px;
+    overflow: hidden;
 }

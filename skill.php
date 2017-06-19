@@ -5,6 +5,8 @@
  * Date: 2017/5/26 0026
  * Time: 15:02
  */
+require_once 'common/common.inc.php';
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
 ?>
 
 <!DOCTYPE html>
@@ -24,13 +26,16 @@ require_once 'header.php';
 
     <div class="left_area">
         <div class="main_article">
-            文章列表
+            <?php include_once "skillArticleList.php";?>
         </div>
     </div>
 
     <div class="menu">
         <div class="search_box">
-            搜索
+            <form name="search_form" action="" method="post" onsubmit="">
+                <div class="search_title">搜索</div>
+                <input title="search_key" name="post_search_key" class="search_key" placeholder="search key" type="text"><input type="submit" class="submit_search_key" value="　　">
+            </form>
         </div>
 
         <div class="announcement">
@@ -51,6 +56,9 @@ require_once 'header.php';
 
         <div class="newest">
             <div class="menu_title">最新文章</div>
+            <div class="newest_list">
+                <?php include_once 'newest.php';?>
+            </div>
         </div>
 
         <div class="scan_times_list">

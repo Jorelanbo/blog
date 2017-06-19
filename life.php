@@ -32,9 +32,9 @@ require_once 'header.php';
 
     <div class="menu">
         <div class="search_box">
-            <form name="search_form" action="" method="post" onsubmit="">
+            <form name="search_form" action="search.php" method="get" onsubmit="return check();">
                 <div class="search_title">搜索</div>
-                <input title="search_key" name="post_search_key" class="search_key" placeholder="search key" type="text"><input type="submit" class="submit_search_key" value="　　">
+                <input title="search_key" name="search_key" class="search_key" placeholder="search key" type="text"><input type="submit" class="submit_search_key" value="　　">
             </form>
         </div>
 
@@ -63,6 +63,9 @@ require_once 'header.php';
 
         <div class="scan_times_list">
             <div class="menu_title">浏览次数排行</div>
+            <div class="high_view_list">
+                <?php include_once 'highViewList.php';?>
+            </div>
         </div>
 
         <div class="Jorelanbo">

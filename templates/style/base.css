@@ -13,14 +13,14 @@ a {
     width: 100%;
     height: 161px;
     z-index: 2;
-    background: #fcfcfc;
+    background: #FCFCFC;
 }
 
 /*顶部区域*/
 .header {
     width: 1140px;
     height: 100px;
-    background: white;
+    background: #FCFCFC;
     margin: 0 auto;
 }
 
@@ -71,7 +71,7 @@ a {
 
 .nav_bg {
     height: 60px;
-    background: #FDFDFD;
+    background: #F8F8F8;
     border-top: 1px solid #e2e2e2;
     border-bottom: 1px solid #e2e2e2;
 }
@@ -90,8 +90,6 @@ a {
     z-index: 1;
     width: 100%;
     height: 60px;
-    background: #FDFDFD;
-    /*background: white;*/
 }
 
 .nav ul,.fix_nav ul {
@@ -216,7 +214,6 @@ a {
 .content .left_area {
     float: left;
     width: 780px;
-    /*height: 1760px;*/
     background: white;
 }
 
@@ -224,7 +221,6 @@ a {
 .content .menu {
     float: right;
     width: 390px;
-    /*height: 1760px;*/
     background: white;
 }
 
@@ -232,9 +228,6 @@ a {
     width: 360px;
     height: 32px;
     margin: 15px;
-    /*background: #f2f2f2;
-    border-radius: 3px;
-    border: 1px solid #CCC;*/
 }
 
 form[name='search_form'] {
@@ -247,7 +240,7 @@ form[name='search_form'] {
 
 .content .menu .search_box .search_title {
     width: 42px;
-    height: 31px;
+    height: 28px;
     line-height: 28px;
     text-align: center;
     display: inline-block;
@@ -357,7 +350,6 @@ form[name='search_form'] {
 /*浏览次数排行*/
 .content .menu .scan_times_list {
     width: 360px;
-    height: 400px;
     margin: 15px;
     background: white;
     border-radius: 5px;
@@ -369,6 +361,56 @@ form[name='search_form'] {
     color: #A94442;
 }
 
+.content .menu .scan_times_list .high_view_item {
+    width: 360px;
+    height: 45px;
+    margin: 0 auto;
+}
+
+.content .menu .scan_times_list .high_view_item:hover {
+    background: #DDDDDD;
+}
+
+.content .menu .scan_times_list .high_view_item a {
+    display: inline-block;
+    width: 280px;
+    height: 45px;
+    line-height: 45px;
+    padding-left: 15px;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
+    color: #777;
+    font-size: 14px;
+}
+
+.content .menu .scan_times_list .high_view_item a:hover {
+    text-decoration-line: underline;
+}
+
+.content .menu .scan_times_list .high_view_item .times {
+    background-color: #777;
+    border-radius: 10px;
+    color: #fff;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    min-width: 10px;
+    padding: 3px 7px;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: -30px;
+    white-space: nowrap;
+}
+
+.content .menu .scan_times_list .high_view_item_divide_line {
+    width: 100%;
+    height: 0;
+    border-bottom: 1px solid #CCC;
+}
+
+/*Jorelanbo*/
 .content .menu .Jorelanbo {
     width: 360px;
     height: 260px;

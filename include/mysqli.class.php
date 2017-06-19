@@ -38,6 +38,11 @@ class Mysql{
         }
     }
 
+    /**
+     * 获取文章的数目，可以根据文章类型获取
+     * @param null $article_type
+     * @return int
+     */
     function getArticleCount($article_type = null) {
         if ($article_type == null) {
             $sql = "SELECT count(*) FROM article";
@@ -96,8 +101,8 @@ class Mysql{
                 $result->data_seek($i);
                 $row = $result->fetch_assoc();
                 $articles[] = ['id'=>$row['id'], 'title'=>$row['title'], 'article_type_id'=>$row['article_type_id'],
-                    'keywords'=>$row['keywords'], 'introduction'=>$row['introduction'], 'content'=>$row['content'], 'view_times'=>$row['view_times'],
-                    'create_time'=>$row['create_time']];
+                    'keywords'=>$row['keywords'], 'introduction'=>$row['introduction'], 'content'=>$row['content'],
+                    'view_times'=>$row['view_times'], 'create_time'=>$row['create_time']];
             }
         }
 
@@ -125,6 +130,11 @@ class Mysql{
         return $articles;
     }
 
+    /**
+     * 根据文章id显示文章详情内容
+     * @param $id
+     * @return array
+     */
     function getArticle($id)
     {
         $sql = "SELECT * FROM article WHERE id='$id'";
@@ -135,11 +145,77 @@ class Mysql{
             $result->data_seek(0);
             $row = $result->fetch_assoc();
             $article = ['id'=>$row['id'], 'title'=>$row['title'], 'article_type_id'=>$row['article_type_id'],
-                'keywords'=>$row['keywords'], 'introduction'=>$row['introduction'], 'content'=>$row['content'], 'view_times'=>$row['view_times'],
-                'create_time'=>$row['create_time']];
+                'keywords'=>$row['keywords'], 'introduction'=>$row['introduction'], 'content'=>$row['content'],
+                'view_times'=>$row['view_times'], 'create_time'=>$row['create_time']];
         }
 
         return $article;
+    }
+
+    /**
+     * 得到被浏览次数最高的十篇文章
+     * @return array
+     */
+    function getHighViewList()
+    {
+        $sql = "SELECT id,title,view_times FROM article ORDER BY view_times DESC LIMIT 10";
+        $result = $this->mysqli->query($sql);
+
+        $articles = [];
+        if ($this->mysqli->affected_rows > 0) {
+            for ($i = 0; $i < $result->num_rows; $i ++) {
+                $result->data_seek($i);
+                $row = $result->fetch_assoc();
+                $articles[] = ['id'=>$row['id'], 'title'=>$row['title'], 'view_times'=>$row['view_times']];
+            }
+        }
+
+        return $articles;
+    }
+
+    /**
+     * 得到文章标题或者关键词中含有$search_key的文章
+     * @param int $current_page
+     * @param $search_key
+     * @return array
+     */
+    function getSearchList($current_page = 1,$search_key)
+    {
+        $page_start = ($current_page - 1) * 10;
+        $sql = "SELECT id,title,article_type_id,keywords,introduction,view_times,create_time FROM article WHERE title 
+                LIKE '%$search_key%' OR keywords LIKE '%$search_key%' ORDER BY create_time DESC LIMIT $page_start,10";
+        $result = $this->mysqli->query($sql);
+
+        $articles = [];
+        if ($this->mysqli->affected_rows > 0) {
+            for ($i = 0; $i < $result->num_rows; $i ++) {
+                $result->data_seek($i);
+                $row = $result->fetch_assoc();
+                $articles[] = ['id'=>$row['id'], 'title'=>$row['title'], 'keywords'=>$row['keywords'], 'introduction'=>
+                    $row['introduction'], 'view_times'=>$row['view_times'], 'create_time'=>$row['create_time']];
+            }
+        }
+        return $articles;
+    }
+
+    /**
+     * 得到文章标题或者关键词中含有$search_key的文章的数目
+     * @param $search_key
+     * @return int
+     */
+    function getSearchCount($search_key)
+    {
+        $sql = "SELECT count(*) FROM article WHERE title LIKE '%$search_key%' OR keywords LIKE '%$search_key%' ORDER BY 
+                create_time DESC";
+        $result = $this->mysqli->query($sql);
+        if ($this->mysqli->affected_rows > 0) {
+            $result->data_seek(0);
+            $row = $result->fetch_assoc();
+            $article_count = $row['count(*)'];
+        } else {
+            $article_count = 0;
+        }
+        return $article_count;
     }
 
     /**

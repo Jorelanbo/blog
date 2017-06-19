@@ -2,11 +2,17 @@
 /**
  * Created by PhpStorm.
  * User: JS
- * Date: 2017/5/26 0026
- * Time: 15:02
+ * Date: 2017/6/19 0019
+ * Time: 17:12
  */
-require_once 'common/common.inc.php';
+require_once 'include/mysqli.class.php';
+
+$search_key = isset($_GET['search_key']) ? $_GET['search_key'] : '';
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
+if ($search_key == '') {
+    echo "<script>alert('查询错误！');history.go(-1);</script>";
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +32,7 @@ require_once 'header.php';
 
     <div class="left_area">
         <div class="main_article">
-            <?php include_once "skillArticleList.php";?>
+            <?php include_once 'searchList.php'?>
         </div>
     </div>
 
@@ -100,6 +106,12 @@ require_once 'header.php';
             fix_nav.style.zIndex = 3;
         } else {
             fix_nav.style.zIndex = 1;
+        }
+    }
+
+    function check() {
+        if (document.search_form.search_key.value === '') {
+            return false;
         }
     }
 </script>

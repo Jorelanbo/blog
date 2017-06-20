@@ -5,6 +5,12 @@
  * Date: 2017/5/26 0026
  * Time: 15:04
  */
+require_once 'include/mysqli.class.php';
+$id = isset($_GET['id']) ? $_GET['id'] : '';
+/*if ($id == '') {
+    echo '您选择的文章为无效文章！';
+    exit;
+}*/
 ?>
 
 <!DOCTYPE html>
@@ -13,6 +19,9 @@
     <meta charset="UTF-8">
     <title>John Rainbow</title>
     <link rel="stylesheet" type="text/css" href="templates/style/base.css">
+    <link rel="stylesheet" type="text/css" href="include/kindeditor/plugins/code/prettify.css">
+    <script type="text/javascript" src="templates/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="include/kindeditor/plugins/code/prettify.js"></script>
 </head>
 <body>
 
@@ -21,22 +30,92 @@ require_once 'header.php';
 ?>
 
 <div class="content">
-    content
+
+    <div class="left_area">
+        <div class="main_article">
+            <h2 style="margin-top: 20px;margin-bottom:15px;color: #3C763D;font-weight: 300;font-family: 'Times New Roman', serif">about the site</h2>
+            <div style="color: #333;line-height: 25px;font-size: 16px">
+                　This is a PHP blog project,being developing by Jorelanbo,a fresh PHP programmer,without any PHP framework.<br>
+                　The project's purpose is quite simple--to improve Jorelanbo's programming skill and show what Jorelanbo wants to show.<br><br>
+            </div>
+            <h2 style="margin-top: 20px;margin-bottom:15px;color: #337AB7;font-weight: 300;font-family: 'Times New Roman', serif"">about the creator</h2>
+            <div style="color: #333;line-height: 25px;font-size: 16px">
+                Nick Name：Jorelanbo　　English Name：John Rainbow<br>
+                QQ:651118767　　Wechat：thegreatGatesby<br>
+                email：Jorelanbo@gmail.com <br><br>
+                I'll be happy to get message from you in any way above!<br>
+            </div>
+        </div>
+    </div>
+
+    <div class="menu">
+        <div class="search_box">
+            <form name="search_form" action="search.php" method="get" onsubmit="return check();">
+                <div class="search_title">搜索</div>
+                <input title="search_key" name="search_key" class="search_key" placeholder="search key" type="text"><input type="submit" class="submit_search_key" value="　　">
+            </form>
+        </div>
+
+        <div class="announcement">
+            <div class="menu_title">公告</div>
+            <div class="announcement_box">
+                假如生活欺骗了你，<br>
+                不要悲伤，不要心急！<br>
+                忧郁的日子里须要镇静：<br>
+                相信吧，快乐的日子将会来临！<br>
+                心儿永远向往着未来；<br>
+                现在却常是忧郁。<br>
+                一切都是瞬息，一切都将会过去；<br>
+                而那过去了的，就会成为亲切的怀恋。<br>
+                ————普希金《假如生活欺骗了你》
+
+            </div>
+        </div>
+
+        <div class="newest">
+            <div class="menu_title">最新文章</div>
+            <div class="newest_list">
+                <?php include_once 'newest.php';?>
+            </div>
+        </div>
+
+        <div class="scan_times_list">
+            <div class="menu_title">浏览次数排行</div>
+            <div class="high_view_list">
+                <?php include_once 'highViewList.php';?>
+            </div>
+        </div>
+
+        <div id="Jorelanbo">
+            <div class="Jorelanbo_box">
+                <h2>Jorelanbo</h2><br>
+                学习交流。<br>
+                QQ：651118767<br>
+                微信：thegreatGatesby<br>
+                email：Jorelanbo@gmail.com
+            </div>
+        </div>
+
+        <div id="fix_Jorelanbo">
+            <div class="Jorelanbo_box">
+                <h2>Jorelanbo</h2><br>
+                学习交流。<br>
+                QQ：651118767<br>
+                微信：thegreatGatesby<br>
+                email：Jorelanbo@gmail.com
+            </div>
+        </div>
+
+        <!--计划添加悬浮简介-->
+    </div>
 </div>
 
-<div class="footer">footer</div>
+<div class="footer">
+    © 2017 Jorelanbo 版权所有 粤ICP备*******号
+</div>
 
+<div class="blank"></div>
 
-<script>
-    var fix_nav = document.getElementById("fix_nav");
-    window.onscroll = function () {
-        var t = document.documentElement.scrollTop || document.body.scrollTop;
-        if (t > 100) {
-            fix_nav.style.zIndex = 3;
-        } else {
-            fix_nav.style.zIndex = 1;
-        }
-    }
-</script>
+<script type="text/javascript" src="templates/js/fix.js"></script>
 </body>
 </html>

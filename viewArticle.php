@@ -75,7 +75,17 @@ require_once 'header.php';
             </div>
         </div>
 
-        <div class="Jorelanbo">
+        <div id="Jorelanbo">
+            <div class="Jorelanbo_box">
+                <h2>Jorelanbo</h2><br>
+                学习交流。<br>
+                QQ：651118767<br>
+                微信：thegreatGatesby<br>
+                email：Jorelanbo@gmail.com
+            </div>
+        </div>
+
+        <div id="fix_Jorelanbo">
             <div class="Jorelanbo_box">
                 <h2>Jorelanbo</h2><br>
                 学习交流。<br>
@@ -89,26 +99,12 @@ require_once 'header.php';
     </div>
 </div>
 
-<div class="links_box">
-    <div class="links">
-        友情链接
-    </div>
+<div class="footer">
+    © 2017 Jorelanbo 版权所有 粤ICP备*******号
 </div>
-
-<div class="footer">footer</div>
 
 <div class="blank"></div>
 
-<script>
-    var fix_nav = document.getElementById("fix_nav");
-    window.onscroll = function () {
-        var t = document.documentElement.scrollTop || document.body.scrollTop;
-        if (t > 100) {
-            fix_nav.style.zIndex = 3;
-        } else {
-            fix_nav.style.zIndex = 1;
-        }
-    }
-</script>
+<script type="text/javascript" src="templates/js/fix.js"></script>
 </body>
 </html>

@@ -69,7 +69,17 @@ require_once 'header.php';
             </div>
         </div>
 
-        <div class="Jorelanbo">
+        <div id="Jorelanbo">
+            <div class="Jorelanbo_box">
+                <h2>Jorelanbo</h2><br>
+                学习交流。<br>
+                QQ：651118767<br>
+                微信：thegreatGatesby<br>
+                email：Jorelanbo@gmail.com
+            </div>
+        </div>
+
+        <div id="fix_Jorelanbo">
             <div class="Jorelanbo_box">
                 <h2>Jorelanbo</h2><br>
                 学习交流。<br>
@@ -85,30 +95,29 @@ require_once 'header.php';
 
 <div class="links_box">
     <div class="links">
-        友情链接
+        <span>+友情链接</span>
+        <div class="links_list">
+            <a href="http://fsdstar.com/" target="_blank">放水的星星</a>
+            <a href="http://www.loveweir.com/" target="_blank">爱威尔</a>
+            <a href="http://php.net/manual/zh/index.php" target="_blank">PHP手册</a>
+            <a href="http://www.w3school.com.cn/" target="_blank">W3School</a>
+            <a href="http://jquery.cuishifeng.cn/" target="_blank">jQuery</a>
+            <a href="http://kindeditor.net/" target="_blank">kindeditor</a>
+            <a href="https://www.qiniu.com/" target="_blank">七牛云</a>
+            <a href="http://www.csdn.net/" target="_blank">CSDN</a>
+            <a href="http://study.163.com/" target="_blank">网易云课堂</a>
+            <a href="http://www.imooc.com/" target="_blank">慕课网</a>
+            <a href="http://www.jb51.net/" target="_blank">脚本之家</a>
+        </div>
     </div>
 </div>
 
-<div class="footer">footer</div>
+<div class="footer">
+    © 2017 Jorelanbo 版权所有 粤ICP备*******号
+</div>
 
 <div class="blank"></div>
 
-<script>
-    var fix_nav = document.getElementById("fix_nav");
-    window.onscroll = function () {
-        var t = document.documentElement.scrollTop || document.body.scrollTop;
-        if (t > 100) {
-            fix_nav.style.zIndex = 3;
-        } else {
-            fix_nav.style.zIndex = 1;
-        }
-    }
-
-    function check() {
-        if (document.search_form.search_key.value === '') {
-            return false;
-        }
-    }
-</script>
+<script type="text/javascript" src="templates/js/fix.js"></script>
 </body>
 </html>

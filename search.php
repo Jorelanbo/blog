@@ -101,19 +101,7 @@ require_once 'header.php';
 <div class="links_box">
     <div class="links">
         <span>+友情链接</span>
-        <div class="links_list">
-            <a href="http://fsdstar.com/" target="_blank">放水的星星</a>
-            <a href="http://www.loveweir.com/" target="_blank">爱威尔</a>
-            <a href="http://php.net/manual/zh/index.php" target="_blank">PHP手册</a>
-            <a href="http://www.w3school.com.cn/" target="_blank">W3School</a>
-            <a href="http://jquery.cuishifeng.cn/" target="_blank">jQuery</a>
-            <a href="http://kindeditor.net/" target="_blank">kindeditor</a>
-            <a href="https://www.qiniu.com/" target="_blank">七牛云</a>
-            <a href="http://www.csdn.net/" target="_blank">CSDN</a>
-            <a href="http://study.163.com/" target="_blank">网易云课堂</a>
-            <a href="http://www.imooc.com/" target="_blank">慕课网</a>
-            <a href="http://www.jb51.net/" target="_blank">脚本之家</a>
-        </div>
+        <?php require_once 'links.php';?>
     </div>
 </div>
 

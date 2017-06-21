@@ -39,11 +39,50 @@ class Mysql{
     }
 
     /**
+     * 得到站主信息
+     *
+     * @return array
+     */
+    function getMaster()
+    {
+        $sql = "SELECT * From user";
+        $result = $this->mysqli->query($sql);
+        $result->data_seek(0);
+        $row = $result->fetch_assoc();
+        $name = $row['name'];
+        $sex = $row['sex'] == 1 ? '男': '女';
+        $signature = $row['signature'];
+        $avatar_path = $row['avatar_path'];
+        $master = ['name'=>$name, 'sex'=>$sex, 'signature'=>$signature, 'avatar_path'=>$avatar_path];
+        return $master;
+    }
+
+    function getLinks()
+    {
+        $sql = "SELECT name,url FROM links";
+        $result = $this->mysqli->query($sql);
+
+        $links = [];
+        if ($this->mysqli->affected_rows > 0) {
+            for ($i = 0; $i < $result->num_rows; $i ++) {
+                $result->data_seek($i);
+                $row = $result->fetch_assoc();
+                $links[] = ['name'=>$row['name'], 'url'=>$row['url']];
+            }
+        } else {
+            echo $this->mysqli->errno . ' :' . $this->mysqli->error;
+        }
+
+        return $links;
+    }
+
+    /**
      * 获取文章的数目，可以根据文章类型获取
      * @param null $article_type
      * @return int
      */
-    function getArticleCount($article_type = null) {
+    function getArticleCount($article_type = null)
+    {
         if ($article_type == null) {
             $sql = "SELECT count(*) FROM article";
         } else {
@@ -58,24 +97,6 @@ class Mysql{
             $article_count = 0;
         }
         return $article_count;
-    }
-
-    /**
-     * 得到站主信息
-     *
-     * @return array
-     */
-    function getMaster(){
-        $sql = "SELECT * From user";
-        $result = $this->mysqli->query($sql);
-        $result->data_seek(0);
-        $row = $result->fetch_assoc();
-        $name = $row['name'];
-        $sex = $row['sex'] == 1 ? '男': '女';
-        $signature = $row['signature'];
-        $avatar_path = $row['avatar_path'];
-        $master = ['name'=>$name, 'sex'=>$sex, 'signature'=>$signature, 'avatar_path'=>$avatar_path];
-        return $master;
     }
 
     /**
@@ -104,6 +125,8 @@ class Mysql{
                     'keywords'=>$row['keywords'], 'introduction'=>$row['introduction'], 'content'=>$row['content'],
                     'view_times'=>$row['view_times'], 'create_time'=>$row['create_time']];
             }
+        } else {
+            echo $this->mysqli->errno . ' :' . $this->mysqli->error;
         }
 
         return $articles;
@@ -125,6 +148,8 @@ class Mysql{
                 $row = $result->fetch_assoc();
                 $articles[] = ['id'=>$row['id'], 'title'=>$row['title']];
             }
+        } else {
+            echo $this->mysqli->errno . ' :' . $this->mysqli->error;
         }
 
         return $articles;
@@ -147,6 +172,8 @@ class Mysql{
             $article = ['id'=>$row['id'], 'title'=>$row['title'], 'article_type_id'=>$row['article_type_id'],
                 'keywords'=>$row['keywords'], 'introduction'=>$row['introduction'], 'content'=>$row['content'],
                 'view_times'=>$row['view_times'], 'create_time'=>$row['create_time']];
+        } else {
+            echo $this->mysqli->errno . ' :' . $this->mysqli->error;
         }
 
         return $article;
@@ -168,6 +195,8 @@ class Mysql{
                 $row = $result->fetch_assoc();
                 $articles[] = ['id'=>$row['id'], 'title'=>$row['title'], 'view_times'=>$row['view_times']];
             }
+        } else {
+            echo $this->mysqli->errno . ' :' . $this->mysqli->error;
         }
 
         return $articles;
@@ -194,7 +223,10 @@ class Mysql{
                 $articles[] = ['id'=>$row['id'], 'title'=>$row['title'], 'keywords'=>$row['keywords'], 'introduction'=>
                     $row['introduction'], 'view_times'=>$row['view_times'], 'create_time'=>$row['create_time']];
             }
+        } else {
+            echo $this->mysqli->errno . ' :' . $this->mysqli->error;
         }
+
         return $articles;
     }
 

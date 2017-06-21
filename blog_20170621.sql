@@ -108,7 +108,7 @@ CREATE TABLE `links` (
   `name` varchar(100) NOT NULL,
   `url` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -117,6 +117,7 @@ CREATE TABLE `links` (
 
 LOCK TABLES `links` WRITE;
 /*!40000 ALTER TABLE `links` DISABLE KEYS */;
+INSERT INTO `links` VALUES (1,'放水的星星','http://fsdstar.com/'),(2,'爱威尔','http://www.loveweir.com/'),(3,'PHP手册','http://php.net/manual/zh/index.php'),(4,'W3School','http://www.w3school.com.cn/'),(5,'jQuery','http://jquery.cuishifeng.cn/'),(6,'kindeditor','http://kindeditor.net/'),(7,'七牛云','https://www.qiniu.com/'),(8,'CSDN','http://www.csdn.net/'),(9,'网易云课堂','http://study.163.com/'),(10,'慕课网','http://www.imooc.com/'),(11,'脚本之家','http://www.jb51.net/');
 /*!40000 ALTER TABLE `links` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -131,8 +132,8 @@ CREATE TABLE `user` (
   `id` int(3) NOT NULL AUTO_INCREMENT,
   `name` varchar(16) NOT NULL,
   `sex` smallint(1) NOT NULL,
-  `signature` varchar(30) DEFAULT NULL,
-  `avatar_path` varchar(50) DEFAULT NULL,
+  `signature` varchar(60) DEFAULT NULL,
+  `avatar_path` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -143,7 +144,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'Jorelanbo',1,'Haircut really matters!','templates/images/js111.jpg');
+INSERT INTO `user` VALUES (1,'Jorelanbo',1,'Haircut really matters!!!','templates/images/js111.jpg');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -156,4 +157,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-20 18:32:17
+-- Dump completed on 2017-06-21 18:18:49

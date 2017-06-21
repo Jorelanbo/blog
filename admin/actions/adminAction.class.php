@@ -33,6 +33,7 @@ class adminAction
     /**
      *
      * @param $current_page
+     * @param $get_search_key
      */
     function articleList_p($current_page,$get_search_key)
     {
@@ -301,6 +302,47 @@ class adminAction
     function experience_p()
     {
         include_once __DIR__ . '/../experience.php';
+    }
+
+    function master_p()
+    {
+        $sql = "SELECT * FROM user";
+        $mysqli = $this->getMysqli();
+        $result = $mysqli->query($sql);
+
+        if ($mysqli->affected_rows > 0) {
+            $result->data_seek(0);
+            $row = $result->fetch_assoc();
+            $id = $row['id'];
+            $name = $row['name'];
+            $signature = $row['signature'];
+            $avatar_path = $row['avatar_path'];
+            include_once __DIR__ . '/../master.php';
+        } else {
+            echo $mysqli->errno . ' : ' . $mysqli->error;
+        }
+    }
+
+    function updateMaster(){
+        $id = isset($_POST['master_id']) ? $_POST['master_id'] : 1;
+        $name = isset($_POST['master_name']) ? $_POST['master_name'] : 'Jorelanbo';
+        $signature = isset($_POST['master_signature']) ? $_POST['master_signature'] : '';
+        $avatar_path = isset($_POST['master_avatar_path']) ? $_POST['master_avatar_path'] : 'templates/images/js111.jpg';
+
+        $sql = "UPDATE user SET name='$name',signature='$signature',avatar_path='$avatar_path' WHERE id='$id'";
+        $mysql = $this->getMysqli();
+        $mysql->query($sql);
+
+        if ($mysql->affected_rows > 0 || $mysql->errno == 0) {   //当errno等于0时说明是在数据没有改变的情况下提交
+            $this->master_p();
+        } else {
+            echo $mysql->errno . ' : ' . $mysql->error;
+        }
+    }
+
+    function links_p()
+    {
+        include_once __DIR__ . '/../links.php';
     }
 
     /**

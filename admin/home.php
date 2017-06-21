@@ -53,6 +53,13 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
         <li>
             <a class="menu_experience_button menu_button" href="index.php?m=admin&a=experience_p" target="content_iframe">　经验</a>
         </li>
+        <li>
+            <a class="menu_setting_button menu_button">　设置</a>
+            <ul class="sub">
+                <li><a href="index.php?m=admin&a=master_p" target="content_iframe">站长信息</a></li>
+                <li><a href="index.php?m=admin&a=links_p" target="content_iframe">友情链接</a></li>
+            </ul>
+        </li>
     </ul>
 </div>
 
@@ -61,24 +68,6 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
     </iframe>
 </div>
 
-<script>
-    $(function () {
-        $(".user_box").hover(function () {
-            $(this).find("ul").show("fast");
-        },function () {
-            $(this).find("ul").hide("fast");
-        });
-
-        $("a.menu_button").click(function () {
-            var list = $(this).parent().find("ul.sub");
-            if (list.css("display") === "none") {
-                list.show("fast", "swing");
-            } else {
-                list.hide("fast", "swing");
-            }
-
-        });
-    });
-</script>
+<script type="text/javascript" src="templates/js/menu.js"></script>
 </body>
 </html>

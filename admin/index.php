@@ -5,6 +5,7 @@
  * Date: 2017/6/6 0006
  * Time: 10:06
  */
+echo '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />'; //解决alert提示框输出乱码的bug
 function __autoload($classname)
 {
     $classfile = 'actions/'.$classname . '.class.php';

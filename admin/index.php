@@ -9,7 +9,7 @@ echo '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />'; //
 function __autoload($classname)
 {
     $classfile = 'actions/'.$classname . '.class.php';
-    file_exists($classfile) ? include $classfile : die('类文件不存在！');
+    file_exists($classfile) ? include $classfile : die($classname . '类文件不存在！');
 }
 
 $model = isset($_GET['m']) ? $_GET['m'] : 'user';

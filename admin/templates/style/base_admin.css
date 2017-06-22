@@ -364,7 +364,7 @@ img#back:hover {
     border-radius: 2px;
 }
 
-input#submit {
+#submit {
     width: 120px;
     height: 30px;
     background: #6FA5DB;
@@ -375,7 +375,7 @@ input#submit {
     cursor: pointer;
 }
 
-input#reset {
+#reset {
     width: 120px;
     height: 30px;
     background: gray;
@@ -384,6 +384,11 @@ input#reset {
     border: 1px solid white;
     border-radius: 3px;
     cursor: pointer;
+}
+
+a#reset {
+    display: inline-block;
+    line-height: 30px;
 }
 
 .writeArticle_body select {
@@ -708,16 +713,45 @@ form[name='search_form'] {
 
 .master_form_box {
     width: 600px;
-    height: 300px;
+    height: 360px;
     padding-left: 60px;
-    padding-top: 60px;
+    padding-top:15px;
     background: darkseagreen;
+    border-radius: 5px;
+}
+
+.master_form_box .avatar_box {
+    width: 80px;
+    height: 100px;
+    margin: 20px;
+}
+
+.master_form_box img {
+    display: block;
+    width: 80px;
+    height: 80px;
+    border: 1px solid white;
+    border-radius: 50%;
+}
+
+.master_form_box a {
+    width: 80px;
+    height: 20px;
+    display: block;
+    text-align: center;
+    color: gray;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.master_form_box a:hover {
+    color: #DDDDDD;
 }
 
 .master_form_box label {
     color: white;
-    font-size: 18px;
-    font-family: 黑体, serif;
+    font-size: 16px;
+    font-family: 宋体, serif;
 }
 
 .master_form_box input {
@@ -728,4 +762,22 @@ form[name='search_form'] {
     border: 1px solid white;
     border-radius: 5px;
     color: #888;
+}
+
+/*上传头像页面*/
+.avatar_form_box {
+    width: 300px;
+    height: 200px;
+    padding-top: 60px;
+    padding-left: 30px;
+    margin-left: 60px;
+    margin-top: 60px;
+    background: darkseagreen;
+    border-radius: 5px;
+}
+
+#avatar_file {
+    width: 300px;
+    height: 30px;
+    margin-bottom: 30px;
 }

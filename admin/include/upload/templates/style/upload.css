@@ -1,0 +1,37 @@
+.update_avatar_box {
+    width: 200px;
+    height: 200px;
+    padding-top:15px;
+    margin-left: 60px;
+    margin-top:30px;
+    background: darkseagreen;
+    border-radius: 5px;
+}
+
+.update_avatar {
+    display: block;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    border: 1px solid white;
+    border-radius: 50%;
+}
+
+.blank {
+    height: 30px;
+}
+
+#submit {
+    display: block;
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background: #6FA5DB;
+    margin: 0 auto;
+    color: white;
+    text-decoration-line: none;
+    border: 1px solid white;
+    border-radius: 3px;
+    cursor: pointer;
+}

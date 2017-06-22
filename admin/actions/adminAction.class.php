@@ -304,7 +304,7 @@ class adminAction
         include_once __DIR__ . '/../experience.php';
     }
 
-    function master_p()
+    function master_p($avatar_type = 1)
     {
         $sql = "SELECT * FROM user";
         $mysqli = $this->getMysqli();
@@ -317,13 +317,18 @@ class adminAction
             $name = $row['name'];
             $signature = $row['signature'];
             $avatar_path = $row['avatar_path'];
+
+            if (isset($_COOKIE['new_avatar']) && $avatar_type == 2) {
+                $avatar_path = $_COOKIE['new_avatar'];
+            }
             include_once __DIR__ . '/../master.php';
         } else {
             echo $mysqli->errno . ' : ' . $mysqli->error;
         }
     }
 
-    function updateMaster(){
+    function updateMaster()
+    {
         $id = isset($_POST['master_id']) ? $_POST['master_id'] : 1;
         $name = isset($_POST['master_name']) ? $_POST['master_name'] : 'Jorelanbo';
         $signature = isset($_POST['master_signature']) ? $_POST['master_signature'] : '';
@@ -338,6 +343,16 @@ class adminAction
         } else {
             echo $mysql->errno . ' : ' . $mysql->error;
         }
+    }
+
+    function updateAvatar_p()
+    {
+        require_once __DIR__ . '/../avatar.php';
+    }
+
+    function updateAvatar()
+    {
+
     }
 
     function links_p()

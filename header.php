@@ -18,7 +18,7 @@ $avatar_path = $master['avatar_path'];
 ?>
 <div class="box">
 
-    <div class="header">
+    <div class="header" id="header">
 
         <div class="avatar_area">
 

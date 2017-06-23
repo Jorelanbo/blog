@@ -69,6 +69,63 @@ a {
     border-bottom: 1px solid #8c8c8c;
 }
 
+/*悬浮引导框*/
+#guide {
+    position: fixed;
+    top: 50%;
+    right: 2px;
+    height: 105px;
+    width: 35px;
+}
+
+a#to_header {
+    display: block;
+    width: 35px;
+    height: 28px;
+    background: url("../images/up.png") no-repeat center;
+    background-size: 16px 16px;
+    border:  1px solid #CCCCCC;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+a#to_header:hover {
+    background: #E6E6E6 url("../images/up.png") no-repeat center;
+    background-size: 16px 16px;
+}
+
+a#refresh {
+    display: block;
+    width: 35px;
+    height: 28px;
+    background: url("../images/refresh.png") no-repeat center;
+    background-size: 14px 14px;
+    border-left: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+}
+
+a#refresh:hover {
+    background: #E6E6E6 url("../images/refresh.png") no-repeat center;
+    background-size: 14px 14px;
+}
+
+a#to_bottom {
+    display: block;
+    width: 35px;
+    height: 28px;
+    background: url("../images/down.png") no-repeat center;
+    background-size: 14px 14px;
+    border:  1px solid #CCCCCC;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+a#to_bottom:hover {
+    background: #E6E6E6 url("../images/down.png") no-repeat center;
+    background-size: 14px 14px;
+}
+
+/*导航栏*/
 .nav_bg {
     height: 60px;
     background: #F8F8F8;

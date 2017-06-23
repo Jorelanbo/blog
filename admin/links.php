@@ -62,7 +62,7 @@ for ($i = 0; $i < count($links); $i ++) {
             <a class="remove" href="index.php?m=admin&a=removeLink&id=<?php echo $id; ?>"></a>
         </div>
         <div class="link_rewrite_item">
-            <form name="rewrite_link_form" action="index.php?m=admin&a=rewriteLink&id=<?php echo $id; ?>" method="post" onsubmit="return check();">
+            <form name="rewrite_link_form" action="index.php?m=admin&a=rewriteLink&id=<?php echo $id; ?>" method="post" onsubmit="return checkRewrite();">
                 　　<label for="rewrite_link_name">网站名称：</label>
                 <input type="text" class="rewrite_link_input" name="rewrite_link_name" id="rewrite_link_name" value="<?php echo $name; ?>">
                 　　<label for="rewrite_link_url">网站地址：</label>
@@ -79,6 +79,7 @@ for ($i = 0; $i < count($links); $i ++) {
 <div class="links_body_blank"></div>
 
 <script>
+    /*添加*/
     $("#add_link").click(function () {
         var add_box = $("#add_link_box");
         if (add_box.css("display") === "none") {
@@ -110,6 +111,12 @@ for ($i = 0; $i < count($links); $i ++) {
             rewrite_item.hide(200);
             link_item.show(200);
         }
+    });
+
+    /*删除提醒*/
+    $(".remove").click(function () {
+        var remove = window.confirm("你确定要删除该友情链接吗？");
+        return remove === true;
     });
 </script>
 </body>

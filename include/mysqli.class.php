@@ -59,7 +59,7 @@ class Mysql{
 
     function getLinks()
     {
-        $sql = "SELECT name,url FROM links";
+        $sql = "SELECT name,url FROM links ORDER BY id ASC";
         $result = $this->mysqli->query($sql);
 
         $links = [];

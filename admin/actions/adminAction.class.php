@@ -373,7 +373,7 @@ class adminAction
 
     function links_p()
     {
-        $sql = "SELECT * FROM links";
+        $sql = "SELECT * FROM links ORDER BY id ASC ";
         $mysqli = $this->getMysqli();
         $result = $mysqli->query($sql);
 

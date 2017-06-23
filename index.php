@@ -16,6 +16,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 1;
     <meta charset="UTF-8">
     <title>John Rainbow</title>
     <link rel="stylesheet" type="text/css" href="templates/style/base.css">
+    <script type="text/javascript" src="templates/js/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 
@@ -100,12 +101,24 @@ require_once 'header.php';
     </div>
 </div>
 
-<div class="footer">
-    © 2017 Jorelanbo 版权所有 粤ICP备*******号
-</div>
+<?php include_once 'footer.php';?>
 
 <div class="blank"></div>
 
+<div id="guide">
+    <a id="to_header" href="#header" title="去顶部"></a>
+    <a id="refresh" title="刷新" onclick="location.reload();"></a>
+    <a id="to_bottom" href="#footer" title="去底部"></a>
+</div>
+
 <script type="text/javascript" src="templates/js/fix.js"></script>
+<script>
+    $('#to_header,#to_bottom').click(function () {
+        $('html, body').animate({
+            scrollTop: $($.attr(this, 'href')).offset().top
+        }, 500);
+        return false;
+    });
+</script>
 </body>
 </html>

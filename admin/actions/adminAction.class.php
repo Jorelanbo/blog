@@ -243,6 +243,22 @@ class adminAction
         $this->showArticle($id);
     }
 
+    function removeArticle($article_id)
+    {
+        $mysqli = $this->getMysqli();
+        $sql = "DELETE FROM article WHERE id='$article_id'";
+        $mysqli->query($sql);
+        if ($mysqli->affected_rows > 0) {
+            echo "<script>alert('删除成功！')</script>";
+            $this->articleList_p(1, null);
+        } else {
+            $errno = $mysqli->errno;
+            $error = $mysqli->error;
+            echo "<script>alert('删除失败：$errno,$error');</script>";
+            $this->showArticle($article_id);
+        }
+    }
+
     /**
      *
      *
@@ -335,13 +351,13 @@ class adminAction
         $avatar_path = isset($_POST['master_avatar_path']) ? $_POST['master_avatar_path'] : 'templates/images/js111.jpg';
 
         $sql = "UPDATE user SET name='$name',signature='$signature',avatar_path='$avatar_path' WHERE id='$id'";
-        $mysql = $this->getMysqli();
-        $mysql->query($sql);
+        $mysqli = $this->getMysqli();
+        $mysqli->query($sql);
 
-        if ($mysql->affected_rows > 0 || $mysql->errno == 0) {   //当errno等于0时说明是在数据没有改变的情况下提交
+        if ($mysqli->affected_rows > 0 || $mysqli->errno == 0) {   //当errno等于0时说明是在数据没有改变的情况下提交
             $this->master_p();
         } else {
-            echo $mysql->errno . ' : ' . $mysql->error;
+            echo $mysqli->errno . ' : ' . $mysqli->error;
         }
     }
 
@@ -357,12 +373,85 @@ class adminAction
 
     function links_p()
     {
-        include_once __DIR__ . '/../links.php';
+        $sql = "SELECT * FROM links";
+        $mysqli = $this->getMysqli();
+        $result = $mysqli->query($sql);
+
+        if ($mysqli->affected_rows > 0) {
+            $links = [];
+            for ($i = 0; $i < $result->num_rows; $i ++) {
+                $result->data_seek($i);
+                $row = $result->fetch_assoc();
+                $id = $row['id'];
+                $name = $row['name'];
+                $url = $row['url'];
+                $links[] = ['id'=>$id, 'name'=>$name, 'url'=>$url];
+            }
+            include_once __DIR__ . '/../links.php';
+        } else {
+            echo $mysqli->errno . ' : ' . $mysqli->error;
+        }
+    }
+
+    function addLink()
+    {
+        if (!isset($_POST['add_link_name']) || !isset($_POST['add_link_url'])) {
+            echo "<script>alert('提交错误！');history.go(-1);</script>";
+            exit;
+        }
+        $link_name = $_POST['add_link_name'];
+        $link_url = $_POST['add_link_url'];
+
+        $mysqli = $this->getMysqli();
+        $sql = "INSERT INTO links(name, url) VALUES ('$link_name', '$link_url')";
+        $mysqli->query($sql);
+        if ($mysqli->affected_rows > 0) {
+            echo "<script>alert('友情链接添加成功！')</script>";
+            $this->links_p();
+        } else {
+            echo $mysqli->errno . ' : ' . $mysqli->error;
+        }
+    }
+
+    function rewriteLink($link_id)
+    {
+        if (!isset($_POST['rewrite_link_name']) || !isset($_POST['rewrite_link_url'])) {
+            echo "<script>alert('提交错误！');history.go(-1);</script>";
+            exit;
+        }
+        $link_name = $_POST['rewrite_link_name'];
+        $link_url = $_POST['rewrite_link_url'];
+
+        $mysqli = $this->getMysqli();
+        $sql = "UPDATE links SET name='$link_name',url='$link_url' WHERE id='$link_id'";
+        $mysqli->query($sql);
+        if ($mysqli->affected_rows > 0) {
+            echo "<script>alert('友情链接修改成功！')</script>";
+            $this->links_p();
+        } else {
+            echo $mysqli->errno . ' : ' . $mysqli->error;
+        }
+    }
+
+    function removeLink($link_id)
+    {
+        $mysqli = $this->getMysqli();
+        $sql = "DELETE FROM links WHERE id='$link_id'";
+        $mysqli->query($sql);
+        if ($mysqli->affected_rows > 0) {
+            echo "<script>alert('删除成功！')</script>";
+            $this->links_p();
+        } else {
+            $errno = $mysqli->errno;
+            $error = $mysqli->error;
+            echo "<script>alert('删除失败：$errno,$error');</script>";
+            $this->links_p();
+        }
     }
 
     /**
-     * @param $sql
      * @return mysqli
+     * @internal param $sql
      */
     function getMysqli()
     {

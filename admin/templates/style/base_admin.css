@@ -486,6 +486,18 @@ a#reset {
     height: 20px;
     float: right;
     background: url("../images/rewrite.png") no-repeat center;
+    background-size: 16px 16px;
+    cursor: pointer;
+}
+
+.remove {
+    display: block;
+    width: 20px;
+    height: 20px;
+    float: right;
+    background: url("../images/remove.png") no-repeat center;
+    background-size: 16px 16px;
+    cursor: pointer;
 }
 
 /*文章重写界面（其余样式与写文章相同）*/
@@ -780,4 +792,138 @@ form[name='search_form'] {
     width: 300px;
     height: 30px;
     margin-bottom: 30px;
+}
+
+/*友情链接页面*/
+.links_body {
+    overflow: auto;
+    background: #DDDDDD;
+}
+
+.links_body .links_body_blank {
+    height: 45px;
+}
+
+.links_body .add_link {
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    background: url("../images/add.png") no-repeat;
+    background-size: 20px 20px;
+    cursor: pointer;
+}
+
+.links_list {
+    width: 1000px;
+    margin: 0 auto;
+    background: wheat;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+.links_list #add_link_box {
+    display: none;
+    width: 800px;
+    height: 30px;
+    margin: 0 auto;
+}
+
+#add_link_box label {
+    color: white;
+    font-family: 微软雅黑, serif;
+}
+
+#add_link_box .add_link_input {
+    width: 180px;
+    height: 25px;
+    padding-left: 10px;
+    background: #D9EDF7;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+#add_link_submit {
+    width: 50px;
+    height: 25px;
+    background: #6FA5DB;
+    color: white;
+    padding-left: 5px;
+    border: 1px solid white;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.links_list .link_item {
+    width: 800px;
+    height: 80px;
+    padding: 10px;
+    margin: 0 auto;
+    border-bottom: 1px solid white;
+    background: powderblue;
+}
+
+.links_list .link_item .link_name {
+    margin-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    color: gray;
+}
+
+.links_list .link_item a.link_url {
+    display: block;
+    margin-left: 10px;
+    color: #cd0a0a;
+}
+
+.links_list .link_rewrite_item {
+    display: none;
+    width: 800px;
+    height: 80px;
+    line-height: 80px;
+    padding: 10px;
+    margin: 0 auto;
+    border-bottom: 1px solid white;
+    background: lightseagreen;
+}
+
+.links_list .link_rewrite_item label {
+    color: white;
+    font-family: 微软雅黑, serif;
+}
+
+.links_list .link_rewrite_item .rewrite_link_input {
+    width: 180px;
+    height: 25px;
+    padding-left: 10px;
+    background: #D9EDF7;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: gray;
+}
+
+#rewrite_link_submit {
+    width: 50px;
+    height: 25px;
+    background: #6FA5DB;
+    color: white;
+    padding-left: 5px;
+    border: 1px solid white;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.links_list .link_rewrite_item span {
+    display: inline-block;
+    width: 50px;
+    height: 23px;
+    line-height: 23px;
+    text-align: center;
+    background: #6FA;
+    border: 1px solid white;
+    border-radius: 3px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
 }

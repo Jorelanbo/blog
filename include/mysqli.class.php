@@ -110,9 +110,9 @@ class Mysql{
     {
         $page_start = ($current_page - 1) * 10;
         if ($typeId == null) {
-            $sql = "SELECT * FROM article ORDER BY create_time DESC LIMIT {$page_start},10";
+            $sql = "SELECT * FROM article ORDER BY create_time DESC LIMIT $page_start,10";
         } else {
-            $sql = "SELECT * FROM article WHERE article_type_id=$typeId ORDER BY create_time DESC LIMIT {$page_start},10";
+            $sql = "SELECT * FROM article WHERE article_type_id=$typeId ORDER BY create_time DESC LIMIT $page_start,10";
         }
         $result = $this->mysqli->query($sql);
 
@@ -238,8 +238,8 @@ class Mysql{
      */
     function getSearchCount($search_key)
     {
-        $sql = "SELECT count(*) FROM article WHERE title LIKE '%$search_key%' OR keywords LIKE '%$search_key%' ORDER BY 
-                create_time DESC";
+        $sql = "SELECT count(*) FROM article WHERE title LIKE '%$search_key%' OR keywords LIKE '%$search_key%' OR 
+                introduction LIKE '$search_key' ORDER BY create_time DESC";
         $result = $this->mysqli->query($sql);
         if ($this->mysqli->affected_rows > 0) {
             $result->data_seek(0);
@@ -258,13 +258,11 @@ class Mysql{
      */
     function articleView($id)
     {
-        $sql = "SELECT view_times FROM article WHERE id=$id";
-        $result = $this->mysqli->query($sql);
-        $result->data_seek(0);
-        $row = $result->fetch_assoc();
-        $view = $row['view_times'];
-        $view++;
-        $sql = "UPDATE article SET view_times = $view WHERE id=$id";
-        $this->mysqli->query($sql);
+        $mysqli = $this->mysqli;
+        $sql = "UPDATE article SET view_times=view_times + 1 WHERE id=$id";
+        $mysqli->query($sql);
+        if ($mysqli->affected_rows <= 0) {
+            echo $this->mysqli->errno . ' :' . $this->mysqli->error;
+        }
     }
 }

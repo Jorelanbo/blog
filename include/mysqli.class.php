@@ -211,8 +211,9 @@ class Mysql{
     function getSearchList($current_page = 1,$search_key)
     {
         $page_start = ($current_page - 1) * 10;
-        $sql = "SELECT id,title,article_type_id,keywords,introduction,view_times,create_time FROM article WHERE title 
-                LIKE '%$search_key%' OR keywords LIKE '%$search_key%' ORDER BY create_time DESC LIMIT $page_start,10";
+        $sql = "SELECT id,title,article_type_id,keywords,introduction,view_times,create_time FROM article 
+                WHERE title LIKE '%$search_key%' OR keywords LIKE '%$search_key%' OR introduction LIKE '%$search_key%' 
+                ORDER BY create_time DESC LIMIT $page_start,10";
         $result = $this->mysqli->query($sql);
 
         $articles = [];

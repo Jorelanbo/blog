@@ -22,6 +22,7 @@ if ($search_key == '') {
     <title>John Rainbow</title>
     <link rel="stylesheet" type="text/css" href="templates/style/base.css">
     <script type="text/javascript" src="templates/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="templates/js/share.js"></script>
 </head>
 <body>
 

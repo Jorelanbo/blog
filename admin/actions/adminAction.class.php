@@ -48,7 +48,8 @@ class adminAction
         if ($search_key == '') {
             $sql = "SELECT count(*) FROM article";
         } else {
-            $sql = "SELECT count(*) FROM article WHERE keywords LIKE '%{$search_key}%'";
+            $sql = "SELECT count(*) FROM article WHERE title LIKE '%{$search_key}%' OR keywords LIKE '%{$search_key}%' OR 
+                    introduction LIKE '%{$search_key}%'";
         }
 
         $mysqli = $this->getMysqli();
@@ -69,7 +70,8 @@ class adminAction
         if ($search_key == '') {
             $sql = "SELECT * FROM article ORDER BY create_time DESC LIMIT {$list_start},10";
         } else {
-            $sql = "SELECT * FROM article WHERE keywords LIKE '%{$search_key}%' ORDER BY create_time DESC LIMIT {$list_start},10";
+            $sql = "SELECT * FROM article WHERE title LIKE '%{$search_key}%' OR keywords LIKE '%{$search_key}%' OR 
+                    introduction LIKE '{$search_key}' ORDER BY create_time DESC LIMIT {$list_start},10";
         }
 
         $result = $mysqli->query($sql);

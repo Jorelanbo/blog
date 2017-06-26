@@ -21,6 +21,7 @@ if ($id == '') {
     <link rel="stylesheet" type="text/css" href="templates/style/base.css">
     <link rel="stylesheet" type="text/css" href="include/kindeditor/plugins/code/prettify.css">
     <script type="text/javascript" src="templates/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="templates/js/share.js"></script>
     <script type="text/javascript" src="include/kindeditor/plugins/code/prettify.js"></script>
 </head>
 <body>

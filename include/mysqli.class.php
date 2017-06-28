@@ -19,7 +19,8 @@
 
 $db = new Mysql();
 
-class Mysql{
+class Mysql
+{
     var $db_host;
     var $db_user;
     var $db_pwd;
@@ -45,29 +46,35 @@ class Mysql{
      */
     function getMaster()
     {
-        $sql = "SELECT * From user";
+        $sql = "SELECT * FROM user";
         $result = $this->mysqli->query($sql);
         $result->data_seek(0);
         $row = $result->fetch_assoc();
         $name = $row['name'];
-        $sex = $row['sex'] == 1 ? '男': '女';
+        $sex = $row['sex'] == 1 ? '男' : '女';
         $signature = $row['signature'];
         $avatar_path = $row['avatar_path'];
-        $master = ['name'=>$name, 'sex'=>$sex, 'signature'=>$signature, 'avatar_path'=>$avatar_path];
+        $master = ['name' => $name, 'sex' => $sex, 'signature' => $signature, 'avatar_path' => $avatar_path];
         return $master;
     }
 
     function getLinks()
     {
-        $sql = "SELECT name,url FROM links ORDER BY id ASC";
+        $sql = "SELECT name,
+                       url 
+                FROM links 
+                ORDER BY id ASC";
         $result = $this->mysqli->query($sql);
 
         $links = [];
         if ($this->mysqli->affected_rows > 0) {
-            for ($i = 0; $i < $result->num_rows; $i ++) {
+            for ($i = 0; $i < $result->num_rows; $i++) {
                 $result->data_seek($i);
                 $row = $result->fetch_assoc();
-                $links[] = ['name'=>$row['name'], 'url'=>$row['url']];
+                $links[] = [
+                    'name' => $row['name'],
+                    'url' => $row['url']
+                ];
             }
         } else {
             echo $this->mysqli->errno . ' :' . $this->mysqli->error;
@@ -84,9 +91,12 @@ class Mysql{
     function getArticleCount($article_type = null)
     {
         if ($article_type == null) {
-            $sql = "SELECT count(*) FROM article";
+            $sql = "SELECT count(*) 
+                    FROM article";
         } else {
-            $sql = "SELECT count(*) FROM article WHERE article_type_id=$article_type";
+            $sql = "SELECT count(*) 
+                    FROM article 
+                    WHERE article_type_id=$article_type";
         }
         $result = $this->mysqli->query($sql);
         if ($this->mysqli->affected_rows > 0) {
@@ -110,20 +120,34 @@ class Mysql{
     {
         $page_start = ($current_page - 1) * 10;
         if ($typeId == null) {
-            $sql = "SELECT * FROM article ORDER BY create_time DESC LIMIT $page_start,10";
+            $sql = "SELECT * 
+                    FROM article 
+                    ORDER BY create_time 
+                    DESC LIMIT $page_start,10";
         } else {
-            $sql = "SELECT * FROM article WHERE article_type_id=$typeId ORDER BY create_time DESC LIMIT $page_start,10";
+            $sql = "SELECT * 
+                    FROM article 
+                    WHERE article_type_id=$typeId 
+                    ORDER BY create_time 
+                    DESC LIMIT $page_start,10";
         }
         $result = $this->mysqli->query($sql);
 
         $articles = [];
         if ($this->mysqli->affected_rows > 0) {
-            for ($i = 0;$i < $result->num_rows;$i ++) {
+            for ($i = 0; $i < $result->num_rows; $i++) {
                 $result->data_seek($i);
                 $row = $result->fetch_assoc();
-                $articles[] = ['id'=>$row['id'], 'title'=>$row['title'], 'article_type_id'=>$row['article_type_id'],
-                    'keywords'=>$row['keywords'], 'introduction'=>$row['introduction'], 'content'=>$row['content'],
-                    'view_times'=>$row['view_times'], 'create_time'=>$row['create_time']];
+                $articles[] = [
+                    'id' => $row['id'],
+                    'title' => $row['title'],
+                    'article_type_id' => $row['article_type_id'],
+                    'keywords' => $row['keywords'],
+                    'introduction' => $row['introduction'],
+                    'content' => $row['content'],
+                    'view_times' => $row['view_times'],
+                    'create_time' => $row['create_time']
+                ];
             }
         } else {
             echo $this->mysqli->errno . ' :' . $this->mysqli->error;
@@ -138,15 +162,24 @@ class Mysql{
      */
     function getNewest()
     {
-        $sql = "SELECT id,title FROM article WHERE keywords LIKE '%important%' ORDER BY create_time DESC LIMIT 10";
+        $sql = "SELECT id,
+                      title 
+                FROM article 
+                WHERE keywords 
+                LIKE '%important%' 
+                ORDER BY create_time 
+                DESC LIMIT 10";
         $result = $this->mysqli->query($sql);
 
         $articles = [];
         if ($this->mysqli->affected_rows > 0) {
-            for ($i = 0;$i < $result->num_rows;$i ++) {
+            for ($i = 0; $i < $result->num_rows; $i++) {
                 $result->data_seek($i);
                 $row = $result->fetch_assoc();
-                $articles[] = ['id'=>$row['id'], 'title'=>$row['title']];
+                $articles[] = [
+                    'id' => $row['id'],
+                    'title' => $row['title']
+                ];
             }
         } else {
             echo $this->mysqli->errno . ' :' . $this->mysqli->error;
@@ -162,16 +195,25 @@ class Mysql{
      */
     function getArticle($id)
     {
-        $sql = "SELECT * FROM article WHERE id='$id'";
+        $sql = "SELECT * 
+                FROM article 
+                WHERE id='$id'";
         $result = $this->mysqli->query($sql);
 
         $article = [];
         if ($this->mysqli->affected_rows > 0) {
             $result->data_seek(0);
             $row = $result->fetch_assoc();
-            $article = ['id'=>$row['id'], 'title'=>$row['title'], 'article_type_id'=>$row['article_type_id'],
-                'keywords'=>$row['keywords'], 'introduction'=>$row['introduction'], 'content'=>$row['content'],
-                'view_times'=>$row['view_times'], 'create_time'=>$row['create_time']];
+            $article = [
+                'id' => $row['id'],
+                'title' => $row['title'],
+                'article_type_id' => $row['article_type_id'],
+                'keywords' => $row['keywords'],
+                'introduction' => $row['introduction'],
+                'content' => $row['content'],
+                'view_times' => $row['view_times'],
+                'create_time' => $row['create_time']
+            ];
         } else {
             echo $this->mysqli->errno . ' :' . $this->mysqli->error;
         }
@@ -185,15 +227,24 @@ class Mysql{
      */
     function getHighViewList()
     {
-        $sql = "SELECT id,title,view_times FROM article ORDER BY view_times DESC LIMIT 10";
+        $sql = "SELECT id,
+                       title,
+                       view_times 
+                FROM article 
+                ORDER BY view_times 
+                DESC LIMIT 10";
         $result = $this->mysqli->query($sql);
 
         $articles = [];
         if ($this->mysqli->affected_rows > 0) {
-            for ($i = 0; $i < $result->num_rows; $i ++) {
+            for ($i = 0; $i < $result->num_rows; $i++) {
                 $result->data_seek($i);
                 $row = $result->fetch_assoc();
-                $articles[] = ['id'=>$row['id'], 'title'=>$row['title'], 'view_times'=>$row['view_times']];
+                $articles[] = [
+                    'id' => $row['id'],
+                    'title' => $row['title'],
+                    'view_times' => $row['view_times']
+                ];
             }
         } else {
             echo $this->mysqli->errno . ' :' . $this->mysqli->error;
@@ -208,21 +259,36 @@ class Mysql{
      * @param $search_key
      * @return array
      */
-    function getSearchList($current_page = 1,$search_key)
+    function getSearchList($current_page = 1, $search_key)
     {
         $page_start = ($current_page - 1) * 10;
-        $sql = "SELECT id,title,article_type_id,keywords,introduction,view_times,create_time FROM article 
-                WHERE title LIKE '%$search_key%' OR keywords LIKE '%$search_key%' OR introduction LIKE '%$search_key%' 
-                ORDER BY create_time DESC LIMIT $page_start,10";
+        $sql = "SELECT id,
+                       title,
+                       article_type_id,
+                       keywords,introduction,
+                       view_times,
+                       create_time 
+                FROM article 
+                WHERE title LIKE '%$search_key%' OR 
+                      keywords LIKE '%$search_key%' OR 
+                      introduction LIKE '%$search_key%' 
+                ORDER BY create_time 
+                DESC LIMIT $page_start,10";
         $result = $this->mysqli->query($sql);
 
         $articles = [];
         if ($this->mysqli->affected_rows > 0) {
-            for ($i = 0; $i < $result->num_rows; $i ++) {
+            for ($i = 0; $i < $result->num_rows; $i++) {
                 $result->data_seek($i);
                 $row = $result->fetch_assoc();
-                $articles[] = ['id'=>$row['id'], 'title'=>$row['title'], 'keywords'=>$row['keywords'], 'introduction'=>
-                    $row['introduction'], 'view_times'=>$row['view_times'], 'create_time'=>$row['create_time']];
+                $articles[] = [
+                    'id' => $row['id'],
+                    'title' => $row['title'],
+                    'keywords' => $row['keywords'],
+                    'introduction' => $row['introduction'],
+                    'view_times' => $row['view_times'],
+                    'create_time' => $row['create_time']
+                ];
             }
         } else {
             echo $this->mysqli->errno . ' :' . $this->mysqli->error;
@@ -238,8 +304,12 @@ class Mysql{
      */
     function getSearchCount($search_key)
     {
-        $sql = "SELECT count(*) FROM article WHERE title LIKE '%$search_key%' OR keywords LIKE '%$search_key%' OR 
-                introduction LIKE '$search_key' ORDER BY create_time DESC";
+        $sql = "SELECT count(*) 
+                FROM article 
+                WHERE title LIKE '%$search_key%' OR 
+                      keywords LIKE '%$search_key%' OR 
+                      introduction LIKE '$search_key' 
+                ORDER BY create_time DESC";
         $result = $this->mysqli->query($sql);
         if ($this->mysqli->affected_rows > 0) {
             $result->data_seek(0);
@@ -259,10 +329,77 @@ class Mysql{
     function articleView($id)
     {
         $mysqli = $this->mysqli;
-        $sql = "UPDATE article SET view_times=view_times + 1 WHERE id=$id";
+        $sql = "UPDATE article 
+                SET view_times=view_times + 1 
+                WHERE id=$id";
         $mysqli->query($sql);
         if ($mysqli->affected_rows <= 0) {
-            echo $this->mysqli->errno . ' :' . $this->mysqli->error;
+            echo $mysqli->errno . ' :' . $mysqli->error;
         }
+    }
+
+    /**
+     * 获取所有相册
+     *
+     * @return array
+     */
+    function getAlbums()
+    {
+        $mysqli = $this->mysqli;
+        $sql = "SELECT * FROM album";
+        $result = $mysqli->query($sql);
+
+        $albums = [];
+        if ($mysqli->affected_rows > 0) {
+            for ($i = 0; $i < $result->num_rows; $i++) {
+                $result->data_seek($i);
+                $row = $result->fetch_assoc();
+                $albums[] = [
+                    'id' => $row['id'],
+                    'name' => $row['name'],
+                    'introduction' => $row['introduction'],
+                    'cover' => $row['cover'],
+                    'create_time' => $row['create_time']
+                ];
+            }
+        } else {
+            echo $mysqli->errno . ' :' . $mysqli->error;
+        }
+
+        return $albums;
+    }
+
+    /**
+     * 根据id获取相册中的所有相片
+     *
+     * @param $album_id
+     * @return array
+     */
+    function getPhotos($album_id)
+    {
+        $mysqli = $this->mysqli;
+        $sql = "SELECT * 
+                FROM photo 
+                WHERE album_id='$album_id'";
+        $result = $mysqli->query($sql);
+
+        $photos = [];
+        if ($mysqli->affected_rows > 0) {
+            for ($i = 0; $i < $result->num_rows; $i++) {
+                $result->data_seek($i);
+                $row = $result->fetch_assoc();
+                $photos[] = [
+                    'id' => $row['id'],
+                    'name' => $row['name'],
+                    'album_id' => $row['album_id'],
+                    'url' => $row['url'],
+                    'create_time' => $row['create_time']
+                ];
+            }
+        } else {
+            echo $mysqli->errno . ' :' . $mysqli->error;
+        }
+
+        return $photos;
     }
 }

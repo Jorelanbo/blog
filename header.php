@@ -41,8 +41,8 @@ $avatar_path = $master['avatar_path'];
                 <li class="life"><a href="life.php">生活</a></li>
                 <li class="skill"><a href="skill.php">技术</a></li>
                 <li class="album"><a href="album.php" target="_blank">相册</a></li>
-                <li class="video"><a href="video.php" target="_blank">视频</a></li>
-                <li class="experience"><a href="experience.php" target="_blank">经验</a></li>
+                <li class="video"><a href="toBeFinished.php" target="_blank">视频</a></li>
+                <li class="experience"><a href="toBeFinished.php" target="_blank">经验</a></li>
                 <li class="about"><a href="about.php">关于本站</a></li>
             </ul>
         </div>

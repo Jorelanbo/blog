@@ -35,7 +35,7 @@ class adminAction
      * @param $current_page
      * @param $get_search_key
      */
-    function articleList_p($current_page,$get_search_key)
+    function articleList_p($current_page, $get_search_key)
     {
         $search_key = '';
         $post_search_key = isset($_POST['post_search_key']) ? $_POST['post_search_key'] : '';
@@ -76,7 +76,7 @@ class adminAction
 
         $result = $mysqli->query($sql);
         if ($mysqli->affected_rows > 0) {
-            for ($i = 0; $i < $result->num_rows; $i ++) {
+            for ($i = 0; $i < $result->num_rows; $i++) {
                 $result->data_seek($i);
                 $row = $result->fetch_assoc();
                 $articles[] = [
@@ -145,7 +145,7 @@ class adminAction
         }
 
         //将单引号转义，防止与sql语句冲突
-        $articleContent = str_replace("'","\'", $articleContent);
+        $articleContent = str_replace("'", "\'", $articleContent);
 
         //将文章插入数据库
         $sql = "INSERT INTO article(title, article_type_id, keywords, introduction, content, view_times, create_time) VALUES 
@@ -228,7 +228,7 @@ class adminAction
         $createTime = $_POST['create_time'];
 
         //将单引号转义，防止与sql语句冲突
-        $articleContent = str_replace("'","\'", $articleContent);
+        $articleContent = str_replace("'", "\'", $articleContent);
 
         $mysqli = $this->getMysqli();
         $sql = "UPDATE article SET title='{$articleTitle}',article_type_id='{$articleType}',keywords='{$articleKeywords}', 
@@ -297,17 +297,99 @@ class adminAction
         }
     }
 
-    function pictureList_p()
+    function albumList()
     {
-        include_once __DIR__ . '/../pictureList.php';
+        $sql = "SELECT * FROM album";
+        $mysqli = $this->getMysqli();
+        $result = $mysqli->query($sql);
+
+        if ($mysqli->affected_rows > 0 || $mysqli->errno == 0) {
+            $albums = [];
+            for ($i = 0; $i < $result->num_rows; $i++) {
+                $result->data_seek($i);
+                $row = $result->fetch_assoc();
+                $albums[] = [
+                    'id' => $row['id'],
+                    'name' => $row['name'],
+                    'introduction' => $row['introduction'],
+                    'cover' => $row['cover'],
+                    'create_time' => $row['create_time']
+                ];
+            }
+            include_once __DIR__ . '/../album.php';
+        } else {
+            echo $mysqli->errno . ' : ' . $mysqli->error;
+        }
     }
 
-    function addPicture_p()
+    function addAlbum()
     {
-        include_once __DIR__ . '/../addPicture.php';
+        //检查post提交是否成功
+        header('Cache-control: private, must-revalidate'); //支持页面回跳,防止提交失败时数据丢失
+        if (!isset($_POST['add_album_name']) || !isset($_POST['add_album_introduction'])) {
+            echo "<script>alert('提交错误！');history.go(-1);</script>";
+            exit;
+        }
+        $name = $_POST['add_album_name'];
+        $introduction = $_POST['add_album_introduction'];
+        $cover = 'http://or9amuuk2.bkt.clouddn.com/album_cover.jpg';
+        $create_time = time();
+
+        $mysqli = $this->getMysqli();
+        $sql = "INSERT INTO album(name, introduction, cover, create_time) 
+                VALUES ('$name', '$introduction', '$cover', '$create_time')";
+        $mysqli->query($sql);
+        if ($mysqli->affected_rows > 0) {
+            echo "<script>alert('相册添加成功！')</script>";
+            $this->albumList();
+        } else {
+            echo $mysqli->errno . ' : ' . $mysqli->error;
+        }
     }
 
-    function videoList_p()
+    function removeAlbum($album_id)
+    {
+        $mysqli = $this->getMysqli();
+        $sql = "DELETE FROM album WHERE id='$album_id'";
+        $mysqli->query($sql);
+        if ($mysqli->affected_rows > 0) {
+            echo "<script>alert('删除成功！')</script>";
+            $this->albumList();
+        } else {
+            $errno = $mysqli->errno;
+            $error = $mysqli->error;
+            echo "<script>alert('删除失败：$errno,$error');</script>";
+            $this->links_p();
+        }
+    }
+
+    function photoList($album_id)
+    {
+        $mysqli = $this->getMysqli();
+        $sql = "SELECT id,name,url
+                FROM photo
+                WHERE album_id=$album_id
+                ORDER BY create_time DESC";
+        $result = $mysqli->query($sql);
+
+        if ($mysqli->affected_rows > 0 || $mysqli->errno == 0) {
+            $photos = [];
+            for ($i = 0; $i < $result->num_rows; $i++) {
+                $result->data_seek($i);
+                $row = $result->fetch_assoc();
+                $photos[] = [
+                    'id' => $row['id'],
+                    'name' => $row['name'],
+                    'url' => $row['url']
+                ];
+            }
+            include_once __DIR__ . '/../photoList.php';
+        } else {
+            echo $mysqli->errno . ' : ' . $mysqli->error;
+        }
+    }
+
+    function videoList()
     {
         include_once __DIR__ . '/../videoList.php';
     }
@@ -381,13 +463,13 @@ class adminAction
 
         if ($mysqli->affected_rows > 0) {
             $links = [];
-            for ($i = 0; $i < $result->num_rows; $i ++) {
+            for ($i = 0; $i < $result->num_rows; $i++) {
                 $result->data_seek($i);
                 $row = $result->fetch_assoc();
                 $id = $row['id'];
                 $name = $row['name'];
                 $url = $row['url'];
-                $links[] = ['id'=>$id, 'name'=>$name, 'url'=>$url];
+                $links[] = ['id' => $id, 'name' => $name, 'url' => $url];
             }
             include_once __DIR__ . '/../links.php';
         } else {

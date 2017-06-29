@@ -9,4 +9,4 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
     echo 'access forbidden!';
     exit;
 }
-echo "添加照片";
+echo "添加相册";

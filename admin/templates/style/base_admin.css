@@ -927,3 +927,181 @@ form[name='search_form'] {
     font-size: 14px;
     cursor: pointer;
 }
+
+/*相册列表页面*/
+.albums_body {
+    overflow: auto;
+    background: #EFEEE4;
+}
+
+.albums_body .albums_body_blank {
+    height: 45px;
+}
+
+.albums_body .albums_body_blank_large {
+    height: 80px;
+}
+
+.albums_body .add_album {
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    background: url("../images/add.png") no-repeat;
+    background-size: 20px 20px;
+    cursor: pointer;
+}
+
+.albums_list {
+    width: 1000px;
+    margin: 0 auto;
+    background: wheat;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+.albums_list #add_album_box {
+    display: none;
+    width: 800px;
+    height: 120px;
+    margin: 0 auto;
+}
+
+#add_album_box label {
+    color: white;
+    font-family: 微软雅黑, serif;
+}
+
+#add_album_box .add_album_input {
+    width: 180px;
+    height: 25px;
+    padding-left: 10px;
+    background: #D9EDF7;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+#add_album_box .add_album_area {
+    width: 180px;
+    height: 100px;
+    padding-left: 10px;
+    background: #D9EDF7;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+#add_album_submit {
+    width: 50px;
+    height: 25px;
+    background: #6FA5DB;
+    color: white;
+    padding-left: 5px;
+    border: 1px solid white;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.albums_list .album_item {
+    width: 800px;
+    height: 160px;
+    padding: 10px;
+    margin: 0 auto;
+    border-bottom: 1px solid white;
+    background: powderblue;
+}
+
+
+.albums_list .album_item img {
+    display: block;
+    float: left;
+    width: 180px;
+    height: 140px;
+}
+
+.albums_list .album_item .album_content {
+    display: block;
+    float: left;
+    width: 300px;
+    height: 140px;
+}
+
+.albums_list .album_item .album_name {
+    margin-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    color: gray;
+}
+
+.albums_list .album_item .album_introduction {
+    display: block;
+    margin-left: 10px;
+    color: #cd0a0a;
+}
+
+.albums_list .album_rewrite_item {
+    display: none;
+    width: 800px;
+    height: 250px;
+    line-height: 80px;
+    padding: 10px;
+    margin: 0 auto;
+    border-bottom: 1px solid white;
+    background: lightseagreen;
+}
+
+.albums_list .album_rewrite_item form {
+    line-height: 50px;
+    height: 250px;
+    padding-top: 0;
+}
+
+.albums_list .album_rewrite_item label {
+    color: white;
+    font-family: 微软雅黑, serif;
+}
+
+.albums_list .album_rewrite_item .rewrite_album_input {
+    width: 180px;
+    height: 25px;
+    padding-left: 10px;
+    background: #D9EDF7;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: gray;
+}
+
+.albums_list .album_rewrite_item .rewrite_album_textarea {
+    width: 300px;
+    height: 100px;
+    padding-left: 10px;
+    background: #D9EDF7;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: gray;
+}
+
+#rewrite_album_submit {
+    width: 50px;
+    height: 25px;
+    background: #6FA5DB;
+    color: white;
+    padding-left: 5px;
+    border: 1px solid white;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.albums_list .album_rewrite_item span {
+    display: inline-block;
+    width: 50px;
+    height: 23px;
+    line-height: 23px;
+    text-align: center;
+    background: #6FA;
+    border: 1px solid white;
+    border-radius: 3px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}

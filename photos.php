@@ -39,8 +39,15 @@ $id = $_GET['id'];
 <div class="box">
     <h2 style="padding-bottom:20px;"><?php echo '那年花开'; ?></h2>
     <div id="imgs" class="imgs">
-        <img src="templates/images/big_bg1.jpg" layer-pname="HTML5资源教程 - 1">
-        <img src="templates/images/big_bg2.jpg" layer-pname="HTML5资源教程 - 1">
+        <?php
+        for ($i = 0; $i < 100; $i ++) {
+            for ($j = 1; $j <= 2; $j ++){
+        ?>
+        <img src="templates/images/big_bg<?php echo $j; ?>.jpg" layer-pname="HTML5资源教程 - 1">
+        <?php
+            }
+        }
+        ?>
     </div>
     <div style="text-align:center;clear:both;">
     </div>

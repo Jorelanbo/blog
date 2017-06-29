@@ -380,7 +380,8 @@ class Mysql
         $mysqli = $this->mysqli;
         $sql = "SELECT * 
                 FROM photo 
-                WHERE album_id='$album_id'";
+                WHERE album_id='$album_id'
+                ORDER BY create_time DESC";
         $result = $mysqli->query($sql);
 
         $photos = [];
@@ -401,5 +402,31 @@ class Mysql
         }
 
         return $photos;
+    }
+
+    function getVideos()
+    {
+        $mysqli = $this->mysqli;
+        $sql = "SELECT * FROM video";
+        $result = $mysqli->query($sql);
+
+        $videos = [];
+        if ($mysqli->affected_rows > 0) {
+            for ($i = 0; $i < $result->num_rows; $i++) {
+                $result->data_seek($i);
+                $row = $result->fetch_assoc();
+                $videos[] = [
+                    'id' => $row['id'],
+                    'name' => $row['name'],
+                    'url' => $row['url'],
+                    'introduction' => $row['introduction'],
+                    'create_time' => $row['create_time']
+                ];
+            }
+        } else {
+            echo $mysqli->errno . ' :' . $mysqli->error;
+        }
+
+        return $videos;
     }
 }

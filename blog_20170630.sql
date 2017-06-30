@@ -197,7 +197,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'Jorelanbo',1,'Haircut really matters!!!','http://or9amuuk2.bkt.clouddn.com/20170622182615_34620.jpg');
+INSERT INTO `user` VALUES (1,'Jorelanbo',1,'Haircut really matters!!!','http://or9amuuk2.bkt.clouddn.com/20170630133225_44359.jpg');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -236,4 +236,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-29 19:31:36
+-- Dump completed on 2017-06-30 18:37:52

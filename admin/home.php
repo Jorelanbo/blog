@@ -46,7 +46,6 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
             <a class="menu_video_button menu_button">　视频</a>
             <ul class="sub">
                 <li><a href="index.php?m=admin&a=videoList" target="content_iframe">视频列表</a></li>
-                <li><a href="index.php?m=admin&a=addVideo_p" target="content_iframe">添加视频</a></li>
             </ul>
         </li>
         <li>

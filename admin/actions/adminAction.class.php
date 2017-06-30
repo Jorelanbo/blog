@@ -391,12 +391,21 @@ class adminAction
 
     function videoList()
     {
+        $mysqli = $this->getMysqli();
+        $sql = "SELECT * FROM video ORDER BY create_time DESC";
+        $result = $mysqli->query($sql);
+
+        if ($mysqli->affected_rows > 0 || $mysqli->errno == 0) {
+
+        } else {
+            echo $mysqli->errno . ' : ' . $mysqli->error;
+        }
         include_once __DIR__ . '/../videoList.php';
     }
 
-    function addVideo_p()
+    function addVideo()
     {
-        include_once __DIR__ . '/../addVideo.php';
+
     }
 
     function experience_p()

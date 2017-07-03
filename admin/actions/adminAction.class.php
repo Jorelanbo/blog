@@ -396,15 +396,88 @@ class adminAction
         $result = $mysqli->query($sql);
 
         if ($mysqli->affected_rows > 0 || $mysqli->errno == 0) {
-
+            $videos = [];
+            for ($i = 0; $i < $result->num_rows; $i ++) {
+                $result->data_seek($i);
+                $row = $result->fetch_assoc();
+                $videos[] = [
+                    'id' => $row['id'],
+                    'name' => $row['name'],
+                    'url' => $row['url'],
+                    'introduction' => $row['introduction'],
+                    'create_time' => $row['create_time']
+                ];
+            }
+            include_once __DIR__ . '/../videoList.php';
         } else {
             echo $mysqli->errno . ' : ' . $mysqli->error;
         }
-        include_once __DIR__ . '/../videoList.php';
+    }
+
+    function video($video_id)
+    {
+        $mysqli = $this->getMysqli();
+        $sql = "SELECT * FROM video WHERE id='$video_id'";
+        $result = $mysqli->query($sql);
+
+        $video = [];
+        if ($mysqli->affected_rows > 0) {
+            $result->data_seek(0);
+            $row = $result->fetch_assoc();
+            $video = [
+                'id' => $row['id'],
+                'name' => $row['name'],
+                'url' => $row['url'],
+                'introduction' => $row['introduction'],
+                'create_time' => $row['create_time']
+            ];
+            include_once __DIR__ . '/../video.php';
+        } else {
+            echo $mysqli->errno . ' : ' . $mysqli->error;
+        }
     }
 
     function addVideo()
     {
+        //检查post提交是否成功
+        header('Cache-control: private, must-revalidate'); //支持页面回跳,防止提交失败时数据丢失
+        if (!isset($_POST['add_video_name']) ||
+            !isset($_POST['add_video_address']) ||
+            !isset($_POST['add_video_introduction'])) {
+            echo "<script>alert('提交错误！');history.go(-1);</script>";
+            exit;
+        }
+        $name = $_POST['add_video_name'];
+        $url = $_POST['add_video_address'];
+        $introduction = $_POST['add_video_introduction'];
+        $create_time = time();
+
+        $mysqli = $this->getMysqli();
+        $sql = "INSERT INTO video(name, url, introduction, create_time) 
+                VALUES ('$name', '$url', '$introduction', '$create_time')";
+        $mysqli->query($sql);
+        if ($mysqli->affected_rows > 0) {
+            echo "<script>alert('视频添加成功！')</script>";
+            $this->videoList();
+        } else {
+            echo $mysqli->errno . ' : ' . $mysqli->error;
+        }
+    }
+
+    function removeVideo($video_id)
+    {
+        $mysqli = $this->getMysqli();
+        $sql = "DELETE FROM video WHERE id='$video_id'";
+        $mysqli->query($sql);
+        if ($mysqli->affected_rows > 0) {
+            echo "<script>alert('删除成功！')</script>";
+            $this->videoList();
+        } else {
+            $errno = $mysqli->errno;
+            $error = $mysqli->error;
+            echo "<script>alert('删除失败：$errno,$error');</script>";
+            $this->videoList();
+        }
 
     }
 

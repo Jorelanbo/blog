@@ -7,8 +7,7 @@
  */
 require_once 'include/mysqli.class.php';
 
-//$albums = $db->getVideos();
-$src = 'http://player.youku.com/player.php/sid/XODIzNDkwMjM2/v.swf';
+$videos = $db->getVideos();
 ?>
 
 <!DOCTYPE html>
@@ -26,41 +25,22 @@ $src = 'http://player.youku.com/player.php/sid/XODIzNDkwMjM2/v.swf';
 <div class="video_box">
     <div class="container">
         <?php
-/*        for ($i = 0; $i < 5; $i ++) {
-            for ($j = 1; $j <= 5; $j ++) {
-                */?><!--
-                <div class="video_item">
-                    <p>相册<?php /*echo $j;*/?></p>
-                </div>
-                --><?php
-/*            }
+        for ($i = 0; $i < count($videos); $i ++) {
+            $video = $videos[$i];
+            $id = $video['id'];
+            $name = $video['name'];
+            $url = $video['url'];
+            $introduction = $video['introduction'];
+            $create_time = $video['create_time'];
+        ?>
+        <div class="video_item">
+            <p><?php echo $name; ?></p>
+            <embed src='<?php echo $url; ?>' allowFullScreen='true' quality='high' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
+            <p class="video_introduction"><?php echo $introduction; ?></p>
+        </div>
+        <?php
         }
-        */?>
-        <div class="video_item">
-            <p>视频1</p>
-            <embed src='http://player.youku.com/player.php/sid/XODI2MjE2MzA0/v.swf' allowFullScreen='true' quality='high' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
-            <p class="video_introduction">传着一张图片试试传着一张图片试试传着一张图片试试传着一张图片试试传着一张图片试试传着一张图片试试 </p>
-        </div>
-        <div class="video_item">
-            <p>视频2</p>
-            <embed src='<?php echo $src?>' allowFullScreen='true' quality='high' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
-            <p class="video_introduction">描述2</p>
-        </div>
-        <div class="video_item">
-            <p>视频3</p>
-            <embed src='http://player.youku.com/player.php/sid/XODI0MTk3ODQ0/v.swf' allowFullScreen='true' quality='high' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
-            <p class="video_introduction">描述3</p>
-        </div>
-        <div class="video_item">
-            <p>视频4</p>
-            <embed src='http://player.youku.com/player.php/sid/XODI0ODIxMTEy/v.swf' allowFullScreen='true' quality='high' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
-            <p class="video_introduction">描述4</p>
-        </div>
-        <div class="video_item">
-            <p>视频5</p>
-            <embed src='http://player.youku.com/player.php/sid/XODI1NTAzNDg0/v.swf' allowFullScreen='true' quality='high' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
-            <p class="video_introduction">描述5</p>
-        </div>
+        ?>
     </div>
 </div>
 <div class="album_footer"></div>

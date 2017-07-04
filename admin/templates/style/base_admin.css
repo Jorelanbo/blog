@@ -1109,10 +1109,45 @@ form[name='search_form'] {
 /*相片页面*/
 
 .photos_body {
+    overflow: auto;
     padding: 30px;
+    background: #EFEEE4;
 }
-.photos_body #uploader-box {
+
+.photos_body .photos_list {
     width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 900px;
+    background: #DDDDDD;
+}
+
+.photos_body .photos_list .show_upload_box {
+    width: 100px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    margin: 0 10%;
+    background: #2D93CA;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.photos_body .photos_list .show_upload_box_line {
+    width: 90%;
+    height: 1px;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-left: 30px;
+    background: #CCCCCC;
+}
+
+.photos_body #uploader-box {
+    display: none;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
     padding: 15px;
     background: #FAFAFA;
     border: 1px solid #CCCCCC;
@@ -1131,7 +1166,43 @@ form[name='search_form'] {
 
 #filePicker {
     clear: both;
+    width: 100px;
     margin-top: 20px;
+}
+
+#upload {
+    display: inline-block;
+    width: 92px;
+    height: 41px;
+    line-height: 41px;
+    text-align: center;
+    margin-top: 15px;
+    background: lightseagreen;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+}
+
+#upload:hover {
+    background: cadetblue;
+}
+
+#quit {
+    display: inline-block;
+    width: 92px;
+    height: 41px;
+    line-height: 41px;
+    text-align: center;
+    margin-left: 30px;
+    margin-top: 15px;
+    background: #F0AD4E;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+}
+
+#quit:hover {
+    background: #EC971F;
 }
 
 /*视频列表页面*/

@@ -41,12 +41,13 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
 <div class="photos_body_blank"></div>
 <div class="photos_list">
     <div class="photos_body_blank">
-<!--        <a class="add_photo" id="add_photo"></a>-->
-        <!--dom结构部分-->
+        <div id="show_upload_box" class="show_upload_box">添加相片</div>
+        <div class="show_upload_box_line"></div>
         <div id="uploader-box">
-            <!--用来存放item-->
             <div id="fileList" class="uploader-list"></div>
             <div id="filePicker" class="add_photo">选择图片</div>
+            <a id="upload" class="upload" href="">上传</a>
+            <a id="quit" class="quit" href="index.php?m=admin&a=photoList&id=<?php echo $album_id?>">取消</a>
         </div>
     </div>
     <div class="photos_body_blank_large"></div>
@@ -58,10 +59,10 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
         $url = $photo['url'];
         ?>
         <div class="item_box">
-            <div class="album_item">
+            <div class="photo_item">
                 <a href="<?php echo $url; ?>"><img src="<?php echo $url;?>"></a>
-                <div class="album_content">
-                    <div class="album_name"><?php echo $name; ?></div>
+                <div class="photo_content">
+                    <div class="photo_name"><?php echo $name; ?></div>
                 </div>
                 <a class="remove" href="index.php?m=admin&a=removeAlbum&id=<?php echo $id; ?>"></a>
             </div>
@@ -75,12 +76,12 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
 
 <script>
     /*添加*/
-    $("#add_album").click(function () {
-        var add_box = $("#add_album_box");
+    $("#show_upload_box").click(function () {
+        var add_box = $("#uploader-box");
         if (add_box.css("display") === "none") {
-            add_box.show("fast", "swing");
+            add_box.slideDown(300);
         } else {
-            add_box.hide("fast", "swing");
+            add_box.slideUp(300);
         }
     });
 

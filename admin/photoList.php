@@ -10,6 +10,24 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
     exit;
 }
 
+//删除之前的缓存
+function delDirFiles($dirname){
+    $dir = opendir($dirname);
+    while ($file = readdir($dir)){
+        $filename=$dirname.'\\'.$file;
+        if($file !='.' && $file !='..'){
+            unlink($filename);
+        }
+    }
+    closedir($dir);
+}
+
+$dirname = 'include/uploader/attached/album_' . $album_id . '/';
+if (is_dir($dirname)) {
+    delDirFiles($dirname);
+    echo "<script>console.log('删除成功！')</script>";
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,21 +39,6 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
     <script type="text/javascript" src="templates/js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="include/webuploader/webuploader.js"></script>
 
-    <script>
-        function checkAdd() {
-            if (document.add_album_form.add_album_name.value === '' || document.add_album_form.add_album_introduction.value === '') {
-                alert("哥，填完整再加。");
-                return false;
-            }
-        }
-
-        function checkRewrite() {
-            if (document.rewrite_album_form.rewrite_album_name.value === '' || document.rewrite_album_form.rewrite_album_introduction.value === '') {
-                alert("哥，填完整再改。");
-                return false;
-            }
-        }
-    </script>
 </head>
 <body class="photos_body">
 <div class="photos_body_blank"></div>
@@ -46,7 +49,7 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
         <div id="uploader-box">
             <div id="fileList" class="uploader-list"></div>
             <div id="filePicker" class="add_photo">选择图片</div>
-            <a id="upload" class="upload" href="">上传</a>
+            <a id="upload" class="upload" href="">开始上传</a>
             <a id="quit" class="quit" href="index.php?m=admin&a=photoList&id=<?php echo $album_id?>">取消</a>
         </div>
     </div>
@@ -61,10 +64,7 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
         <div class="item_box">
             <div class="photo_item">
                 <a href="<?php echo $url; ?>"><img src="<?php echo $url;?>"></a>
-                <div class="photo_content">
-                    <div class="photo_name"><?php echo $name; ?></div>
-                </div>
-                <a class="remove" href="index.php?m=admin&a=removeAlbum&id=<?php echo $id; ?>"></a>
+                <a class="remove" href="index.php?m=admin&a=removePhoto&id=<?php echo $id; ?>"></a>
             </div>
         </div>
         <?php
@@ -101,7 +101,7 @@ if (!isset($_COOKIE['login']) || $_COOKIE['login'] != 1) {
         swf: 'include/webuploader/Uploader.swf',
 
         // 文件接收服务端。
-        server: 'include/upload/upload_photo.php',
+        server: 'include/upload/upload_photo.php?id=<?php echo $album_id?>',
 
         // 选择文件的按钮。可选。
         // 内部根据当前运行是创建，可能是input元素，也可能是flash.

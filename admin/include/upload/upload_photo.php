@@ -12,35 +12,8 @@
  *
  * 过滤掉空的数据
  */
-/*function delEmpty($v)
-{
-    return $v != "";
-}
 
-$fileName = @array_filter($_FILES['file']['name'], 'delEmpty');
-
-//echo "<pre>";
-//print_r($fileName);
-//print_r($_FILES);
-
-//配置上传目录
-$dirName = 'tmp/';
-if (!file_exists($dirName)) {
-    mkdir($dirName);
-}
-//多文件上传处理
-foreach ($fileName as $k => $v) {
-    $newFilePath = $dirName . '/' . mt_rand(10, 1000) . $v;
-    if (is_uploaded_file($_FILES['file']['tmp_name'][$k])) {
-        if (!move_uploaded_file($_FILES['file']['tmp_name'][$k], $newFilePath)) {
-            echo "<script></script>alert('上传文件失败！');</script>";
-            exit;
-        }
-        $fileSize = number_format($_FILES['file']['size'][$k] / 1024, 1);
-    } else {
-        echo "<script>alert('非法文件！')</script>";
-    }
-}*/
+isset($_GET['id']) ? ($album_id = $_GET['id']) : exit('文件上传失败！');
 
 echo "<pre>";
 print_r($_FILES);
@@ -75,7 +48,11 @@ if (!empty($_FILES['file']['name'])) {
         }
 
         //处理上传文件
-        $dirname = 'attached/';
+
+        $dirname = 'attached/album_' . $album_id . '/';
+        if (!is_dir($dirname)) {
+            mkdir($dirname);
+        }
         if (is_uploaded_file($_FILES['file']['tmp_name'])) {
             $toFileName = $dirname.'/'.time().'_'.mt_rand(10, 300).$_FILES['file']['name'];
             if (move_uploaded_file($_FILES['file']['tmp_name'], $toFileName)) {
